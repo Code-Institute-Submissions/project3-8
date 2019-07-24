@@ -1,0 +1,22 @@
+
+
+
+user  = michael
+passwotrd = "password123"
+
+return render template index.html, user = user, password =password
+
+in html use curly{{user}}
+
+so <p> your name is {{user}}
+
+
+export the variables in your bash
+MONGO_URI
+
+source the bash file
+
+
+os.getenviron(MONGO_URI)
+
+

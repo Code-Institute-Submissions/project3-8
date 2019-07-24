@@ -1,0 +1,40 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+<p>
+    inside quote.html
+</p>
+<div class="row">
+    <ul class="collapsible" data-collapsible="accordion">
+        {% for quote in quotes %}
+        <li>
+            <div class="collapsible-header">
+                <div class="col s3">
+                    <i class="material-icons">expand_more</i>
+                    <form action="{{url_for('delete_quote', quote_id=quote._id)}}" method="POST">
+                        <button type="submit" class="waves-effect waves-light btn btn_small">Done</button>
+                    </form>
+                    <a href="{{url_for('edit_quote', quote_id=quote._id)}}"
+                        class="waves-effect waves-light btn btn_small blue">Edit</a>
+                </div>
+                <div class="quote_header col s9">
+                    <strong>{{quote.name}}</strong> - {{quote.liveDate}}
+                </div>
+            </div>
+            <div class="collapsible-body"><span>{{quote.brief}}</span></div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<div class="row">
+    {% if any_categories %}
+    <a href="{{ url_for('add_quote') }}" class="waves-effect waves-light btn">
+        <i class="material-icons right">playlist_add</i>Add quote
+    </a>
+    {% endif %}
+    <a href="{{ url_for('add_category') }}" class="waves-effect waves-light btn">
+        <i class="material-icons right">playlist_add</i>Add Category
+    </a>
+</div>
+{% endblock %}
