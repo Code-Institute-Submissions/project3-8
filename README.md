@@ -1,7 +1,20 @@
-README.md
-This is the start of my project, I have done some bits already as I was doing some taks while i was watching the videos and doing the mini projects.
+# README.md
+This is the start of my project.
+I have done some bits already as I was doing test tasks while I was following
+ the videos and doing the mini projects.
 
 Some git commits will be quick as a result.
 
-Database Schema
-the database schema is available in the drafts folder as a pdf file.
+## GIT 
+
+http://github.com - automatic!
+[GitHub](https://github.com/ciaranq/project3)
+
+## Database Schema
+The database schema is available in the drafts folder as a pdf file.
+https://github.com/ciaranq/project3/blob/master/drafts/CRM-schema.pdf
+
+## Heroku
+My app can be found at https://ci-project3-ciaranquinlan.herokuapp.com/
+auto deploy from GIT is enabled
+

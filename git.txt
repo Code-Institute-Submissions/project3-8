@@ -4,3 +4,11 @@ git add README.md
 git commit -m "first commit"
 git remote add origin https://github.com/ciaranq/project3.git
 git push -u origin master
+
+
+Create a new Git repository with Heroku
+
+$ heroku git:remote -a ci-project3-ciaranquinlan
+$ git push heroku master
+
+Auto deploy setup from github to heroku
