@@ -1,0 +1,11 @@
+create the database and collections
+
+get the environment variable under connect and enter the db name and password
+
+MONGO_URI="mongodb+srv://ciaran:xxxxxxquote-vj3wf.mongodb.net/crm?retryWrites=true&w=majority"
+ export MONGO_URI="mongodb+srv://ciaran:Code2019@quote-vj3wf.mongodb.net/quote?retryWrites=true&w=majority"
+
+
+
+mongodb+srv://ciaran:Code2019@quote-vj3wf.mongodb.net/crm?retryWrites=true&w=majority
+

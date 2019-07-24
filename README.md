@@ -16,3 +16,7 @@ https://github.com/ciaranq/project3/blob/master/drafts/CRM-schema.pdf
 My app can be found at https://ci-project3-ciaranquinlan.herokuapp.com/
 auto deploy from GITHUB is enabled
 
+
+## Mongo
+I created a database called CRM to contain my quote application
+
