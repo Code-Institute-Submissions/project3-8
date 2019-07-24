@@ -20,6 +20,7 @@ mongo = PyMongo(app)
 
 
 @app.route('/')
+# this route was used to test and setup the connection
 @app.route('/get_tasks')
 def get_tasks():
     # This connects to the db  quotes above to the quote collection
@@ -29,6 +30,6 @@ def get_tasks():
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             # to run in heroku uncomment this line and comment the port=5000 line
-            # port=int(os.environ.get('PORT')),
-            port=5000,
+            port=int(os.environ.get('PORT')),
+            # port=5000,
             debug=True)
