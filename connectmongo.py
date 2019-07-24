@@ -14,6 +14,8 @@ app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'task_manager'
 app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'mongodb://localhost')
 
+# dont forget to set this variable in Heroku config vars
+
 mongo = PyMongo(app)
 
 
@@ -27,6 +29,6 @@ def get_tasks():
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             # to run in heroku uncomment this line and comment the port=5000 line
-            port=int(os.environ.get('PORT')),
-            # port=5000,
+            # port=int(os.environ.get('PORT')),
+            port=5000,
             debug=True)
