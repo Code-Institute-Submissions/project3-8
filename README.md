@@ -6,9 +6,7 @@ I have done some bits already as I was doing test tasks while I was following
 Some git commits will be quick as a result.
 
 ## GIT 
-
-http://github.com - automatic!
-[GitHub](https://github.com/ciaranq/project3)
+[GitHub repo is here](https://github.com/ciaranq/project3)
 
 ## Database Schema
 The database schema is available in the drafts folder as a pdf file.
@@ -16,5 +14,5 @@ https://github.com/ciaranq/project3/blob/master/drafts/CRM-schema.pdf
 
 ## Heroku
 My app can be found at https://ci-project3-ciaranquinlan.herokuapp.com/
-auto deploy from GIT is enabled
+auto deploy from GITHUB is enabled
 

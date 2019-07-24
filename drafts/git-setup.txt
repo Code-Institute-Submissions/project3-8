@@ -8,7 +8,7 @@ git push -u origin master
 
 Create a new Git repository with Heroku
 
-$ heroku git:remote -a ci-project3-ciaranquinlan
+$ heroku git:remote -a ciproject3-cquinlan
 $ git push heroku master
 
 Auto deploy setup from github to heroku
