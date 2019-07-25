@@ -19,10 +19,22 @@ mongo = PyMongo(app)
 
 @app.route('/')
 # this function get the quotes and list them on the screeen
-# right now it list all quotes but this can be changed for the user to selecr based on status
+# right now it list all quotes but this can be changed for the user to select based on status
 @app.route('/get_quotes')
 def get_quotes():
+    # This line finds all documents in qoutes collections and put them in the quotes variable
+    # variable quotes passed back to quote.html file and it lists all quotes
     return render_template("quote.html", quotes=mongo.db.quote.find())
+
+# This function displays the edit page and populates it with the document selected in quote.html
+@app.route('/edit_quote/<quote_id>')
+def edit_quote(quote_id):
+        Find the quote based on the unique quote_id
+    the_quote = mongo.db.quote.find_one({'_id': ObjectId(quote_id)})
+    all_status = mongo.db.status.find()
+    return render_template(
+        'editquote.html', quote=the_quote, statuses=all_status)
+
 
 
 @app.route('/add_task')
@@ -37,12 +49,6 @@ def insert_task():
     return redirect(url_for('get_tasks'))
 
 
-@app.route('/edit_quote/<quote_id>')
-def edit_quote(quote_id):
-    the_quote = mongo.db.quote.find_one({'_id': ObjectId(quote_id)})
-    all_status = mongo.db.status.find()
-    return render_template(
-        'editquote.html', quote=the_quote, statuses=all_status)
 
 
 @app.route('/update_quote/<quote_id>', methods=['POST'])
@@ -120,6 +126,9 @@ def get_listquotes():
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP', '127.0.0.1'),
-            # port=int(os.environ.get('PORT', '8080')),
+            #     port=int(os.environ.get('PORT', '8080')),
             port=5000,
             debug=True)
+  # set an environment variable to get around the problem im having with port on heroku and vscode
+    #     port=os.getenv('PORT'),
+    #     print(port),

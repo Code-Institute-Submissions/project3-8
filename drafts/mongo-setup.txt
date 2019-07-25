@@ -1,8 +1,16 @@
 Create the database and collections
-
 Get the environment variable under connect and enter the db name and password
-
- export MONGO_URI="mongodb+srv://ciaran:xxx@quote-vj3wf.mongodb.net/crm?retryWrites=true&w=majority"
-
 Insert documents into the collections
 
+set env variables
+export MONGO_URI="mongodb+srv://ciaran:xxx@quote-vj3wf.mongodb.net/crm?retryWrites=true&w=majority"
+
+
+Mongo CLI 
+mongo "mongodb+srv://quote-vj3wf.mongodb.net/crm" --username ciaran
+show collections
+coll=db.quote
+coll.insert({
+    name::"ciaran"
+    email: "ciaran.quinlan@gmail.com"
+});

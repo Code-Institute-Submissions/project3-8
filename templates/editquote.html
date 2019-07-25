@@ -2,12 +2,15 @@
 
 {% block content %}
 <h3>Edit quote</h3>
+this file is called from quote manager and is passed in the unique quote id variable
 <div class="row">
+    Calls update quote with unique quote id variable when form is completed.
     <form action="{{ url_for('update_quote', quote_id=quote._id) }}" method="POST" class="col s12">
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">poll</i>
                 <select id="status" name="quote_status">
+                    <!-- List all the statua in dropdown -->
                     {% for status in statuses %}
                     <option value="{{status.quote_status}}" {% if status.quote_status == status.quote_status %} selected
                         {% endif %}>{{status.quote_status}}</option>
@@ -20,7 +23,7 @@
             <div class="input-field col s12">
                 <i class="material-icons prefix">assignment</i>
                 <input id="quote_name" name="quote_name" type="text" class="validate" value="{{quote.name}}">
-                <label for="quote_name">quote Name</label>
+                <label for="quote_name">Your Full Name</label>
             </div>
         </div>
         <div class="row">
@@ -54,6 +57,38 @@
         </div>
     </form>
 </div>
+
+<P>
+    want to print all the vars here
+
+    {{quote.quoteId}}
+    {{quote.name}}
+    {{quote.email}}
+    {{quote.phone}}
+    {{quote.rankQuality}}
+    {{quote.rankTime}}
+    {{quote.rankCost}}
+    {{quote.levelQuality}}
+    {{quote.expectedDate}}
+    {{quote.liveDate}}
+    {{quote.budget}}
+    {{quote.brief}}
+    {{quote.typeDev}}
+
+
+    {% for i in range(0, quote.tech|length) %}
+    {{quote.tech[i]}}
+    {% endfor %}
+
+    {{quote.quoteStatus}}
+    {{quote.quoteDetails}}
+    {{quote.quoteResponse}}
+    {{quote.assignedTo}}
+    {{quote.quoteCost}}
+    {{quote.quoteNeeds}}
+
+
+</P>
 {% endblock %}
 
 {% block additional_scripts %}
@@ -64,4 +99,5 @@
         setDueDate('{{quote.due_date}}');
     });
 </script>
+
 {% endblock %}

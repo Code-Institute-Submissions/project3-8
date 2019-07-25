@@ -4,6 +4,7 @@
 
 <p>
     inside quote.html
+    This html files accepts in the quotes variable which is all the quotes
 </p>
 <div class="row">
     <ul class="collapsible" data-collapsible="accordion">
@@ -15,13 +16,16 @@
                     <form action="{{url_for('delete_quote', quote_id=quote._id)}}" method="POST">
                         <button type="submit" class="waves-effect waves-light btn btn_small">Done</button>
                     </form>
+                    <!-- Calls edit quote function passing in the unique quoteid -->
                     <a href="{{url_for('edit_quote', quote_id=quote._id)}}"
-                        class="waves-effect waves-light btn btn_small blue">Edit</a>
+                        class="waves-effect waves-light btn btn_small blue">Edit Quote</a>
                 </div>
                 <div class="quote_header col s9">
+                    <!-- outputs name and live date to screen -->
                     <strong>{{quote.name}}</strong> - {{quote.liveDate}}
                 </div>
             </div>
+            <!-- the brief is enclosed in a accordian  -->
             <div class="collapsible-body"><span>{{quote.brief}}</span></div>
         </li>
         {% endfor %}
