@@ -40,8 +40,9 @@ def edit_quote(quote_id):
 
 @app.route('/add_task')
 def add_task():
-    return render_template(
-        'addtask.html', categories=mongo.db.categories.find())
+    return 'Hello World ...not yet connected'
+    # return render_template(
+    # 'addtask.html', categories=mongo.db.categories.find())
 
 
 @app.route('/insert_task', methods=['POST'])
