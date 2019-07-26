@@ -9,14 +9,18 @@ this file is called from quote manager and is passed in the unique quote id vari
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">poll</i>
+                <!-- this is where we assign the quote status to the status in the quote  -->
+                <!-- document to quote.quoteStatus -->
                 <select id="status" name="quote_status">
-                    <!-- List all the statua in dropdown -->
+                    <!-- List all the status passed through in the statuses variable -->
+                    <!-- This will later be incorporated in a  dropdown -->
                     {% for status in statuses %}
-                    <option value="{{status.quote_status}}" {% if status.quote_status == status.quote_status %} selected
-                        {% endif %}>{{status.quote_status}}</option>
+                    <option value="{{status.quote_status}}" {% if status.quote_status == quote.quoteStatus %}
+                        selected{% endif %}>
+                        {{status.quote_status}}</option>
                     {% endfor %}
                 </select>
-                <label>quote status</label>
+                <label>Quote status</label>
             </div>
         </div>
         <div class="row">
@@ -29,22 +33,21 @@ this file is called from quote manager and is passed in the unique quote id vari
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">subject</i>
-                <textarea name="quote_description" id="quote_description"
-                    class="materialize-textarea">{{quote.brief}}</textarea>
+                <textarea name="quote_brief" id="quote_brief" class="materialize-textarea">{{quote.brief}}</textarea>
                 <label for="quote_description">Quote Brief</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">today</i>
-                <input id="due_date" name="due_date" type="text" class="datepicker">
-                <label for="due_date">Due Date</label>
+                <input id="live_date" name="live_date" type="text" value="{{quote.liveDate}}" class=" datepicker">
+                <label for="live_date">Due Date</label>
             </div>
         </div>
         <div class="row">
             <div class="switch">
                 <label>
-                    <input id="is_urgent" name="is_urgent" type="checkbox" {% if quote.is_urgent %} checked {% endif %}>
+                    <input id="is_urgent" name="is_urgent" type="checkbox" {% if quote.isurgent %} checked {% endif %}>
                     <span class="lever"></span>
                     Is Urgent
                 </label>
@@ -61,6 +64,10 @@ this file is called from quote manager and is passed in the unique quote id vari
 <P>
     want to print all the vars here
 
+    {% for status in statuses %}
+    {{status.quote_status}}
+    {% endfor %}
+    quotes
     {{quote.quoteId}}
     {{quote.name}}
     {{quote.email}}
@@ -74,12 +81,9 @@ this file is called from quote manager and is passed in the unique quote id vari
     {{quote.budget}}
     {{quote.brief}}
     {{quote.typeDev}}
-
-
     {% for i in range(0, quote.tech|length) %}
     {{quote.tech[i]}}
     {% endfor %}
-
     {{quote.quoteStatus}}
     {{quote.quoteDetails}}
     {{quote.quoteResponse}}

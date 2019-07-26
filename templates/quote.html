@@ -5,10 +5,23 @@
 <p>
     inside quote.html
     This html files accepts in the quotes variable which is all the quotes
+
+
+    so i need to add a link or someplace to choose a value of status and only show those.
+
+
 </p>
+
+
+{% set status = "OPEN" %}
+{% set status1 = "ALL" %}
 <div class="row">
+
     <ul class="collapsible" data-collapsible="accordion">
         {% for quote in quotes %}
+        <!-- this is where we can sort by add_status -->
+        <!-- {% if quote.quoteStatus ==status  %} -->
+        {% if (quote.quoteStatus ==status) or (status1 =="ALL") %}
         <li>
             <div class="collapsible-header">
                 <div class="col s3">
@@ -21,6 +34,11 @@
                         class="waves-effect waves-light btn btn_small blue">Edit Quote</a>
                 </div>
                 <div class="quote_header col s9">
+                    <strong>{{quote.quoteStatus}}</strong>
+
+                    {% if quote.quoteStatus ==status %}
+                    <p>Priority: its open here too</p>
+                    {% endif %}
                     <!-- outputs name and live date to screen -->
                     <strong>{{quote.name}}</strong> - {{quote.liveDate}}
                 </div>
@@ -28,6 +46,8 @@
             <!-- the brief is enclosed in a accordian  -->
             <div class="collapsible-body"><span>{{quote.brief}}</span></div>
         </li>
+
+        {% endif %}
         {% endfor %}
     </ul>
 </div>
@@ -37,7 +57,7 @@
         <i class="material-icons right">playlist_add</i>Add quote
     </a>
     {% endif %}
-    <a href="{{ url_for('add_category') }}" class="waves-effect waves-light btn">
+    <a href="{{ url_for('add_status') }}" class="waves-effect waves-light btn">
         <i class="material-icons right">playlist_add</i>Add Category
     </a>
 </div>
