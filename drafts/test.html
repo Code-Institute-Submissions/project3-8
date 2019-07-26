@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <p>
+        inside getquotes.html
+        This html files accepts in the quotes variable which is all the quotes
+        you can then choose all open or closed quotes
+        also must add a sort function
+        <div id="choose status">
+            <button onClick="choose('ALL')">All</button>
+            <button onClick="choose('OPEN')">Open</button>
+            <button onClick="choose('CLOSED')">Closed</button>
+            <div id="result"></div>
+            <br>
+            <button onClick="test()">SUBMIT</button>
+        </div>
+    </p>
+
+
+    <script>
+        var user;
+
+        function choose(choice) {
+            status = choice;
+        }
+
+        function test(click) {
+            alert("show: " + status);
+
+        }
+    </script>
+
+
+
+    <div class="container">
+        <h2>LED Power Supply Calculator</h2>
+        <p>Please select your LED type, then type how many LEDs you will be using in your box</p>
+        <div class="dropdown">
+            {{% set status= "NOTSET" %}}
+            {{% set status= "UNSET" %}}
+            <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Select your
+                LED
+                <span class="caret"></span></button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                <li class="dropdown-header">Wide angle beam</li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" id="open"
+                        onclick="{{% set status= "CLOSED" %}}">CLOSED</a>
+                </li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" id="CLOSED"
+                        onclick="{{% set status = "NONE" %}}">OPEN</a></li>
+                <li role="presentation" class="divider"></li>
+            </ul>
+        </div>
+    </div>
+
+    <p>{{status}}</p>
+    <p>{{status1}}</p>
+
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Dropdown button
+        </button>
+        {% set status= "" %}
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" onclick="{% set status = "NO" %}" href="#">ALL</a>
+            <a class="dropdown-item" href="#">OPEN action </a>
+            <a class="dropdown-item" href="#">CLOSED </a>
+        </div>
+    </div>
+    {{status}}
+
+
+    <H1>THIS IS {{status}} HEAD</H1>
+
+
+
+</body>
+
+</html>

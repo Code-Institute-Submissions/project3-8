@@ -1,10 +1,11 @@
 {% extends 'base.html'%}
 
 {% block content %}
-<h3>Edit quote</h3>
+<h3>Edit Quote</h3>
+
 this file is called from quote manager and is passed in the unique quote id variable
 <div class="row">
-    Calls update quote with unique quote id variable when form is completed.
+
     <form action="{{ url_for('update_quote', quote_id=quote._id) }}" method="POST" class="col s12">
         <div class="row">
             <div class="input-field col s12">

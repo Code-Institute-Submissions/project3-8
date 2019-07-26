@@ -22,7 +22,7 @@ mongo = PyMongo(app)
 def get_quotes():
     # This line finds all documents in qoutes collections and put them in the quotes variable
     # variable quotes passed back to quote.html file and it lists all quotes
-    return render_template("quote.html", quotes=mongo.db.quote.find())
+    return render_template("getquotes.html", quotes=mongo.db.quote.find())
 
 # This function displays the edit page and populates it with the document selected in quote.html
 @app.route('/edit_quote/<quote_id>')
