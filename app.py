@@ -137,8 +137,8 @@ def get_listquotes():
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP', '127.0.0.1'),
-            #     port=int(os.environ.get('PORT', '8080')),
-            port=5000,
+            port=int(os.environ.get('PORT', '8080')),
+            # port=5000,
             debug=True)
   # set an environment variable to get around the problem im having with port on heroku and vscode
     #     port=os.getenv('PORT'),
