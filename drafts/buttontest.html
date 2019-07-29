@@ -1,0 +1,20 @@
+    <div id="choose status">
+        <button onClick="choose('ALL')">All</button>
+        <button onClick="choose('OPEN')">Open</button>
+        <button onClick="choose('CLOSED')">Closed</button>
+        <div id="result"></div>
+        <br>
+        <button onClick="test()">SUBMIT</button>
+    </div>
+    <script>
+        var user;
+
+        function choose(choice) {
+            status = choice;
+        }
+
+        function test(click) {
+            alert("show: " + status);
+
+        }
+    </script>

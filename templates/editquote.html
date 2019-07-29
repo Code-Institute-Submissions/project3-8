@@ -1,197 +1,149 @@
-{% extends 'base-quote.html'%}
+{% extends 'base.html'%}
 
 {% block content %}
-<h3>Edit Quote</h3>
-
-this file is called from quote manager and is passed in the unique quote id variable
-<div class="row">
-
-    <form action="{{ url_for('update_quote', quote_id=quote._id) }}" method="POST" class="col s12">
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">poll</i>
-                <!-- this is where we assign the quote status to the status in the quote  -->
-                <!-- document to quote.quoteStatus -->
-                <select id="status" name="quote_status">
-                    <!-- List all the status passed through in the statuses variable -->
-                    <!-- This will later be incorporated in a  dropdown -->
-                    {% for status in statuses %}
-                    <option value="{{status.quote_status}}" {% if status.quote_status == quote.quoteStatus %}
-                        selected{% endif %}>
-                        {{status.quote_status}}</option>
-                    {% endfor %}
-                </select>
-                <label>Quote status</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">assignment</i>
-                <input id="quote_name" name="quote_name" type="text" class="validate" value="{{quote.name}}">
-                <label for="quote_name">Your Full Name</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">subject</i>
-                <textarea name="quote_brief" id="quote_brief" class="materialize-textarea">{{quote.brief}}</textarea>
-                <label for="quote_description">Quote Brief</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">today</i>
-                <input id="live_date" name="live_date" type="date" value="{{quote.liveDate}}" class=" datepicker">
-                <label for="live_date">Due Date</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="switch">
-                <label>
-                    <input id="is_urgent" name="is_urgent" type="checkbox" {% if quote.isurgent %} checked {% endif %}>
-                    <span class="lever"></span>
-                    Is Urgent
-                </label>
-            </div>
-        </div>
-        <div class="row">
-            <button class="btn waves-effect waves-light" type="submit" name="action">Save Changes
-                <i class="material-icons right">playlist_add</i>
-            </button>
-        </div>
-    </form>
-</div>
-
-<style>
-    .header {
-        color: #36A0FF;
-        font-size: 27px;
-        padding: 10px;
-    }
-
-    .bigicon {
-        font-size: 35px;
-        color: #36A0FF;
-    }
-</style>
-
-
-<i class="glyphicon glyphicon-plus"></i>
-
-
-<p>Envelope icon: <span class="glyphicon glyphicon-envelope"></span></p>
-<p>Search icon: <span class="glyphicon glyphicon-search"></span></p>
-<p>Print icon: <span class="glyphicon glyphicon-print"></span></p>
 
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="well well-sm">
-                <form class="form-horizontal" method="post">
-                    <fieldset>
-                        <legend class="text-center header">Contact us</legend>
-
-                        <div class="form-group">
-                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                            <div class="col-md-8">
-                                <input id="fname" name="name" type="text" placeholder="First Name" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                            <div class="col-md-8">
-                                <input id="lname" name="name" type="text" placeholder="Last Name" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <span class="col-md-1 col-md-offset-2 text-center"><i
-                                    class="fa fa-envelope-o bigicon"></i></span>
-                            <div class="col-md-8">
-                                <input id="email" name="email" type="text" placeholder="Email Address"
-                                    class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <span class="col-md-1 col-md-offset-2 text-center"><i
-                                    class="fa fa-phone-square bigicon"></i></span>
-                            <div class="col-md-8">
-                                <input id="phone" name="phone" type="text" placeholder="Phone" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <span class="col-md-1 col-md-offset-2 text-center"><i
-                                    class="fa fa-pencil-square-o bigicon"></i></span>
-                            <div class="col-md-8">
-                                <textarea class="form-control" id="message" name="message"
-                                    placeholder="Enter your massage for us here. We will get back to you within 2 business days."
-                                    rows="7"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-12 text-center">
-                                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-                            </div>
-                        </div>
-                    </fieldset>
-                </form>
-            </div>
+    <h3>Edit Quote</h3>
+    <form action="{{ url_for('update_quote', quote_id=quote._id) }}" method="POST">
+        <div class="form-group">
+            <label for="quote_id">Quote No: {{quote.quoteId}} id= </label>
         </div>
-    </div>
+        <!-- this is quote ID -->
+        <div class="form-group">
+            <select id="status" name="quote_status">
+                <!-- List all the status passed through in the statuses variable -->
+                {% for status in statuses %}
+                <option value="{{status.quote_status}}" {% if status.quote_status == quote.quoteStatus %}
+                    selected{% endif %}>
+                    {{status.quote_status}}</option>
+                {% endfor %}
+            </select>
+            <label>Quote status</label>
+        </div>
+        <!-- This is the name -->
+        <div class="form-group">
+            <span><i class="fa fa-user bigicon" alt="name">
+                    We need to know who you are, so we can help you.</i>
+            </span>
+            <!-- <label for="quote_name">Your Full Name</label> -->
+            <input id="quote_name" name="quote_name" type="text" class="form-control" placeholder="Your Full Name"
+                value="{{quote.name}}">
+        </div>
+        <!-- this is the email     -->
+        <div class=" form-group">
+            <span><i class="fa fa-envelope-o bigicon">
+                    Please enter your email so we can reply to you</i></span>
+            <input id="quote_email" name="quote_email" type="text" class="form-control" placeholder="Your email address"
+                value="{{quote.email}}">
+            <!-- <label for="quote_name">Your email</label> -->
+        </div>
+        <!-- this is the phone -->
+        <div class="form-group">
+            <span><i class="fa fa-phone-square bigicon">
+                    Please enter your phone so we can contact you
+                </i></span>
+            <input id="quote_phone" name="quote_phone" type="text" class="form-control" placeholder="Your Phone Number"
+                value="{{quote.phone}}">
+        </div>
+        <!-- Quality,  cost and Time values -->
+        <div class="form-group">
+            <span>Rank your Quality</span>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <input type='radio' name="quote_rankquality1" id="quote_rankquality" value="{{quote.rankQuality}}" />
+            <label for='quote_rankquality1'>Low Quality</label>
+            <input type='radio' name="quote_rankquality" id="quote_rankquality" value="{{quote.rankQuality}}"
+                checked='true' />
+            <label for='id=quote_rankquality2'>Medium Quality</label>
+            <input type='radio' name="quote_rankquality" id="quote_rankquality" value="{{quote.rankQuality}}" />
+            <label for='quote_rankquality3'>High Quality</label>
+            <script>
+                $(function () {
+                    $(" input[name=radgroup]:checked").click(function () {
+                        var state = $(this).val();
+                        // do action depending on state
+                    });
+                });
+            </script>
+        </div>
+        <div class="form-group"> <input id="quote_rankquality" name="quote_rankquality" type="text" class="form-control"
+                placeholder="Rank your expected time level" value="{{quote.rankQuality}}"></div>
+        <div class="form-group"> <input id="quote_rankcost" name="quote_rankcost" type="text" class="form-control"
+                placeholder="Rank your expected Cost level" value="{{quote.rankCost}}"></div>
+        <!-- Level of Quality required -->
+        <div class="form-group"> <input id="quote_expectedquality" name="quote_expectedquality" type="text"
+                class="form-control" placeholder="YourLevel of Quality" value="{{quote.levelQuality}}"></div>
+        <!-- This is the project brief in a text area-->
+        <div class="form-group">
+            <textarea name="quote_brief" id="quote_brief" class="form-control"
+                placeholder="Enter the details of your project here. We will get back to you within 2 business days."
+                rows="7">{{quote.brief}}</textarea>
+            <label for="quote_description">Quote Brief</label>
+        </div>
+        <!-- Expected and Go Live date -->
+        <div class="form-group">
+            <span><i class="fa fa-user bigicon" alt="name">
+                    enter text.</i>
+                <input id="quote_expecteddate" name="quote_expecteddate" type="date" class="form-control"
+                    placeholder="Your Expected Libe Date" value="{{quote.expectedDate}}"></div>
+        <div class="form-group">
+            <span><i class="fa fa-user bigicon" alt="name">
+                    enter text.</i><input id="quote_livedate" name="quote_livedate" type="date" class="form-control"
+                    placeholder="Your Expected Delivery Date" value="{{quote.liveDate}}"></div>
+        <!-- Budget for the project -->
+        <div class="form-group">
+            <span><i class="fa fa-user bigicon" alt="name">
+                    enter text.</i> <input id="quote_budget " name="quote_budget " type="text" class="form-control"
+                    placeholder="Your Budget" value="{{quote.budget}}"></div>
+        <!-- choices here for tech types -->
+        <div class="form-group">
+            <span><i class="fa fa-user bigicon" alt="name">
+                    enter text.</i><input id="quote_typedev" name="quote_typedev" type="text" class="form-control"
+                    placeholder="The Type of Development required" value="{{quote.typeDev}}"></div>
+        <div class="form-group">
+            <span><i class="fa fa-user bigicon" alt="name">
+                    enter text.</i> <input id="quote_tech" name="quote_tech" type="text" class="form-control"
+                    placeholder="Technololy" value="{{quote.tech}}"></div>
+        <!-- ststus same as top -->
+        <div class="form-group">
+            <span><i class="fa fa-user bigicon" alt="name">
+                    enter text.</i> <input id="quote_quotestatus" name="quote_quotestatus" type="text"
+                    class="form-control" placeholder="The Status of the Quote" value="{{quote.quoteStatus}}"></div>
+        <!-- Admin features -->
+        <div class="form-group">
+            <span><i class="fa fa-user bigicon" alt="name">
+                    enter text.</i> <input id="quote_details" name="quote_details" type="text" class="form-control"
+                    placeholder="Our Detailed Response to the Customers Brief" value="{{quote.quoteDetails}}"></div>
+        <div class="form-group">
+            <span><i class="fa fa-user bigicon" alt="name">
+                    enter text.</i> <input id="quote_response" name="quote_response" type="text" class="form-control"
+                    placeholder="Our Detailed Response to the Customers " value="{{quote.quoteResponse}}"></div>
+        <div class="form-group">
+            <span><i class="fa fa-user bigicon" alt="name">
+                    enter text.</i> <input id="quote_person" name="quote_person" type="text" class="form-control"
+                    placeholder="Our Person assigned to this project" value="{{quote.assignedTo}}"></div>
+        <div class="form-group">
+            <span><i class="fa fa-user bigicon" alt="name">
+                    enter text.</i><input id="quote_cost" name="quote_cost" type="text" class="form-control"
+                    placeholder="Our Detailed costings to the Customers Brief" value="{{quote.quoteCost}}"></div>
+        <div class="form-group">
+            <span><i class="fa fa-user bigicon" alt="name">
+                    enter text.</i> <input id="quote_needs" name="quote_needs" type="text" class="form-control"
+                    placeholder="Our List of  resources needed" value="{{quote.quoteNeeds}}"></div>
+        <!-- what the check for -->
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" id="yesno"> Accept GDPR
+            </label>
+        </div>
+
+
+        <button type="submit" name="action" class="btn btn-info">Submit Information
+        </button>
+
+
+    </form>
 </div>
 
-
-
-
-<P>
-    want to print all the vars here
-
-    {% for status in statuses %}
-    {{status.quote_status}}
-    {% endfor %}
-    quotes
-    {{quote.quoteId}}
-    {{quote.name}}
-    {{quote.email}}
-    {{quote.phone}}
-    {{quote.rankQuality}}
-    {{quote.rankTime}}
-    {{quote.rankCost}}
-    {{quote.levelQuality}}
-    {{quote.expectedDate}}
-    {{quote.liveDate}}
-    {{quote.budget}}
-    {{quote.brief}}
-    {{quote.typeDev}}
-    {% for i in range(0, quote.tech|length) %}
-    {{quote.tech[i]}}
-    {% endfor %}
-    {{quote.quoteStatus}}
-    {{quote.quoteDetails}}
-    {{quote.quoteResponse}}
-    {{quote.assignedTo}}
-    {{quote.quoteCost}}
-    {{quote.quoteNeeds}}
-
-
-</P>
-
-
-
-
-{% endblock %}
-
-{% block additional_scripts %}
-<script src="{{ url_for('static', filename='js/quote_datepicker.js') }}"></script>
-<script>
-    $(document).ready(function () {
-        preparePicker();
-        setDueDate('{{quote.due_date}}');
-    });
-</script>
 
 {% endblock %}

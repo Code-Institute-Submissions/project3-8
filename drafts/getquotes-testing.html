@@ -1,55 +1,56 @@
 {% extends 'base.html'%}
+
 {% block content %}
 
 <p>
     This html files accepts in the quotes variable which is all the quotes
-</p>
-<p>
-    start status para
-    {% if status %}
-    <div class="alert alert-success">
-        {% if statuses %}
-        <p>Please select the Quote Status</p>
-        <ul>
-            {% for status in statuses %}
-            <li><a href="/get_quotes/{{status.quote_status}}">{{status.quote_status}}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
+    I need to add a fix this button to choose a value of status and only show those.
+    right now im using variables below.
+    <div class="row">
+        {% set quote_status99 = "ALL" %}
+        <form action="{{ url_for('get_quotes', quote_id=quote._id) }}" method="POST" class="col s12">
+            <input id="quote_status99" name="quote_status99" type="text" class="validate" ">
+            <label for=" quote_status99">status to be passed</label>
+            <button type="submit" name="action">Save status Changes
+            </button>
+            </a>
+
+        </form>
     </div>
-    {% endif %}
-    end status para
-</p>
+    <a href="{{url_for('get_quotes')}}">click here to call function with var</a>
 
-<p>
 
-    <!-- this aint working
-    dropdown
-    {% if status %}
-    {% if statuses %}
-    <div class="btn-group">
-        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
-            Please select the Quote Status
-        </button>
-        <div class="dropdown-menu dropdown-menu-right">
-            {% for status in statuses %}
-            <button type="submit" class=" dropdown-item"
-                formaction="/get_quotes/{{status.quote_status}}">{{status.quote_status}}</button>
-            {% endfor %}
-            <button class="dropdown-item" type="button">Action</button>
-            <button class="dropdown-item" type="button">Another action</button>
-            <button class="dropdown-item" type="button">Something else here</button>
 
-        </div>
 
+
+    <div id="choose status">
+        <button onClick="choose('ALL')">All</button>
+        <button onClick="choose('OPEN')">Open</button>
+        <button onClick="choose('CLOSED')">Closed</button>
+        <div id="result"></div>
+        <br>
+        <button onClick="test()">SUBMIT</button>
     </div>
+    <script>
+        var user;
 
-    {% endif %}
-    {% endif %}
-    end dropdown -->
+        function choose(choice) {
+            status = choice;
+        }
+
+        function test(click) {
+            alert("show: " + status);
+
+        }
+    </script>
+
 </p>
 
+{% set status = "OPEN" %}
+{% set status1 = "ALL" %}
+
+
+<a href="{{url_for('get_quotes')}}">click here to call function with var</a>
 
 <div class="row">
 
@@ -57,7 +58,7 @@
         {% for quote in quotes %}
         <!-- this is where we can sort by add_status -->
 
-        {% if (quote.quoteStatus ==status) or (status =="ALL") %}
+        {% if (quote.quoteStatus ==status) or (status1 =="ALL") %}
         <li>
             <div class="collapsible-header">
                 <div class="col s3">

@@ -18,11 +18,20 @@ mongo = PyMongo(app)
 @app.route('/')
 # this function get the quotes and list them on the screeen
 # right now it list all quotes but this can be changed for the user to select based on status
+def index():
+    return render_template("index.html", page_title="Heh Welcome Y'all", page_heading="We are team of awesome designers making websites with Full Stack stuff", cta="Get Started", list_stuff_wedo=["Bootstrap", "Django", "Flask", "Python", "Javascript"])
+
+
 @app.route('/get_quotes')
-def get_quotes():
+@app.route('/get_quotes/<status>')
+def get_quotes(status='ALL'):
+    # the status variable is passed in and I must figure out how to create the list
+    # variable from all the documents in the status collection
+    print(status)
     # This line finds all documents in qoutes collections and put them in the quotes variable
     # variable quotes passed back to quote.html file and it lists all quotes
-    return render_template("getquotes.html", quotes=mongo.db.quote.find())
+    return render_template("getquotes.html", status=status, statuses=mongo.db.status.find(), quotes=mongo.db.quote.find())
+
 
 # This function displays the edit page and populates it with the document selected in quote.html
 @app.route('/edit_quote/<quote_id>')
@@ -53,17 +62,33 @@ def insert_task():
 
 @app.route('/update_quote/<quote_id>', methods=['POST'])
 def update_quote(quote_id):
+    # qId = mongo.db.quote.find({"quoteId": {})
+    # print(qId)
     # This function is losing the existing data so i must figure out how to change just the things we need
-    # need to use updae $set and specify excactly tyhe ones i updayinfg
+    # need to use updae $set and specify excactly tyhe ones i updayinfgupdating
+    # all need to maintin same quoteId
     mongo.db.quote.update(
         {'_id': ObjectId(quote_id)},
         {
-            'quoteId': 44,
-            'name': request.form.get('quote_name'),
-            'brief': request.form.get('quote_brief'),
-            'quoteStatus': request.form.get('quote_status'),
-            'liveDate': request.form.get('live_date'),
-            'isurgent': request.form.get('is_urgent'),
+            "name": request.form.get("quote_name"),
+            "email": request.form.get("quote_email"),
+            "phone": request.form.get("quote_phone"),
+            "rankQuality": request.form.get("quote_rankquality"),
+            "rankTime": request.form.get("quote_ranktime"),
+            "rankCost": request.form.get("quote_rankcost"),
+            "levelQuality": request.form.get("quote_expectedquality"),
+            "expectedDate": request.form.get("quote_expecteddate"),
+            "liveDate": request.form.get("quote_livedate"),
+            "budget": request.form.get("quote_budget "),
+            "brief": request.form.get("quote_brief"),
+            "typeDev": request.form.get("quote_typedev"),
+            "tech": request.form.get("quote_tech"),
+            "quoteStatus": request.form.get("quote_quotestatus"),
+            "quoteDetails": request.form.get("quote_details"),
+            "quoteResponse": request.form.get("quote_response"),
+            "assignedTo": request.form.get("quote_person"),
+            "quoteCost": request.form.get("quote_cost"),
+            "quoteNeeds": request.form.get("quote_needs"),
         })
     return redirect(url_for('get_quotes'))
 
@@ -102,10 +127,11 @@ def edit_status(status_id):
 
 @app.route('/update_status/<status_id>', methods=['POST'])
 def update_status(status_id):
-        # I want to make sure its always in upper case
+    # I want to make sure its always in upper case
     # I tried using |upper in jinja but it was not updating on the page
     quotestatus = request.form.get('quote_status')
     quotestatusupper = quotestatus.upper()
+    # do some ternanry work above
     mongo.db.status.update(
         {'_id': ObjectId(status_id)},
         {'quote_status': quotestatusupper})
@@ -142,10 +168,3 @@ if __name__ == '__main__':
             port=int(os.environ.get('PORT')),
             # port=5000,
             debug=True)
-
-    # app.run(host=os.environ.get('IP', '127.0.0.1'),
-    #         # to run in heroku uncomment this line and comment the port=5000 line
-    #         port=int(os.environ.get('PORT')),
-    #         # port=int(os.environ.get('PORT', '8080')),
-    #
-    # check if you can set an environment variable to get around the problem im having with port on heroku and vscode
