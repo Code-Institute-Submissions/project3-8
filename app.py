@@ -70,6 +70,7 @@ def update_quote(quote_id):
     mongo.db.quote.update(
         {'_id': ObjectId(quote_id)},
         {
+            "quoteId": request.form.get("quote_quoteid"),
             "name": request.form.get("quote_name"),
             "email": request.form.get("quote_email"),
             "phone": request.form.get("quote_phone"),
@@ -89,6 +90,7 @@ def update_quote(quote_id):
             "assignedTo": request.form.get("quote_person"),
             "quoteCost": request.form.get("quote_cost"),
             "quoteNeeds": request.form.get("quote_needs"),
+            "quoteGdpr": request.form.get("quotegdpr"),
         })
     return redirect(url_for('get_quotes'))
 
