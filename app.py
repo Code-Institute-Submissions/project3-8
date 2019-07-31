@@ -1,33 +1,28 @@
 #! /usr/local/bin/python
 
 # Flask locally needs this above line to run as well as mods to the port number
-# this is the test script to test connection to mongo connectmongo.py
 
 import os
 from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
-
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'crm'
 app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'mongodb://localhost')
-
 mongo = PyMongo(app)
 
-
+# This route loads index.html and sends in text for display on the hero image and about us.
 @app.route('/')
-# this function get the quotes and list them on the screeen
-# right now it list all quotes but this can be changed for the user to select based on status
 def index():
     return render_template("index.html", page_title="Heh Welcome Y'all", page_heading="We are team of awesome designers making websites with Full Stack stuff", cta="Get Started", list_stuff_wedo=["Bootstrap", "Django", "Flask", "Python", "Javascript"])
 
-
+# this function get the quotes and list them on the screeen
+# the page passes back the status variable so  can list and sort
 @app.route('/get_quotes')
 @app.route('/get_quotes/<status>')
 def get_quotes(status='ALL'):
-    # the status variable is passed in and I must figure out how to create the list
-    # variable from all the documents in the status collection
+    # the status variable is passed in and I create the list based on status
     print(status)
     # This line finds all documents in qoutes collections and put them in the quotes variable
     # variable quotes passed back to quote.html file and it lists all quotes
@@ -41,30 +36,49 @@ def edit_quote(quote_id):
     # Find the quote based on the unique quote_id
     the_quote = mongo.db.quote.find_one({'_id': ObjectId(quote_id)})
     all_status = mongo.db.status.find({})
-    # nextquote = mongo.db.quotenumber.find()
-    # print(nextquote)
-    # print(all_status)
-    # print(the_quote)
-    return render_template(
-        'editquote.html', quote=the_quote, statuses=all_status)
+    return render_template('editquote.html', quote=the_quote, statuses=all_status)
 
 
 @app.route('/add_quote')
 def add_quote():
-    return 'Hello World ...not yet connected'
-    # return render_template(
-    # 'addquote.html', categories=mongo.db.categories.find())
+    return render_template('addquote.html')
 
 
 @app.route('/insert_quote', methods=['POST'])
 def insert_quote():
-    mongo.db.quote.insert_one(request.form.to_dict())
-    return redirect(url_for('get_quote'))
+    # mongo.db.quote.insert_one(request.form.to_dict())
+    # this part of the function get the old and generates new quote number
+    thequotenumber = mongo.db.quotenumber.find_one()
+    if thequotenumber:
+        update_doc = {}
+        for k, v in thequotenumber.items():
+            if k == "quotenumber":
+                newqid = v+1
+                update_doc[k] = newqid
+        try:
+            mongo.db.quotenumber.update_one(
+                thequotenumber, {'$set': update_doc})
+            print("Quote number updated")
+        except:
+            print("Error accessing the database")
+
+    # return redirect(url_for('get_quote'))
+    # I want to make sure its always in upper case
+    # I tried using |upper in jinja but it was not updating on the page
+
+    quotename = request.form.get('name')
+    quotenametitle = quotename.title()
+    quote_doc = {"quoteId": newqid,
+                 'name': quotenametitle,
+                 "quoteStatus": "NEW"
+                 }
+    mongo.db.quote.insert_one(quote_doc)
+    return redirect(url_for('get_quotes'))
 
 
 @app.route('/update_quote/<quote_id>', methods=['POST'])
 def update_quote(quote_id):
-    # qId = mongo.db.quote.find({"quoteId": {})
+    # qId = mongo.db.quote.find({)
     # print(qId)
     # This function is losing the existing data so i must figure out how to change just the things we need
     # need to use updae $set and specify excactly tyhe ones i updayinfgupdating

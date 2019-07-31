@@ -1,0 +1,30 @@
+{% extends 'base.html'%}
+{% include "hero-backimage.html" %}
+{% block content %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<style>
+    /* This class is for the icons and text above the inputs */
+    .bigicon {
+        font-size: 20px;
+        color: #36A0FF;
+    }
+</style>
+
+<!-- Start of Add Quote html -->
+
+<h3>Add Quote {{ newquouteid }}</h3>
+<form action="{{url_for('insert_quote')}}" method="POST">
+    <div class="row">
+        <div class="input-field col s12">
+            <label for="name">Enter Quote Name</label>
+            <input id="name" name="name" type="text" class="validate">
+
+        </div>
+    </div>
+    <div class="row">
+        <button type="submit" name="action">Add Status</button>
+    </div>
+</form>
+{% endblock %}

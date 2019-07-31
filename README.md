@@ -7,8 +7,7 @@ Some git commits will be quick as a result.
 
 ## jobs to do
 - change logo image
-- favicon DONE
-- heroku setup
+- heroku setup working
 - GET QUOTE NUMBER
 - set function
 - new quote
@@ -16,7 +15,9 @@ Some git commits will be quick as a result.
 - add acordian to get quote
 - re submit project 2
 - make add status a modal
-- 
+- add logo carosel https://www.solodev.com/blog/web-design/adding-an-infinite-client-logo-carousel-to-your-website.stml
+
+
 
 
 
