@@ -4,7 +4,6 @@
 # Flask locally needs this above line to run as well as mods to the port number
 # this is the test script to test connection to mongo connectmongo.py
 
-
 import os
 from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo

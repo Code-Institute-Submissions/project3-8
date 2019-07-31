@@ -1,24 +1,61 @@
 <!--==========================
       Header Nav
-      ============================-->
+============================-->
 <header id="header">
     <div class="container">
 
         <div id="logo" class="pull-left">
-
+            <!-- <a href="#hero"><img src="{{ url_for('static', filename='img/logo.png')}}" alt="Ciarans CRM System" title="" /></img></a> -->
+            <!-- Uncomment below if you prefer to use a text logo -->
+            <h1><a href="#hero">FullStack</a></h1>
         </div>
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
                 <li class="menu-active"><a href="/#hero">Home</a></li>
-
-                <li><a href="{{url_for('get_quotes')}}">Quotes</a></li>
-                <li><a href="{{url_for('add_task')}}">New Quotes</a></li>
-                <li><a href="{{url_for('get_status')}}">Manage Status</a></li>
-
+                <li><a href="/#about">About Us</a></li>
+                <li><a href="/#services">Services</a></li>
+                <li><a href="/#portfolio">Tech Portfolio</a></li>
+                <li><a href="{{url_for('add_quote')}}">New Quote</a></li>
+                <li class="menu-has-children"><a href="/">Quote Admin</a>
+                    <ul>
+                        <li><a href="{{ url_for('get_quotes')}}">View all Quote</a></li>
+                        <li><a href="{{ url_for('edit_quote') }}">Change a Quote</a></li>
+                        <li><a href="{{url_for('get_status')}}">Manage Status</a></li>
+                        <li class="menu-has-children"><a href="/#">Full Stack
+                                Dev</a>
+                            <ul>
+                                <li><a href="{{ url_for('tech') }}">tech we do </a></li>
+                                <li><a href="#">Front-end Technologies</a></li>
+                                <li><a href="#">Backend Technologies</a></li>
+                                <li><a href="#">Version Control</a></li>
+                                <li><a
+                                        href="https://codeburst.io/the-toolkit-of-a-full-stack-javascript-developer-a15ebe762f75">Deployment</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Drop Down 4</a></li>
+                    </ul>
+                </li>
+                <li><a href=" {{ url_for('contact') }}">Contact Us</a></li>
             </ul>
         </nav><!-- #nav-menu-container -->
     </div>
 </header><!-- #header -->
-<div style="background-color: rgba(52, 59, 64, 0.9);; min-height:72px;">
-</div>
+
+<!--==========================
+            Hero Section
+============================-->
+<section id="hero">
+    <!-- passing in the heroimage variable from app.py -->
+    <div class="hero-container" style="background:url({{heroimage}}) top center;">
+        <!-- Values passed in from py file -->
+        <h1>
+            {{page_title}}
+        </h1>
+        <!-- <h2>We are team of talanted designers making websites with Bootstrap</h2> -->
+        <h2>{{page_heading}}</h2>
+        <!-- Call to action text for the button set in the py file -->
+        <a href="#about" class="btn-get-started">{{cta}}</a>
+    </div>
+</section><!-- #hero -->

@@ -8,6 +8,7 @@ from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
+
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'crm'
 app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'mongodb://localhost')
@@ -34,6 +35,7 @@ def get_quotes(status='ALL'):
 
 
 # This function displays the edit page and populates it with the document selected in quote.html
+@app.route('/edit_quote/')
 @app.route('/edit_quote/<quote_id>')
 def edit_quote(quote_id):
     # Find the quote based on the unique quote_id
@@ -47,17 +49,17 @@ def edit_quote(quote_id):
         'editquote.html', quote=the_quote, statuses=all_status)
 
 
-@app.route('/add_task')
-def add_task():
+@app.route('/add_quote')
+def add_quote():
     return 'Hello World ...not yet connected'
     # return render_template(
-    # 'addtask.html', categories=mongo.db.categories.find())
+    # 'addquote.html', categories=mongo.db.categories.find())
 
 
-@app.route('/insert_task', methods=['POST'])
-def insert_task():
-    mongo.db.tasks.insert_one(request.form.to_dict())
-    return redirect(url_for('get_tasks'))
+@app.route('/insert_quote', methods=['POST'])
+def insert_quote():
+    mongo.db.quote.insert_one(request.form.to_dict())
+    return redirect(url_for('get_quote'))
 
 
 @app.route('/update_quote/<quote_id>', methods=['POST'])
@@ -84,7 +86,7 @@ def update_quote(quote_id):
             "brief": request.form.get("quote_brief"),
             "typeDev": request.form.get("quote_typedev"),
             "tech": request.form.get("quote_tech"),
-            "quoteStatus": request.form.get("quote_quotestatus"),
+            "quoteStatus": request.form.get("quote_status"),
             "quoteDetails": request.form.get("quote_details"),
             "quoteResponse": request.form.get("quote_response"),
             "assignedTo": request.form.get("quote_person"),
@@ -97,9 +99,9 @@ def update_quote(quote_id):
 
 @app.route('/delete_quote/<quote_id>', methods=['POST'])
 def delete_quote(quote_id):
-    return 'Hello World ...delete task'
-    # mongo.db.tasks.remove({'_id': ObjectId(task_id)})
-    # return redirect(url_for('get_tasks'))
+    return 'Hello World ...delete quote'
+    # mongo.db.quote.remove({'_id': ObjectId(quote_id)})
+    # return redirect(url_for('get_quote'))
 
 
 # Status decorators and functions
@@ -133,7 +135,7 @@ def update_status(status_id):
     # I tried using |upper in jinja but it was not updating on the page
     quotestatus = request.form.get('quote_status')
     quotestatusupper = quotestatus.upper()
-    # do some ternanry work above
+    # do some ternary work above
     mongo.db.status.update(
         {'_id': ObjectId(status_id)},
         {'quote_status': quotestatusupper})
@@ -163,10 +165,54 @@ def get_listquotes():
     # This connects to the db  quotes above to the quote collection and list all quotes
     return render_template("quoteslist.html", quotes=mongo.db.quote.find())
 
+# decorators for content pages
+
+
+@app.route('/hero', methods=["GET", "POST"])
+def hero():
+    return render_template("index.html", page_title="Heh Welcome Y'all", page_heading="We are team of awesome designers making websites with Full Stack stuff", cta="Get Started", list_stuff_wedo=["Bootstrap,", "Django,", "Flask,", "Python,", "Javascript."])
+
+# this is not used yet
+@app.route('/about')
+def about():
+    return render_template("about.html")
+
+# The contact page take a post and flashes to a screen a thank you message.
+# Plan to add this json post data to mongo DB file.
+#
+@app.route('/contact', methods=["GET", "POST"])
+def contact():
+    if request.method == "POST":
+        print(request.form["name"])
+        flash("Thats cool {},we got your note!" .format(request.form["name"]))
+    return render_template("contact.html", heroimage="static/img/hero-contact.jpg", page_title="Touch base with us", page_heading="Book a coffee chat withn us, send a message or request a quote", cta="Let's do this")
+
+# Created a seperate page for the url_for('magento').
+#
+@app.route('/tech')
+def tech():
+    data = []
+    with open("data/static.json", "r") as json_data:
+        data = json.load(json_data)
+    return render_template("magento.html", page_title="Magento data via API's", page_heading="Find out about our Magent integration options", cta="Run the APi now", staticMage=data)
+
+# this decorator is for pages called under magento
+@app.route('/magento/<member_name>', methods=["GET", "POST"])
+def about_member(member_name):
+    member = {}
+    with open("data/static.json", "r") as json_data:
+        data = json.load(json_data)
+        for obj in data:
+            if obj["url"] == member_name:
+                member = obj
+    # return "<h1>"+member["name"]+"</h1>"
+    return render_template("member.html", member=member)
+
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             # to run in heroku uncomment this line and comment the port=5000 line
             port=int(os.environ.get('PORT')),
+            # PORT variable now set in bash so no need for this
             # port=5000,
             debug=True)

@@ -1,25 +1,15 @@
 {% extends 'base.html'%}
-
 {% block content %}
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 <style>
-    .header {
-        color: #36A0FF;
-        font-size: 27px;
-        padding: 10px;
-    }
-
     /* This class is for the icons and text above the inputs */
     .bigicon {
         font-size: 20px;
         color: #36A0FF;
     }
 </style>
-
-
 
 <!-- Start of Edit Quote html -->
 <div class="container">
@@ -34,7 +24,7 @@
 
         <!-- this is quote ID -->
         <div class="form-group">
-            <select id="status" name="quote_status">
+            <select id="quote_status" name="quote_status">
                 <!-- List all the status passed through in the statuses variable -->
                 {% for status in statuses %}
                 <option value="{{status.quote_status}}" {% if status.quote_status == quote.quoteStatus %}

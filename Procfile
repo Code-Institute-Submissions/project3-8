@@ -1,2 +1,2 @@
-web: python connectmongo.py
+web: python app.py
 
