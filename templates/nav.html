@@ -14,30 +14,23 @@
             <ul class="nav-menu">
                 <li class="menu-active"><a href="/#hero">Home</a></li>
                 <li><a href="/#about">About Us</a></li>
-                <li><a href="/#services">Services</a></li>
-                <li><a href="/#portfolio">Tech Portfolio</a></li>
-                <li><a href="{{url_for('add_quote')}}">New Quote</a></li>
-                <li class="menu-has-children"><a href="/">Quote Admin</a>
+                <li><a href="{{url_for('tech')}}">Tech Portfolio</a></li>
+
+                <li class="menu-has-children"><a href="/">Get A Quote</a>
                     <ul>
-                        <li><a href="{{ url_for('get_quotes')}}">View all Quote</a></li>
-                        <li><a href="{{ url_for('edit_quote') }}">Change a Quote</a></li>
-                        <li><a href="{{url_for('get_status')}}">Manage Status</a></li>
-                        <li class="menu-has-children"><a href="/#">Full Stack
-                                Dev</a>
+                        <li><a href="{{url_for('add_quote')}}">New Quote</a></li>
+                        <li><a href="{{ url_for('edit_quote') }}">View your Quote</a></li>
+                        <li class="menu-has-children"><a href="/#">Quote Admin</a>
                             <ul>
-                                <li><a href="{{ url_for('tech') }}">tech we do </a></li>
-                                <li><a href="#">Front-end Technologies</a></li>
-                                <li><a href="#">Backend Technologies</a></li>
-                                <li><a href="#">Version Control</a></li>
-                                <li><a
-                                        href="https://codeburst.io/the-toolkit-of-a-full-stack-javascript-developer-a15ebe762f75">Deployment</a>
-                                </li>
-                            </ul>
+                                <li><a href="{{ url_for('get_quotes')}}">View all Quote</a></li>
+                                <li><a href="{{ url_for('edit_quote') }}">Change a Quote</a></li>
+                                <li><a href="{{url_for('get_status')}}">Manage Status</a></li>
                         </li>
-                        <li><a href="#">Drop Down 4</a></li>
                     </ul>
                 </li>
-                <li><a href=" {{ url_for('contact') }}">Contact Us</a></li>
+            </ul>
+            </li>
+            <li><a href=" {{ url_for('contact') }}">Contact Us</a></li>
             </ul>
         </nav><!-- #nav-menu-container -->
     </div>

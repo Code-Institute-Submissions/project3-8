@@ -1,0 +1,35 @@
+    <!--==========================
+          About Us Section
+        ============================-->
+    <section id="about">
+        <div class="container">
+            <div class="row about-container">
+                <div class="col-lg-6 content order-lg-1 order-2">
+                    <h2 class="title">Few Words About Us</h2>
+                    <div class="icon-box wow fadeInUp">
+                        <div class="icon"><i class="fa fa-shopping-bag"></i></div>
+                        <h4 class="title"><a href="">What We Do</a></h4>
+                        <!-- List sent in from run.py on the tech we do.  -->
+                        <p class="description">
+                            <!-- taking data from the py variables -->
+                            We specialise in the following tech.
+                            {% for item in list_stuff_wedo %}
+                            {{item}}
+                            {% endfor%}
+                        </p>
+                    </div>
+                    <div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="icon"><i class="fa fa-photo"></i></div>
+                        <h4 class="title"><a href="">How we do it</a></h4>
+                        <p class="description">We have a great team that get things done.</p>
+                    </div>
+                    <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="icon"><i class="fa fa-bar-chart"></i></div>
+                        <h4 class="title"><a href="">The benefits to you</a></h4>
+                        <p class="description">Projects completed on time, to budget and exceeding requirements!.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 background order-lg-2 order-1 wow fadeInRight"></div>
+            </div>
+        </div>
+    </section><!-- #about -->

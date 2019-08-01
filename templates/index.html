@@ -2,9 +2,13 @@
 
 {% block content %}
 
-
-{% include "hero.html" %}
-
-
+<main id="main">
+    {% include "hero.html" %}
+    {% include "aboutus.html" %}
+    {% include "facts.html" %}
+    {% include "cta.html" %}
+    {% include "contactus.html" %}
+</main>
+{% include "footer.html" %}
 
 {% endblock %}
