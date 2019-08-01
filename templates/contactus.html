@@ -5,8 +5,8 @@
         <div class="container wow fadeInUp">
             <div class="section-header">
                 <h3 class="section-title">Contact</h3>
-                <p class="section-description">Ready to discuss your next project, Send us or message or request a
-                    quote. </p>
+                <p class="section-description">Ready to discuss your next project, Send us or message or
+                    <a href="{{url_for('add_quote')}}">request a quote</a>. </p>
             </div>
         </div>
 
@@ -47,16 +47,11 @@
 
                 <!-- start of  contact form input -->
                 <div class="col-lg-5 col-md-8">
-                    {% with messages = get_flashed_messages() %} {% if messages %}
-                    <ul class="flashes">
-                        {% for message in messages %}
-                        <li>{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                    {% endif %} {% endwith %}
+
                     <div class="form">
-                        <div id="sendmessage">Your message has been sent. Thank you!</div>
-                        <div id="errormessage"></div>
+                        <!-- <div id="sendmessage">Your message has been sent. Thank you!</div>
+                        <div id="errormessage"></div> -->
+
                         <!-- add to form to submit to emailjs and to call add quote function with the details -->
                         <form method="POST" name="sentMessage" id="contactForm" onsubmit="return sendmail(this);">
                             <div class="form-group">

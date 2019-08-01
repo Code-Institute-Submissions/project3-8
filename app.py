@@ -70,10 +70,11 @@ def insert_quote():
     quotenametitle = quotename.title()
     quote_doc = {"quoteId": newqid,
                  'name': quotenametitle,
+                 'email': request.form.get('name'),
                  "quoteStatus": "NEW"
                  }
     mongo.db.quote.insert_one(quote_doc)
-    return redirect(url_for('get_quotes'))
+    return render_template('quotesuccess.html', quote=newqid)
 
 
 @app.route('/update_quote/<quote_id>', methods=['POST'])
@@ -186,12 +187,8 @@ def get_listquotes():
 def hero():
     return render_template("index.html", page_title="Heh Welcome Y'all", page_heading="We are team of awesome designers making websites with Full Stack stuff", cta="Get Started", list_stuff_wedo=["Bootstrap,", "Django,", "Flask,", "Python,", "Javascript."])
 
-# this is not used yet
-@app.route('/about')
-def about():
-    return render_template("about.html")
 
-# The contact page take a post and flashes to a screen a thank you message.
+# The new quote  page take a post and flashes to a screen a thank you message.
 # Plan to add this json post data to mongo DB file.
 #
 @app.route('/contact', methods=["GET", "POST"])
@@ -211,7 +208,7 @@ def tech():
     return render_template("magento.html", page_title="Magento data via API's", page_heading="Find out about our Magent integration options", cta="Run the APi now", staticMage=data)
 
 # this decorator is for pages called under magento
-@app.route('/magento/<member_name>', methods=["GET", "POST"])
+@app.route('/tech/<member_name>', methods=["GET", "POST"])
 def about_member(member_name):
     member = {}
     with open("data/static.json", "r") as json_data:

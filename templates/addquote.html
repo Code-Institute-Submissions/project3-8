@@ -14,7 +14,7 @@
 
 <!-- Start of Add Quote html -->
 
-<h3>Add Quote {{ newquouteid }}</h3>
+<!-- <h3>Add Quote {{ newquouteid }}</h3>
 <form action="{{url_for('insert_quote')}}" method="POST">
     <div class="row">
         <div class="input-field col s12">
@@ -27,4 +27,94 @@
         <button type="submit" name="action">Add Status</button>
     </div>
 </form>
+ -->
+
+
+<!--==========================
+                  Contact Section
+                ============================-->
+<section id="contact">
+    <div class="container wow fadeInUp">
+        <div class="section-header">
+            <h3 class="section-title">Create a New Quote</h3>
+            <p class="section-description">Ready to discuss your next project, complete our form to get a quote for your
+                project. </p>
+        </div>
+    </div>
+
+    <div class="container wow fadeInUp mt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-3 col-md-4">
+                <div class="info">
+                    <div>
+                        <i class="fa fa-map-marker"></i>
+                        <p>237 Mona Vale Road,<br>St. Ives, NSW 2075</p>
+                    </div>
+                    <div>
+                        <i class="fa fa-envelope"></i>
+                        <p>info@whitehorsepoint.com</p>
+                    </div>
+                    <div>
+                        <i class="fa fa-phone"></i>
+                        <p>+61 448 360 727s</p>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                    <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                    <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+                    <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+                    <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                </div>
+            </div>
+
+
+            <!-- start of  contact form input -->
+            <div class="col-lg-5 col-md-8">
+
+                <div class="form">
+
+
+                    <!-- using onsubmit to call emailjs to send quote by email and action to call the flask to add quote to db-->
+                    <form method="POST" name="sentMessage" id="contactForm" action="{{url_for('insert_quote')}}"
+                        onsubmit="return sendquote(this);">
+                        <div class="form-group">
+                            <!-- <label>Name</label> -->
+                            <input type="text" class="form-control" placeholder="Your Full Name" name="name" id="name"
+                                required data-validation-required-message="Please enter your name.">
+                            <div class="validation"></div>
+                        </div>
+                        <div class="form-group">
+                            <!-- <label>Email Address</label> -->
+                            <input type="email" class="form-control" placeholder="Email Address" name="email" id="email"
+                                required data-validation-required-message="Please enter your email address.">
+                            <div class="validation"></div>
+                        </div>
+                        <div class="form-group">
+                            <!-- <label>Phone Number</label> -->
+                            <input type="tel" class="form-control" placeholder="Phone Number" name="number" id="phone"
+                                required data-validation-required-message="Please enter your phone number.">
+                            <div class="validation"></div>
+                        </div>
+                        <div class="form-group">
+                            <!-- <label>Message</label> -->
+                            <textarea rows="5" class="form-control" placeholder="Message" name="message" id="message"
+                                required data-validation-required-message="Please enter a message."></textarea>
+                            <div class="validation"></div>
+                        </div>
+                        <div class="text-center"><button type="submit" id="sendMessageButton">Create Quote</button>
+                        </div>
+                    </form>
+                </div>
+
+
+                </script>
+            </div> <!-- end of contact form -->
+        </div>
+    </div>
+</section><!-- #contact -->
+
+
+
+
 {% endblock %}
