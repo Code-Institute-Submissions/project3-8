@@ -12,10 +12,13 @@ app.config["MONGO_DBNAME"] = 'crm'
 app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'mongodb://localhost')
 mongo = PyMongo(app)
 
-# This route loads index.html and sends in text for display on the hero image and about us.
+# This route loads index.html and sends in
+# text for display on the hero image and about us.
 @app.route('/')
 def index():
-    return render_template("index.html", page_title="Heh Welcome Y'all", page_heading="We are team of awesome designers making websites with Full Stack stuff", cta="Get Started", list_stuff_wedo=["Bootstrap", "Django", "Flask", "Python", "Javascript"])
+    return render_template("index.html", page_title="Heh Welcome Y'all", 
+    page_heading="We are team of awesome designers making websites with Full Stack stuff", 
+    cta="Get Started", list_stuff_wedo=["Bootstrap", "Django", "Flask", "Python", "Javascript"])
 
 # this function get the quotes and list them on the screeen
 # the page passes back the status variable so  can list and sort
@@ -70,8 +73,10 @@ def insert_quote():
     quotenametitle = quotename.title()
     quote_doc = {"quoteId": newqid,
                  'name': quotenametitle,
-                 'email': request.form.get('name'),
-                 "quoteStatus": "NEW"
+                 'email': request.form.get('email'),
+                 'phone': request.form.get('phone'),
+                 "brief": request.form.get("message"),
+                 "quoteStatus": "CONTACT-PAGE"
                  }
     mongo.db.quote.insert_one(quote_doc)
     return render_template('quotesuccess.html', quote=newqid)
@@ -226,4 +231,5 @@ if __name__ == '__main__':
             port=int(os.environ.get('PORT')),
             # PORT variable now set in bash so no need for this
             # port=5000,
+            # Dont forget to change this to false before deployment or make it a env variable
             debug=True)

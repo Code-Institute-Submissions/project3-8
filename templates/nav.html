@@ -1,5 +1,5 @@
 <!--==========================
-      Header Nav
+       Nav
 ============================-->
 <header id="header">
     <div class="container">
@@ -7,7 +7,7 @@
         <div id="logo" class="pull-left">
             <!-- <a href="#hero"><img src="{{ url_for('static', filename='img/logo.png')}}" alt="Ciarans CRM System" title="" /></img></a> -->
             <!-- Uncomment below if you prefer to use a text logo -->
-            <h1><a href="#hero">FullStack</a></h1>
+            <h3><a href="#hero">FullStack</a></h3>
         </div>
 
         <nav id="nav-menu-container">
@@ -15,7 +15,6 @@
                 <li class="menu-active"><a href="/#hero">Home</a></li>
                 <li><a href="/#about">About Us</a></li>
                 <li><a href="{{url_for('tech')}}">Tech Portfolio</a></li>
-
                 <li class="menu-has-children"><a href="/">Get A Quote</a>
                     <ul>
                         <li><a href="{{url_for('add_quote')}}">New Quote</a></li>
@@ -25,13 +24,11 @@
                                 <li><a href="{{ url_for('get_quotes')}}">View all Quote</a></li>
                                 <li><a href="{{ url_for('edit_quote') }}">Change a Quote</a></li>
                                 <li><a href="{{url_for('get_status')}}">Manage Status</a></li>
-                        </li>
+                                <li><a href=" {{ url_for('contact') }}">Contact for quote</a></li>
+                            </ul>
+
                     </ul>
-                </li>
-            </ul>
-            </li>
-            <li><a href=" {{ url_for('contact') }}">Contact for quote</a></li>
-            <li><a href="/#contact">Contact Us</a></li>
+                <li><a href="/#contact">Contact Us</a></li>
             </ul>
         </nav><!-- #nav-menu-container -->
     </div>

@@ -5,15 +5,15 @@
 <!-- This lists the list of Statuses available in a list, maybe put into a dropdown later? -->
 <p>
     {% if status %}
-    <div class="alert alert-success">
+    <div>
         {% if statuses %}
-        <p>Please select the Quote Status</p>
-        <ul>
-            {% for status in statuses %}
-            <li><a href="/get_quotes/{{status.quote_status}}">{{status.quote_status}}</li>
+        <h4>Please select the Quote Status</h4>
+
+        {% for status in statuses %}
+        <i class="fa fa-star" aria-hidden="true"> </i>
+        <a href="/get_quotes/{{status.quote_status}}">{{status.quote_status}}
             {% endfor %}
-        </ul>
-        {% endif %}
+            {% endif %}
     </div>
     {% endif %}
 </p>
@@ -47,4 +47,10 @@
         {% endfor %}
     </ul>
 </div>
+
+
+
+
+
+
 {% endblock %}

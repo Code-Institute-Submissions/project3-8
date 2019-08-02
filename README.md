@@ -16,8 +16,14 @@ Some git commits will be quick as a result.
 - re submit project 2
 - make add status a modal
 - add logo carosel https://www.solodev.com/blog/web-design/adding-an-infinite-client-logo-carousel-to-your-website.stml
+- change back to false
+- 
 
 
+User stories
+i want user to be able to request a quote for a full stack project
+
+ux wireframes
 
 
 

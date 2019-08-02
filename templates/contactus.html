@@ -32,7 +32,7 @@
                         </div>
                         <div>
                             <i class="fa fa-phone"></i>
-                            <p>+61 448 360 727s</p>
+                            <p>+61 448 360 727</p>
                         </div>
                     </div>
                     <div class="social-links">
@@ -53,11 +53,12 @@
                         <div id="errormessage"></div> -->
 
                         <!-- add to form to submit to emailjs and to call add quote function with the details -->
-                        <form method="POST" name="sentMessage" id="contactForm" onsubmit="return sendmail(this);">
+                        <form method="POST" name="sentMessage" id="contactForm" action="{{url_for('insert_quote')}}"
+                            onsubmit="return sendmail(this);">
                             <div class="form-group">
                                 <!-- <label>Name</label> -->
-                                <input type="text" class="form-control" placeholder="Name" name="name" id="name"
-                                    required data-validation-required-message="Please enter your name.">
+                                <input type="text" class="form-control" placeholder="Your Full Name" name="name"
+                                    id="name" required data-validation-required-message="Please enter your name.">
                                 <div class="validation"></div>
                             </div>
                             <div class="form-group">
@@ -69,7 +70,7 @@
                             </div>
                             <div class="form-group">
                                 <!-- <label>Phone Number</label> -->
-                                <input type="tel" class="form-control" placeholder="Phone Number" name="number"
+                                <input type="tel" class="form-control" placeholder="Phone Number" name="phone"
                                     id="phone" required
                                     data-validation-required-message="Please enter your phone number.">
                                 <div class="validation"></div>
@@ -81,12 +82,10 @@
                                     data-validation-required-message="Please enter a message."></textarea>
                                 <div class="validation"></div>
                             </div>
-                            <div class="text-center"><button type="submit" id="sendMessageButton">Send Message</button>
+                            <div class="text-center"><button type="submit" id="sendMessageButton">Create Quote</button>
                             </div>
                         </form>
                     </div>
-
-
                     </script>
                 </div> <!-- end of contact form -->
             </div>
