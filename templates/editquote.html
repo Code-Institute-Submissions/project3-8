@@ -30,11 +30,10 @@
                   Edit Quote Section
   ============================-->
 <section id="contact">
-    <div class="container wow fadeInUp">
+    <div class="container wow ">
         <div class="section-header">
-            <h3 class="section-title">Create a New Quote</h3>
-            <p class="section-description"> Ready to discuss your next project, complete our form to get a quote for
-                your project. </p>
+            <h3 class="section-title">Edit Quote</h3>
+            <p class="section-description"> Complete the form to complete a quote for the project. </p>
         </div>
         <div class="row justify-content-center formcontent">
             <!-- start of  contact form input -->
@@ -100,51 +99,59 @@
                             </div>
 
                         </span>
-                        <table style="height: 126px;" width="691">
+                        <table style="width: 100%; height: 100%; margin-left: auto; margin-right: auto;">
                             <tbody>
                                 <tr>
-                                    <td style="width: 278px;">
+                                    <td>
                                         <div><em title="name"> Rank your level of Quality.</em></div>
                                         <div><em title="name">Are you ok with shure it will be fine!</em></div>
                                     </td>
-                                    <td style="width: 109px;"><input checked="checked" name="quote_rankquality"
-                                            type="radio" value="LOW" /> <label for="quote_rankquality">Low</label></td>
-                                    <td style="width: 111px;"><input checked="checked" name="quote_rankquality"
-                                            type="radio" value="MEDIUM" /> <label
-                                            for="id=quote_rankquality">Medium</label></td>
-                                    <td style="width: 165px;"><input checked="checked" name="quote_rankquality"
-                                            type="radio" value="HIGH" /> <label for="quote_rankquality">High</label>
+                                    <td><input {% if quote.rankQuality == "LOW" %}checked="checked" {% endif %}
+                                            name="quote_rankquality" type="radio" value="LOW" />
+                                        <label for="quote_rankquality">Low</label></td>
+
+                                    <td><input {% if quote.rankQuality == "MEDIUM" %}checked="checked" {% endif %}
+                                            name="quote_rankquality" type="radio" value="MEDIUM" />
+                                        <label for="id=quote_rankquality">Medium</label></td>
+                                    <td><input {% if quote.rankQuality == "HIGH" %}checked="checked" {% endif %}
+                                            name="quote_rankquality" type="radio" value="HIGH" />
+                                        <label for="quote_rankquality">High</label>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 278px;">
+                                    <td>
                                         <div><em title="name"> Rank your expected time level.</em></div>
                                         <div><em title="name"> How Fast do you want this done.</em></div>
                                     </td>
-                                    <td style="width: 109px;"><input checked="checked" name="quote_ranktime"
-                                            type="radio" value="THIS YEAR" /> <label for="quote_ranktime"> Whenever!
+                                    <td><input {% if quote.rankTime == "THIS YEAR" %}checked="checked" {% endif %}
+                                            name="quote_ranktime" type="radio" value="THIS YEAR" />
+                                        <label for="quote_ranktime"> Whenever!
                                         </label></td>
-                                    <td style="width: 111px;"><input checked="checked" name="quote_ranktime"
-                                            type="radio" value="THIS MONTH" /> <label for="id=quote_ranktime"> This
+                                    <td><input {% if quote.rankTime == "THIS MONTH" %}checked="checked" {% endif %}
+                                            name="quote_ranktime" type="radio" value="THIS MONTH" /> <label
+                                            for="id=quote_ranktime"> This
                                             month</label></td>
-                                    <td style="width: 165px;"><input checked="checked" name="quote_ranktime"
-                                            type="radio" value="THIS WEEK" /> <label for="quote_ranktime">How about
+                                    <td><input {% if quote.rankTime == "THIS WEEK" %}checked="checked" {% endif %}
+                                            name="quote_ranktime" type="radio" value="THIS WEEK" />
+                                        <label for="quote_ranktime">How about
                                             today?</label></td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 278px;">
+                                    <td>
                                         <div><em title="name"> How Cost Sensitive are you.</em></div>
                                         <div><em title="name">Do you save or splurge?</em></div>
                                     </td>
-                                    <td style="width: 109px;"><input checked="checked" name="quote_rankcost"
-                                            type="radio" value="MISER" /> <label for="quote_rankcost"> MISER! </label>
+                                    <td><input {% if quote.rankCost == "MISER" %}checked="checked" {% endif %}
+                                            name="quote_rankcost" type="radio" value="MISER" />
+                                        <label for="quote_rankcost"> MISER! </label>
                                     </td>
-                                    <td style="width: 111px;"><input checked="checked" name="quote_rankcost"
-                                            type="radio" value="CAN SPEND" /> <label for="id=quote_rankcost"> THRIFTY
+                                    <td><input {% if quote.rankCost == "THRIFTY" %}checked="checked" {% endif %}
+                                            name="quote_rankcost" type="radio" value="THRIFTY" />
+                                        <label for="id=quote_rankcost"> THRIFTY
                                         </label></td>
-                                    <td style="width: 165px;"><input checked="checked" name="quote_rankcost"
-                                            type="radio" value="CASH NO PROBLEMO" /> <label
-                                            for="quote_rankcost">SPENDER</label></td>
+                                    <td><input {% if quote.rankCost == "CASH NO PROBLEMO" %}checked="checked"
+                                            {% endif %} name="quote_rankcost" type="radio" value="CASH NO PROBLEMO" />
+                                        <label for="quote_rankcost">SPENDER</label></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -163,26 +170,26 @@
                         <table>
                             <tbody>
                                 <tr>
-                                    <td><input checked="checked" name="quote_expectedquality" type="radio"
-                                            value="BIKE" />;</td>
+                                    <td><input {% if quote.levelQuality == "BIKE" %}checked="checked" {% endif %}
+                                            name="quote_expectedquality" type="radio" value="BIKE" />;</td>
                                     <td><label for="quote_expectedquality"> Bicycle / I'm ok with repairing a puncture
                                             once in a while.! </label></td>
                                 </tr>
                                 <tr>
-                                    <td><input checked="checked" name="quote_expectedquality" type="radio"
-                                            value="CAR" /></td>
+                                    <td><input {% if quote.levelQuality == "CAR" %}checked="checked" {% endif %}
+                                            name="quote_expectedquality" type="radio" value="CAR" /></td>
                                     <td><label for="id=quote_expectedquality"> Car / I need it to work, day in and day
                                             out. </label></td>
                                 </tr>
                                 <tr>
-                                    <td><input checked="checked" name="quote_expectedquality" type="radio"
-                                            value="JUMBO" /></td>
+                                    <td><input {% if quote.levelQuality == "JUMBO" %}checked="checked" {% endif %}
+                                            name="quote_expectedquality" type="radio" value="JUMBO" /></td>
                                     <td><label for="quote_expectedquality">Jumbo Jet / I'm not at the controls but my
                                             life depends on it. </label></td>
                                 </tr>
                                 <tr>
-                                    <td><input checked="checked" name="quote_expectedquality" type="radio"
-                                            value="SPACECRAFT" /></td>
+                                    <td><input {% if quote.levelQuality == "SPACECRAFT" %}checked="checked" {% endif %}
+                                            name="quote_expectedquality" type="radio" value="SPACECRAFT" /></td>
                                     <td><label for="quote_expectedquality">Space Craft / Never done before, "To infinity
                                             and beyond!" </label></td>
                                 </tr>
@@ -261,27 +268,17 @@
 
                     <!-- Tech wanted -->
                     <div class="form-group">
-                        <span><i class="fa fa-database   formicon" title="name">
-
+                        <span><i class="fa fa-database formicon" title="name">
                                 Any technology you specifically need this developed in?
                             </i></span>
-                        <label for="exampleFormControlSelect2">Select all that apply multiple</label>
-                        <select multiple class="form-control" id="exampleFormControlSelect2">
-                            <option>JavaScript </option>
-                            <option>HTML5 </option>
-                            <option>Node.JS </option>
-                            <option>NoSQL </option>
-                            <option>SQL </option>
+                        <label>Select all that apply multiple</label>
+                        <select multiple class="form-control" name="quote_tech">
+                            <option value="JavaScript"> JavaScript </option>
+                            <option value="HTML5">HTML5 </option>
+                            <!-- <option id="quote_tech2" name="quote_tech2" value="Node">Node.JS </option>
+                            <option id="quote_tech3" name="quote_tech3" value="NoSQL">NoSQL </option>
+                            <option id="quote_tech4" name="quote_tech4" value="SQL">SQL </option> -->
                         </select>
-                        <input id="quote_tech" name="quote_tech" type="text" class="form-control"
-                            placeholder="Technololy" value="{{quote.tech}}"></div>
-
-                    <!-- ststus same as top -->
-                    <div class="form-group">
-                        <span><i class="fa fa-user formicon" alt="name">
-                                enter text.</i> <input id="quote_quotestatus" name="quote_quotestatus" type="text"
-                                class="form-control" placeholder="The Status of the Quote"
-                                value="{{quote.quoteStatus}}">
                     </div>
                     <!-- Admin features -->
                     <div class="form-group">
@@ -347,63 +344,6 @@
     });
 </script>
 
-
-
-
-<!--==========================
-                  Add Quote Section
-  ============================-->
-<section id="contact">
-    <div class="container wow fadeInUp">
-        <div class="section-header">
-            <h3 class="section-title">Create a New Quote</h3>
-            <p class="section-description">Ready to discuss your next project, complete our form to get a quote for your
-                project. </p>
-        </div>
-    </div>
-    <div class="container wow fadeInUp mt-5">
-        <div class="row justify-content-center">
-            <!-- start of  contact form input -->
-            <div class="col-lg-8 col-md-8">
-                <div class="form">
-                    <!-- using onsubmit to call emailjs to send quote by email and action to call the flask to add quote to db-->
-                    <form method="POST" name="sentMessage" id="contactForm" action="{{url_for('insert_quote')}}"
-                        onsubmit="return sendquote(this);">
-                        <div class="form-group">
-                            <!-- <label>Name</label> -->
-                            <input type="text" class="form-control" placeholder="Your Full Name" name="name" id="name"
-                                required data-validation-required-message="Please enter your name.">
-                            <div class="validation"></div>
-                        </div>
-                        <div class="form-group">
-                            <!-- <label>Email Address</label> -->
-                            <input type="email" class="form-control" placeholder="Email Address" name="email" id="email"
-                                required data-validation-required-message="Please enter your email address.">
-                            <div class="validation"></div>
-                        </div>
-                        <div class="form-group">
-                            <!-- <label>Phone Number</label> -->
-                            <input type="tel" class="form-control" placeholder="Phone Number" name="phone" id="phone"
-                                required data-validation-required-message="Please enter your phone number.">
-                            <div class="validation"></div>
-                        </div>
-                        <div class="form-group">
-                            <!-- <label>Message</label> -->
-                            <textarea rows="5" class="form-control" placeholder="Message" name="message" id="message"
-                                required data-validation-required-message="Please enter a message."></textarea>
-                            <div class="validation"></div>
-                        </div>
-                        <div class="text-center"><button type="submit" id="sendMessageButton">Create Quote</button>
-                        </div>
-                    </form>
-                </div>
-
-
-                </script>
-            </div> <!-- end of contact form -->
-        </div>
-    </div>
-</section><!-- #Add Quote -->
 
 
 

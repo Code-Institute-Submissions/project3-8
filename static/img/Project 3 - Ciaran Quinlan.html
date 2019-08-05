@@ -1,0 +1,646 @@
+<!--==========================
+      Header Nav
+============================-->
+<!-- This line will create a background so you can see the menu in case you dont want to use a hero image -->
+</header><!-- #header -->
+<div style="background-color: rgba(52, 59, 64, 0.9);; min-height:72px;">
+</div><!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Project 3 - Ciaran Quinlan</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicons -->
+    <link rel="stylesheet" href="/static/img/favicon.ico">
+
+    <!-- Google Fonts -->
+    <!-- This is not working for some reason -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700"
+        rel="stylesheet">
+
+    <!-- Bootstrap CSS File -->
+    <link rel="stylesheet" href="/static/lib/bootstrap/css/bootstrap.min.css">
+
+    <!-- Libraries CSS Files -->
+    <link rel="stylesheet" href="/static/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/lib/animate/animate.min.css">
+
+    <!-- Main Stylesheet File -->
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css" />
+
+    <!-- Jquery stuff -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <!-- emailjs sdk connection  -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.3.2/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("user_1g89m73smB57IjDBbItN5");
+        })();
+    </script>
+</head>
+
+<body>
+    <!--==========================
+       Nav
+============================-->
+<header id="header">
+    <div class="container">
+
+        <div id="logo" class="pull-left">
+            <!-- <a href="#hero"><img src="/static/img/logo.png" alt="Ciarans CRM System" title="" /></img></a> -->
+            <!-- Uncomment below if you prefer to use a text logo -->
+            <h3><a href="#hero">FullStack</a></h3>
+        </div>
+
+        <nav id="nav-menu-container">
+            <ul class="nav-menu">
+                <li class="menu-active"><a href="/#hero">Home</a></li>
+                <li><a href="/#about">About Us</a></li>
+                <li><a href="/tech">Tech Portfolio</a></li>
+                <li class="menu-has-children"><a href="/">Get A Quote</a>
+                    <ul>
+                        <li><a href="/add_quote">New Quote</a></li>
+                        <li><a href="/edit_quote/">View your Quote</a></li>
+                        <li class="menu-has-children"><a href="/#">Quote Admin</a>
+                            <ul>
+                                <li><a href="/get_quotes">View all Quote</a></li>
+                                <li><a href="/get_quotes">Change a Quote</a></li>
+                                <li><a href="/get_status">Manage Status</a></li>
+                            </ul>
+
+                    </ul>
+                <li><a href="/#contact">Contact Us</a></li>
+            </ul>
+        </nav><!-- #nav-menu-container -->
+    </div>
+</header><!-- #header -->
+
+    
+<!--==========================
+          Get Quotes Section
+        ============================-->
+<section id="services">
+    <div class="container wow fadeIn">
+        <div class="section-header">
+            <h3 class="section-title">Please select the Quote Status</h3>
+            <div>
+                <!-- this is the menu of the available Statuses -->
+                
+                <div>
+                    
+                    <ul class="nav nav-pills nav-fill">
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/get_quotes/IN PROGRESS"> IN PROGRESS</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/get_quotes/CLOSED"> CLOSED</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/get_quotes/SENT"> SENT</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/get_quotes/OPEN"> OPEN</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/get_quotes/COMPLETED"> COMPLETED</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/get_quotes/NEW"> NEW</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/get_quotes/CONTACT-PAGE"> CONTACT-PAGE</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </div>
+                
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-12 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+
+                
+                <!-- this is where I can later add a sort by status -->
+                
+
+                <div class="box">
+
+                    <div class="icon"><a href=""><i>None</i></a></div>
+                    <strong>Mr. Simpsons</strong>2019-07-01
+                    <!-- the brief can be later enclosed in a accordian  -->
+                    <div>Becoming a fullstack web developer requires you to cover a lot of skills. For beginners it’s often not easy to find the right learning path and to gain quick result. At first sight it might be overwhelming to understand what you need to learn and how everything fits together at the end. and its edited.</div>
+                    <!-- outputs name and live date to screen -->
+                    <a href="/delete_quote/5d3efcfa313b97a2f8b8cefd" class="btn btn-primary btn-sm active"
+                        role="button">Delete</a>
+                    <a href="/edit_quote/5d3efcfa313b97a2f8b8cefd" method="POST" class="btn btn-primary btn-sm"
+                        role="button" aria-disabled="true">Edit Quote</a>
+                    <form action="/delete_quote/5d3efcfa313b97a2f8b8cefd" method="POST">
+                        <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                    </form>
+                    <form action="/edit_quote/5d3efcfa313b97a2f8b8cefd" method="POST">
+                        <button class="btn btn-primary" type="submit">Edit Quote</button>
+                    </form>
+
+                    <!-- Calls edit quote function passing in the unique quoteid -->
+
+                    
+                    
+                <!-- this is where I can later add a sort by status -->
+                
+
+                <div class="box">
+
+                    <div class="icon"><a href=""><i> &#34;2&#34;,</i></a></div>
+                    <strong>Mr. Smith</strong>01/09/2019
+                    <!-- the brief can be later enclosed in a accordian  -->
+                    <div>Becoming a fullstack web developer requires you to cover a lot of skills. For beginners it’s often not easy to find the right learning path and to gain quick result. At first sight it might be overwhelming to understand what you need to learn and how everything fits together at the end..</div>
+                    <!-- outputs name and live date to screen -->
+                    <a href="/delete_quote/5d3efd22313b97a2f8b8cefe" class="btn btn-primary btn-sm active"
+                        role="button">Delete</a>
+                    <a href="/edit_quote/5d3efd22313b97a2f8b8cefe" method="POST" class="btn btn-primary btn-sm"
+                        role="button" aria-disabled="true">Edit Quote</a>
+                    <form action="/delete_quote/5d3efd22313b97a2f8b8cefe" method="POST">
+                        <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                    </form>
+                    <form action="/edit_quote/5d3efd22313b97a2f8b8cefe" method="POST">
+                        <button class="btn btn-primary" type="submit">Edit Quote</button>
+                    </form>
+
+                    <!-- Calls edit quote function passing in the unique quoteid -->
+
+                    
+                    
+                <!-- this is where I can later add a sort by status -->
+                
+
+                <div class="box">
+
+                    <div class="icon"><a href=""><i> &#34;3&#34;,</i></a></div>
+                    <strong>Mr. Ross</strong>01/09/2019
+                    <!-- the brief can be later enclosed in a accordian  -->
+                    <div>This post will give you an overview of technologies you may consider to learn for being a fullstack developer in 2019 and beyond. We’ll start to take a look at the foundation and programming languages and then move forward to more advanced topics like frameworks and additional tools..</div>
+                    <!-- outputs name and live date to screen -->
+                    <a href="/delete_quote/5d3efd2e313b97a2f8b8ceff" class="btn btn-primary btn-sm active"
+                        role="button">Delete</a>
+                    <a href="/edit_quote/5d3efd2e313b97a2f8b8ceff" method="POST" class="btn btn-primary btn-sm"
+                        role="button" aria-disabled="true">Edit Quote</a>
+                    <form action="/delete_quote/5d3efd2e313b97a2f8b8ceff" method="POST">
+                        <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                    </form>
+                    <form action="/edit_quote/5d3efd2e313b97a2f8b8ceff" method="POST">
+                        <button class="btn btn-primary" type="submit">Edit Quote</button>
+                    </form>
+
+                    <!-- Calls edit quote function passing in the unique quoteid -->
+
+                    
+                    
+                <!-- this is where I can later add a sort by status -->
+                
+
+                <div class="box">
+
+                    <div class="icon"><a href=""><i> &#34;5&#34;,</i></a></div>
+                    <strong>Mr. Smith</strong>01/09/2019
+                    <!-- the brief can be later enclosed in a accordian  -->
+                    <div>this is the detailed brief</div>
+                    <!-- outputs name and live date to screen -->
+                    <a href="/delete_quote/5d3efd37313b97a2f8b8cf01" class="btn btn-primary btn-sm active"
+                        role="button">Delete</a>
+                    <a href="/edit_quote/5d3efd37313b97a2f8b8cf01" method="POST" class="btn btn-primary btn-sm"
+                        role="button" aria-disabled="true">Edit Quote</a>
+                    <form action="/delete_quote/5d3efd37313b97a2f8b8cf01" method="POST">
+                        <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                    </form>
+                    <form action="/edit_quote/5d3efd37313b97a2f8b8cf01" method="POST">
+                        <button class="btn btn-primary" type="submit">Edit Quote</button>
+                    </form>
+
+                    <!-- Calls edit quote function passing in the unique quoteid -->
+
+                    
+                    
+                <!-- this is where I can later add a sort by status -->
+                
+
+                <div class="box">
+
+                    <div class="icon"><a href=""><i> &#34;6&#34;,</i></a></div>
+                    <strong>Mr. Alan Ross</strong>01/09/2019
+                    <!-- the brief can be later enclosed in a accordian  -->
+                    <div>Becoming a fullstack web developer requires you to cover a lot of skills. For beginners it’s often not easy to find the right learning path and to gain quick result. At first sight it might be overwhelming to understand what you need to learn and how everything fits together at the end..</div>
+                    <!-- outputs name and live date to screen -->
+                    <a href="/delete_quote/5d3efd3e313b97a2f8b8cf02" class="btn btn-primary btn-sm active"
+                        role="button">Delete</a>
+                    <a href="/edit_quote/5d3efd3e313b97a2f8b8cf02" method="POST" class="btn btn-primary btn-sm"
+                        role="button" aria-disabled="true">Edit Quote</a>
+                    <form action="/delete_quote/5d3efd3e313b97a2f8b8cf02" method="POST">
+                        <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                    </form>
+                    <form action="/edit_quote/5d3efd3e313b97a2f8b8cf02" method="POST">
+                        <button class="btn btn-primary" type="submit">Edit Quote</button>
+                    </form>
+
+                    <!-- Calls edit quote function passing in the unique quoteid -->
+
+                    
+                    
+                <!-- this is where I can later add a sort by status -->
+                
+
+                <div class="box">
+
+                    <div class="icon"><a href=""><i> &#34;7&#34;,</i></a></div>
+                    <strong>Mr. Simpson</strong>01/09/2019
+                    <!-- the brief can be later enclosed in a accordian  -->
+                    <div>This post will give you an overview of technologies you may consider to learn for being a fullstack developer in 2019 and beyond. We’ll start to take a look at the foundation and programming languages and then move forward to more advanced topics like frameworks and additional tools..</div>
+                    <!-- outputs name and live date to screen -->
+                    <a href="/delete_quote/5d3efd3e313b97a2f8b8cf03" class="btn btn-primary btn-sm active"
+                        role="button">Delete</a>
+                    <a href="/edit_quote/5d3efd3e313b97a2f8b8cf03" method="POST" class="btn btn-primary btn-sm"
+                        role="button" aria-disabled="true">Edit Quote</a>
+                    <form action="/delete_quote/5d3efd3e313b97a2f8b8cf03" method="POST">
+                        <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                    </form>
+                    <form action="/edit_quote/5d3efd3e313b97a2f8b8cf03" method="POST">
+                        <button class="btn btn-primary" type="submit">Edit Quote</button>
+                    </form>
+
+                    <!-- Calls edit quote function passing in the unique quoteid -->
+
+                    
+                    
+                <!-- this is where I can later add a sort by status -->
+                
+
+                <div class="box">
+
+                    <div class="icon"><a href=""><i> &#34;8&#34;,</i></a></div>
+                    <strong>Mr. Smith</strong>01/09/2019
+                    <!-- the brief can be later enclosed in a accordian  -->
+                    <div>This list will provide guidance to find your path through the web development jungle in 2019. Together with a short description of the relevant topics this post contains link to great learning resources so that you can start quickly to expand your skill-set.</div>
+                    <!-- outputs name and live date to screen -->
+                    <a href="/delete_quote/5d3efd4d313b97a2f8b8cf04" class="btn btn-primary btn-sm active"
+                        role="button">Delete</a>
+                    <a href="/edit_quote/5d3efd4d313b97a2f8b8cf04" method="POST" class="btn btn-primary btn-sm"
+                        role="button" aria-disabled="true">Edit Quote</a>
+                    <form action="/delete_quote/5d3efd4d313b97a2f8b8cf04" method="POST">
+                        <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                    </form>
+                    <form action="/edit_quote/5d3efd4d313b97a2f8b8cf04" method="POST">
+                        <button class="btn btn-primary" type="submit">Edit Quote</button>
+                    </form>
+
+                    <!-- Calls edit quote function passing in the unique quoteid -->
+
+                    
+                    
+                <!-- this is where I can later add a sort by status -->
+                
+
+                <div class="box">
+
+                    <div class="icon"><a href=""><i> &#34;9&#34;,</i></a></div>
+                    <strong>Mr. Ross</strong>01/09/2019
+                    <!-- the brief can be later enclosed in a accordian  -->
+                    <div>this is the detailed brief</div>
+                    <!-- outputs name and live date to screen -->
+                    <a href="/delete_quote/5d3efd4d313b97a2f8b8cf05" class="btn btn-primary btn-sm active"
+                        role="button">Delete</a>
+                    <a href="/edit_quote/5d3efd4d313b97a2f8b8cf05" method="POST" class="btn btn-primary btn-sm"
+                        role="button" aria-disabled="true">Edit Quote</a>
+                    <form action="/delete_quote/5d3efd4d313b97a2f8b8cf05" method="POST">
+                        <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                    </form>
+                    <form action="/edit_quote/5d3efd4d313b97a2f8b8cf05" method="POST">
+                        <button class="btn btn-primary" type="submit">Edit Quote</button>
+                    </form>
+
+                    <!-- Calls edit quote function passing in the unique quoteid -->
+
+                    
+                    
+                <!-- this is where I can later add a sort by status -->
+                
+
+                <div class="box">
+
+                    <div class="icon"><a href=""><i> &#34;11&#34;,</i></a></div>
+                    <strong>Mr. Smith</strong>01/09/2019
+                    <!-- the brief can be later enclosed in a accordian  -->
+                    <div>This post will give you an overview of technologies you may consider to learn for being a fullstack developer in 2019 and beyond. We’ll start to take a look at the foundation and programming languages and then move forward to more advanced topics like frameworks and additional tools..</div>
+                    <!-- outputs name and live date to screen -->
+                    <a href="/delete_quote/5d3efd5f313b97a2f8b8cf07" class="btn btn-primary btn-sm active"
+                        role="button">Delete</a>
+                    <a href="/edit_quote/5d3efd5f313b97a2f8b8cf07" method="POST" class="btn btn-primary btn-sm"
+                        role="button" aria-disabled="true">Edit Quote</a>
+                    <form action="/delete_quote/5d3efd5f313b97a2f8b8cf07" method="POST">
+                        <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                    </form>
+                    <form action="/edit_quote/5d3efd5f313b97a2f8b8cf07" method="POST">
+                        <button class="btn btn-primary" type="submit">Edit Quote</button>
+                    </form>
+
+                    <!-- Calls edit quote function passing in the unique quoteid -->
+
+                    
+                    
+                <!-- this is where I can later add a sort by status -->
+                
+
+                <div class="box">
+
+                    <div class="icon"><a href=""><i> &#34;12&#34;,</i></a></div>
+                    <strong>Mr. Alan Ross</strong>01/09/2019
+                    <!-- the brief can be later enclosed in a accordian  -->
+                    <div>This list will provide guidance to find your path through the web development jungle in 2019. Together with a short description of the relevant topics this post contains link to great learning resources so that you can start quickly to expand your skill-set.</div>
+                    <!-- outputs name and live date to screen -->
+                    <a href="/delete_quote/5d3efd5f313b97a2f8b8cf08" class="btn btn-primary btn-sm active"
+                        role="button">Delete</a>
+                    <a href="/edit_quote/5d3efd5f313b97a2f8b8cf08" method="POST" class="btn btn-primary btn-sm"
+                        role="button" aria-disabled="true">Edit Quote</a>
+                    <form action="/delete_quote/5d3efd5f313b97a2f8b8cf08" method="POST">
+                        <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                    </form>
+                    <form action="/edit_quote/5d3efd5f313b97a2f8b8cf08" method="POST">
+                        <button class="btn btn-primary" type="submit">Edit Quote</button>
+                    </form>
+
+                    <!-- Calls edit quote function passing in the unique quoteid -->
+
+                    
+                    
+                <!-- this is where I can later add a sort by status -->
+                
+
+                <div class="box">
+
+                    <div class="icon"><a href=""><i> &#34;14&#34;,</i></a></div>
+                    <strong>Mr. Smith</strong>01/09/2019
+                    <!-- the brief can be later enclosed in a accordian  -->
+                    <div>This list will provide guidance to find your path through the web development jungle in 2019. Together with a short description of the relevant topics this post contains link to great learning resources so that you can start quickly to expand your skill-set.</div>
+                    <!-- outputs name and live date to screen -->
+                    <a href="/delete_quote/5d3efd5f313b97a2f8b8cf0a" class="btn btn-primary btn-sm active"
+                        role="button">Delete</a>
+                    <a href="/edit_quote/5d3efd5f313b97a2f8b8cf0a" method="POST" class="btn btn-primary btn-sm"
+                        role="button" aria-disabled="true">Edit Quote</a>
+                    <form action="/delete_quote/5d3efd5f313b97a2f8b8cf0a" method="POST">
+                        <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                    </form>
+                    <form action="/edit_quote/5d3efd5f313b97a2f8b8cf0a" method="POST">
+                        <button class="btn btn-primary" type="submit">Edit Quote</button>
+                    </form>
+
+                    <!-- Calls edit quote function passing in the unique quoteid -->
+
+                    
+                    
+                <!-- this is where I can later add a sort by status -->
+                
+
+                <div class="box">
+
+                    <div class="icon"><a href=""><i> &#34;15&#34;,</i></a></div>
+                    <strong>Mr. Ross</strong>01/09/2019
+                    <!-- the brief can be later enclosed in a accordian  -->
+                    <div>This list will provide guidance to find your path through the web development jungle in 2019. Together with a short description of the relevant topics this post contains link to great learning resources so that you can start quickly to expand your skill-set.</div>
+                    <!-- outputs name and live date to screen -->
+                    <a href="/delete_quote/5d3efd81313b97a2f8b8cf0b" class="btn btn-primary btn-sm active"
+                        role="button">Delete</a>
+                    <a href="/edit_quote/5d3efd81313b97a2f8b8cf0b" method="POST" class="btn btn-primary btn-sm"
+                        role="button" aria-disabled="true">Edit Quote</a>
+                    <form action="/delete_quote/5d3efd81313b97a2f8b8cf0b" method="POST">
+                        <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                    </form>
+                    <form action="/edit_quote/5d3efd81313b97a2f8b8cf0b" method="POST">
+                        <button class="btn btn-primary" type="submit">Edit Quote</button>
+                    </form>
+
+                    <!-- Calls edit quote function passing in the unique quoteid -->
+
+                    
+                    
+                <!-- this is where I can later add a sort by status -->
+                
+
+                <div class="box">
+
+                    <div class="icon"><a href=""><i> &#34;16&#34;,</i></a></div>
+                    <strong>Mr Drudge</strong>01/09/2019
+                    <!-- the brief can be later enclosed in a accordian  -->
+                    <div>This list will provide guidance to find your path through the web development jungle in 2019. Together with a short description of the relevant topics this post contains link to great learning resources so that you can start quickly to expand your skill-set.</div>
+                    <!-- outputs name and live date to screen -->
+                    <a href="/delete_quote/5d3efd81313b97a2f8b8cf0c" class="btn btn-primary btn-sm active"
+                        role="button">Delete</a>
+                    <a href="/edit_quote/5d3efd81313b97a2f8b8cf0c" method="POST" class="btn btn-primary btn-sm"
+                        role="button" aria-disabled="true">Edit Quote</a>
+                    <form action="/delete_quote/5d3efd81313b97a2f8b8cf0c" method="POST">
+                        <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                    </form>
+                    <form action="/edit_quote/5d3efd81313b97a2f8b8cf0c" method="POST">
+                        <button class="btn btn-primary" type="submit">Edit Quote</button>
+                    </form>
+
+                    <!-- Calls edit quote function passing in the unique quoteid -->
+
+                    
+                    
+                <!-- this is where I can later add a sort by status -->
+                
+
+                <div class="box">
+
+                    <div class="icon"><a href=""><i> &#34;17&#34;,</i></a></div>
+                    <strong>Mr. Smith</strong>01/09/2019
+                    <!-- the brief can be later enclosed in a accordian  -->
+                    <div>This list will provide guidance to find your path through the web development jungle in 2019. Together with a short description of the relevant topics this post contains link to great learning resources so that you can start quickly to expand your skill-set.</div>
+                    <!-- outputs name and live date to screen -->
+                    <a href="/delete_quote/5d3efd81313b97a2f8b8cf0d" class="btn btn-primary btn-sm active"
+                        role="button">Delete</a>
+                    <a href="/edit_quote/5d3efd81313b97a2f8b8cf0d" method="POST" class="btn btn-primary btn-sm"
+                        role="button" aria-disabled="true">Edit Quote</a>
+                    <form action="/delete_quote/5d3efd81313b97a2f8b8cf0d" method="POST">
+                        <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                    </form>
+                    <form action="/edit_quote/5d3efd81313b97a2f8b8cf0d" method="POST">
+                        <button class="btn btn-primary" type="submit">Edit Quote</button>
+                    </form>
+
+                    <!-- Calls edit quote function passing in the unique quoteid -->
+
+                    
+                    
+                <!-- this is where I can later add a sort by status -->
+                
+
+                <div class="box">
+
+                    <div class="icon"><a href=""><i>18</i></a></div>
+                    <strong>Mr. Alan Ross</strong>01/09/2019
+                    <!-- the brief can be later enclosed in a accordian  -->
+                    <div>This list will provide guidance to find your path through the web development jungle in 2019. Together with a short description of the relevant topics this post contains link to great learning resources so that you can start quickly to expand your skill-set.</div>
+                    <!-- outputs name and live date to screen -->
+                    <a href="/delete_quote/5d3efd81313b97a2f8b8cf0e" class="btn btn-primary btn-sm active"
+                        role="button">Delete</a>
+                    <a href="/edit_quote/5d3efd81313b97a2f8b8cf0e" method="POST" class="btn btn-primary btn-sm"
+                        role="button" aria-disabled="true">Edit Quote</a>
+                    <form action="/delete_quote/5d3efd81313b97a2f8b8cf0e" method="POST">
+                        <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                    </form>
+                    <form action="/edit_quote/5d3efd81313b97a2f8b8cf0e" method="POST">
+                        <button class="btn btn-primary" type="submit">Edit Quote</button>
+                    </form>
+
+                    <!-- Calls edit quote function passing in the unique quoteid -->
+
+                    
+                    
+                <!-- this is where I can later add a sort by status -->
+                
+
+                <div class="box">
+
+                    <div class="icon"><a href=""><i>19</i></a></div>
+                    <strong>Mr. Simpson</strong>01/09/2019
+                    <!-- the brief can be later enclosed in a accordian  -->
+                    <div>This list will provide guidance to find your path through the web development jungle in 2019. Together with a short description of the relevant topics this post contains link to great learning resources so that you can start quickly to expand your skill-set.</div>
+                    <!-- outputs name and live date to screen -->
+                    <a href="/delete_quote/5d3efd97313b97a2f8b8cf0f" class="btn btn-primary btn-sm active"
+                        role="button">Delete</a>
+                    <a href="/edit_quote/5d3efd97313b97a2f8b8cf0f" method="POST" class="btn btn-primary btn-sm"
+                        role="button" aria-disabled="true">Edit Quote</a>
+                    <form action="/delete_quote/5d3efd97313b97a2f8b8cf0f" method="POST">
+                        <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                    </form>
+                    <form action="/edit_quote/5d3efd97313b97a2f8b8cf0f" method="POST">
+                        <button class="btn btn-primary" type="submit">Edit Quote</button>
+                    </form>
+
+                    <!-- Calls edit quote function passing in the unique quoteid -->
+
+                    
+                    
+                <!-- this is where I can later add a sort by status -->
+                
+
+                <div class="box">
+
+                    <div class="icon"><a href=""><i>20</i></a></div>
+                    <strong>Mr. Smith</strong>01/09/2019
+                    <!-- the brief can be later enclosed in a accordian  -->
+                    <div>This list will provide guidance to find your path through the web development jungle in 2019. Together with a short description of the relevant topics this post contains link to great learning resources so that you can start quickly to expand your skill-set.</div>
+                    <!-- outputs name and live date to screen -->
+                    <a href="/delete_quote/5d3efd97313b97a2f8b8cf10" class="btn btn-primary btn-sm active"
+                        role="button">Delete</a>
+                    <a href="/edit_quote/5d3efd97313b97a2f8b8cf10" method="POST" class="btn btn-primary btn-sm"
+                        role="button" aria-disabled="true">Edit Quote</a>
+                    <form action="/delete_quote/5d3efd97313b97a2f8b8cf10" method="POST">
+                        <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                    </form>
+                    <form action="/edit_quote/5d3efd97313b97a2f8b8cf10" method="POST">
+                        <button class="btn btn-primary" type="submit">Edit Quote</button>
+                    </form>
+
+                    <!-- Calls edit quote function passing in the unique quoteid -->
+
+                    
+                    
+                <!-- this is where I can later add a sort by status -->
+                
+
+                <div class="box">
+
+                    <div class="icon"><a href=""><i>26</i></a></div>
+                    <strong>Full Contact Name</strong>
+                    <!-- the brief can be later enclosed in a accordian  -->
+                    <div>from the main page</div>
+                    <!-- outputs name and live date to screen -->
+                    <a href="/delete_quote/5d42e5490006ac782b39809b" class="btn btn-primary btn-sm active"
+                        role="button">Delete</a>
+                    <a href="/edit_quote/5d42e5490006ac782b39809b" method="POST" class="btn btn-primary btn-sm"
+                        role="button" aria-disabled="true">Edit Quote</a>
+                    <form action="/delete_quote/5d42e5490006ac782b39809b" method="POST">
+                        <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                    </form>
+                    <form action="/edit_quote/5d42e5490006ac782b39809b" method="POST">
+                        <button class="btn btn-primary" type="submit">Edit Quote</button>
+                    </form>
+
+                    <!-- Calls edit quote function passing in the unique quoteid -->
+
+                    
+                    
+                    <div class="icon"><a href=""><i># 99</i></a></div>
+                    <h4 class="title"><a href="">name, live date Ipsum</a></h4>
+                    <p class="description">brief</p>
+                    <button> here </button>
+
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+
+    </div>
+</section><!-- #services -->
+
+
+
+<!-- This lists the list of Statuses available in a list, maybe put into a dropdown later? -->
+<div container>
+
+
+
+    <div class="row">
+        <ul>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+</body>
+<!-- JavaScript Libraries for the page-->
+<script src="/static/lib/jquery/jquery.min.js"></script>
+<script src="/static/lib/jquery/jquery-migrate.min.js"></script>
+<script src="/static/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/static/lib/easing/easing.min.js"></script>
+<script src="/static/lib/wow/wow.min.js"></script>
+<script src="/static/lib/waypoints/waypoints.min.js"></script>
+<script src="/static/lib/counterup/counterup.min.js"></script>
+<script src="/static/lib/superfish/hoverIntent.js"></script>
+<script src="/static/lib/superfish/superfish.min.js"></script>
+<!-- Template Main Javascript File that handles menu etc-->
+<script src="/static/js/main.js"></script>
+
+<!-- Script for the multiple checkbox stuff -->
+<script>
+    $(function () {
+        $(" input[name=radgroup]:checked").click(function () {
+            var state = $(this).val();
+            // do action depending on state
+        });
+    });
+</script>
+
+</html>

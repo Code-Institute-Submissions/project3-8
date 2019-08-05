@@ -8,7 +8,7 @@ Some git commits will be quick as a result.
 ## jobs to do
 - change logo image
 - heroku setup working
-- GET QUOTE NUMBER
+
 - set function
 - new quote
 - format forms
@@ -20,8 +20,21 @@ Some git commits will be quick as a result.
 - 
 
 
-User stories
-i want user to be able to request a quote for a full stack project
+
+### Testing
+I tested the app as I was developing. 
+I use the debugger in vscode to follow my code to look for errors.
+I found that devloping some funtion first in python only and integrating with the HTML/Jinja when they were working 
+helped me identify issues quicker.
+
+
+#### PEP8
+I installed the pep8 linter in vsode and also used an online pep8 checker.
+The lines  that pass content into the pages are too long ie >80 chars for the pep8 standard.
+I placed '# noqa' after these lines to tell the checker to ignore these lines.
+
+
+
 
 ux wireframes
 
@@ -31,22 +44,38 @@ ux wireframes
 # Project Purpose
 The purpose of this project is to deliver a website that showcases the technology we have been learning and to incorporate a form that allows customers specify a brief for a full stack development and an admin back end to reply and edit the quotes.
 The 'CRM' system will be a number of forms that the customer can enter a brief for a full stack development project.
-The system will also have a back end to view ,edit and respond to the briefs recieved.
+The system will also have a back end to view ,edit and respond to the project briefs recieved.
 
-- UX design
+User stories
+i want user to be able to request a quote for a full stack project. 
+I envisage a customer looking for full stack project providers to visit the site and get all the information they need.
+The customer can use the New quote form to complete  a project brief that can be responded to by Full stack.
+
+UX design
+I have used a template that I am fanmiliar with for some pages and designed the forms with the aim of using different input types to collect the information.
+
+
 - Suitability for purpose
+
+
+
 - Navigation
+
+the navigation is based on a top bootstrap menu with some further menues in the quote pages.
+ I plan to use pills in the page that displays the quotes
+
 - Ease of Use
+- 
 - Information Architecture
 I have used a number of way to pass information into my website and application.
-# Setting py variables
+# Setting python variables
 I have created a number of variable and pass them in the render template call to make it easy to customise my website.
 see the nav.html where i customise the hero image and text with variables called in jinja.
 #Static text
 I created a static json text file and this drives the tech portfolio pages
 #Mongo Database
-The Quote application is stored in a Mongo database
-
+The Quote and contact page information is stored in a Mongo database
+The data schema is located in  
 
 
 

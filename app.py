@@ -1,6 +1,5 @@
 #! /usr/local/bin/python
-
-# Flask locally needs this above line to run as well as mods to the port number
+# Flask locally needs this above line to run on my local vscode server
 
 import os
 from flask import Flask, render_template, redirect, request, url_for
@@ -8,38 +7,39 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
 app = Flask(__name__)
+# Port and db name setin my local  env variables
 app.config["MONGO_DBNAME"] = 'crm'
 app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'mongodb://localhost')
 mongo = PyMongo(app)
 
 # This route loads index.html and sends in
-# text for display on the hero image and about us.
+# content for display on the hero image and about us.
+
+
 @app.route('/')
 def index():
-    return render_template("index.html", page_title="Heh Welcome Y'all", 
-    page_heading="We are team of awesome designers making websites with Full Stack stuff", 
-    cta="Get Started", list_stuff_wedo=["Bootstrap", "Django", "Flask", "Python", "Javascript"])
+    return render_template("index.html", page_title="Heh Welcome Y'all", page_heading="We are team of awesome designers making websites with Full Stack stuff", cta="Get Started", list_stuff_wedo=["Bootstrap", "Django", "Flask", "Python", "Javascript"])  # noqa
+
 
 # this function get the quotes and list them on the screeen
-# the page passes back the status variable so  can list and sort
+# the page passes back the status variable
 @app.route('/get_quotes')
 @app.route('/get_quotes/<status>')
 def get_quotes(status='ALL'):
     # the status variable is passed in and I create the list based on status
-    print(status)
-    # This line finds all documents in qoutes collections and put them in the quotes variable
-    # variable quotes passed back to quote.html file and it lists all quotes
-    return render_template("getquotes.html", status=status, statuses=mongo.db.status.find(), quotes=mongo.db.quote.find())
+    # This finds all documents in qoutes collections and put them in quotes
+    # variable and passed back to quote.html file and it lists all quotes
+    return render_template("getquotes.html", status=status, statuses=mongo.db.status.find(), quotes=mongo.db.quote.find())  # noqa
 
 
-# This function displays the edit page and populates it with the document selected in quote.html
-@app.route('/edit_quote/')
-@app.route('/edit_quote/<quote_id>')
+# This function displays the edit page with the input in quote.html
+@app.route('/edit_quote/', methods=['POST'])
+@app.route('/edit_quote/<quote_id>', methods=['POST'])
 def edit_quote(quote_id):
     # Find the quote based on the unique quote_id
     the_quote = mongo.db.quote.find_one({'_id': ObjectId(quote_id)})
     all_status = mongo.db.status.find({})
-    return render_template('editquote.html', quote=the_quote, statuses=all_status)
+    return render_template('editquote.html', quote=the_quote, statuses=all_status)  # noqa
 
 
 @app.route('/add_quote')
@@ -69,14 +69,24 @@ def insert_quote():
     # I want to make sure its always in upper case
     # I tried using |upper in jinja but it was not updating on the page
 
-    quotename = request.form.get('name')
+    quotename = request.form.get('quote_name')
     quotenametitle = quotename.title()
     quote_doc = {"quoteId": newqid,
                  'name': quotenametitle,
-                 'email': request.form.get('email'),
-                 'phone': request.form.get('phone'),
-                 "brief": request.form.get("message"),
-                 "quoteStatus": "CONTACT-PAGE"
+                 "email": request.form.get("quote_email"),
+                 "phone": request.form.get("quote_phone"),
+                 "rankQuality": request.form.get("quote_rankquality"),
+                 "rankTime": request.form.get("quote_ranktime"),
+                 "rankCost": request.form.get("quote_rankcost"),
+                 "levelQuality": request.form.get("quote_expectedquality"),
+                 "expectedDate": request.form.get("quote_expecteddate"),
+                 "liveDate": request.form.get("quote_livedate"),
+                 "budget": request.form.get("quote_budget "),
+                 "brief": request.form.get("quote_brief"),
+                 "typeDev": request.form.get("quote_typedev"),
+                 "tech": request.form.get("quote_tech"),
+                 "quoteGdpr": request.form.get("quotegdpr"),
+                 "quoteStatus": "NEW"
                  }
     mongo.db.quote.insert_one(quote_doc)
     return render_template('quotesuccess.html', quote=newqid)
@@ -84,11 +94,6 @@ def insert_quote():
 
 @app.route('/update_quote/<quote_id>', methods=['POST'])
 def update_quote(quote_id):
-    # qId = mongo.db.quote.find({)
-    # print(qId)
-    # This function is losing the existing data so i must figure out how to change just the things we need
-    # need to use updae $set and specify excactly tyhe ones i updayinfgupdating
-    # all need to maintin same quoteId
     mongo.db.quote.update(
         {'_id': ObjectId(quote_id)},
         {
@@ -119,9 +124,9 @@ def update_quote(quote_id):
 
 @app.route('/delete_quote/<quote_id>', methods=['POST'])
 def delete_quote(quote_id):
-    return 'Hello World ...delete quote'
-    # mongo.db.quote.remove({'_id': ObjectId(quote_id)})
-    # return redirect(url_for('get_quote'))
+    # add in a are you sure break
+    mongo.db.quote.remove({'_id': ObjectId(quote_id)})
+    return redirect(url_for('get_quotes'))
 
 
 # Status decorators and functions
@@ -134,7 +139,7 @@ def get_status():
     # return 'Hello World ...status '
 
 
-@app.route('/delete_status/<status_id>', methods=['POST'])
+@app.route('/delete_status/<status_id>')
 def delete_status(status_id):
     # Deleting based on the document selected
     mongo.db.status.remove({'_id': ObjectId(status_id)})
@@ -179,19 +184,7 @@ def add_status():
     return render_template('addstatus.html')
 
 
-# this route was used to test and setup the connection
-@app.route('/list_quotes')
-def get_listquotes():
-    # This connects to the db  quotes above to the quote collection and list all quotes
-    return render_template("quoteslist.html", quotes=mongo.db.quote.find())
-
 # decorators for content pages
-
-
-@app.route('/hero', methods=["GET", "POST"])
-def hero():
-    return render_template("index.html", page_title="Heh Welcome Y'all", page_heading="We are team of awesome designers making websites with Full Stack stuff", cta="Get Started", list_stuff_wedo=["Bootstrap,", "Django,", "Flask,", "Python,", "Javascript."])
-
 
 # The new quote  page take a post and flashes to a screen a thank you message.
 # Plan to add this json post data to mongo DB file.
@@ -201,18 +194,21 @@ def contact():
     if request.method == "POST":
         print(request.form["name"])
         flash("Thats cool {},we got your note!" .format(request.form["name"]))
-    return render_template("contact.html", heroimage="static/img/hero-contact.jpg", page_title="Touch base with us", page_heading="Book a coffee chat withn us, send a message or request a quote", cta="Let's do this")
+    return render_template("contact.html", heroimage="static/img/hero-contact.jpg", page_title="Touch base with us", page_heading="Book a coffee chat withn us, send a message or request a quote", cta="Let's do this")  # noqa
 
-# Created a seperate page for the url_for('magento').
-#
+# Created a seperate page for the url_for tech pages.
+
+
 @app.route('/tech')
 def tech():
     data = []
     with open("data/static.json", "r") as json_data:
         data = json.load(json_data)
-    return render_template("magento.html", page_title="Magento data via API's", page_heading="Find out about our Magent integration options", cta="Run the APi now", staticMage=data)
+    return render_template("magento.html", page_title="Magento data via API's", page_heading="Find out about our Magent integration options", cta="Run the APi now", staticMage=data)  # noqa
 
-# this decorator is for pages called under magento
+# this decorator is for pages called under tech
+
+
 @app.route('/tech/<member_name>', methods=["GET", "POST"])
 def about_member(member_name):
     member = {}
@@ -227,9 +223,8 @@ def about_member(member_name):
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
-            # to run in heroku uncomment this line and comment the port=5000 line
             port=int(os.environ.get('PORT')),
             # PORT variable now set in bash so no need for this
             # port=5000,
-            # Dont forget to change this to false before deployment or make it a env variable
+            # Dont forget to change before deployment
             debug=True)
