@@ -1,6 +1,7 @@
 #! /usr/local/bin/python
 # Flask locally needs this above line to run on my local vscode server
 
+import json
 import os
 from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
@@ -202,9 +203,9 @@ def contact():
 @app.route('/tech')
 def tech():
     data = []
-    with open("data/static.json", "r") as json_data:
+    with open("./data/static.json", "r") as json_data:
         data = json.load(json_data)
-    return render_template("magento.html", page_title="Magento data via API's", page_heading="Find out about our Magent integration options", cta="Run the APi now", staticMage=data)  # noqa
+    return render_template("portfolio.html", page_title="We specalise in Full Stack Dev", page_heading="Find out about our Dev integration options", cta="Run the APi now", staticMage=data)  # noqa
 
 # this decorator is for pages called under tech
 

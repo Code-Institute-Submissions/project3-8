@@ -1,6 +1,5 @@
 // this function is taken from the interactive section of the course 
-
-console.log("in send quote")
+This is not turned on yet as i am testing a lot and dont eant too many emails.
 
 // function sendquote(contactForm) {
 //     emailjs.send(

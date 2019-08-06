@@ -1,28 +1,14 @@
-{% extends 'base.html' %}
-{% block content %}
-<main id="main">
-    {% include "hero.html" %}
-
-
     <!--==========================
           Portfolio Section
         ============================-->
     <section id="portfolio">
         <div class="container wow fadeInUp">
             <div class="section-header">
-
-                <h2>{{ page_title }}</h2>
-
-                <p>HTML provides the basic structure of sites, which is enhanced and modified by other technologies like
-                    CSS and
-                    JavaScript. CSS is used to control presentation, formatting, and layout. JavaScript is used to
-                    control the behavior
-                    of different elements.</p>
                 <h3 class="section-title">Portfolio</h3>
                 <p class="section-description">This is the Tech we work with</p>
             </div>
-            <!-- Filter declarations -->
             <div class="row">
+
                 <div class="col-lg-12">
                     <ul id="portfolio-flters">
                         <li data-filter=".filter-app, .filter-card, .filter-logo, .filter-web" class="filter-active">All
@@ -34,59 +20,6 @@
                     </ul>
                 </div>
             </div>
-            <!-- Show json data in filter classes -->
-
-            <div class="row" id="portfolio-wrapper">
-                {% for member in staticMage %}
-                {% if loop.index % 2 != 0 %}
-
-                <div class="col-lg-3 col-md-6 portfolio-item {{member.datafilter}}">
-                    <a href="">
-                        <img src="{{ url_for('static', filename='member.image_source')}}" alt="">
-                        <div class="details">
-                            <h3><a href="/tech/{{ member.url }}">{{ loop.index }}. {{ member.name }}</a></h3>
-                            <!-- <h4>Front End 1</h4> -->
-                            <span>another json value</span>
-                            <h3><a href="/tech/{{ member.url }}">{{ loop.index }}. {{ member.name }}</a></h3>
-                            <p>{{ member.description }}</p>
-                            <p>{{member.datafilter}}</p>
-                        </div>
-                        <div class="col-md-5">
-                            <img class="featurette-image img-responsive" src="{{ member.image_source }}"
-                                alt="Picture of {{ member.name }}">
-                        </div>
-                </div>
-                {% else %}
-                <div class="row ">
-                    <div class="col-md-5">
-                        <img class="" src="{{ member.image_source }}" alt="Picture of {{ member.name }}">
-                    </div>
-                    <div class="col-md-7">
-                        <h3><a href="/tech/{{ member.url }}">{{ loop.index }}. {{ member.name }}</a></h3>
-                        <p>{{ member.description }}</p>
-                    </div>
-                </div>
-                {% endif %}
-                {% if loop.index != 13 %}
-                {% endif %}
-                {% endfor %}
-                <!-- Front End portfolio -->
-
-
-                <!-- <a href="">
-                    <img src="{{ url_for('static', filename='img/portfolio/app1.jpg')}}" alt="">
-                    <div class="details">
-                        <h4>Front End 1</h4>
-                        <span>Bootstrap</span>
-                    </div>
-                </a>
-            </div> -->
-            </div>
-
-
-
-
-
 
             <div class="row" id="portfolio-wrapper">
                 <!-- Front End portfolio -->
@@ -225,47 +158,3 @@
 
         </div>
     </section><!-- #portfolio -->
-
-
-</main>
-{% include "footer.html" %}
-
-
-
-
-{% endblock %}
-
-
-<h2>{{ page_title }}</h2>
-
-<p>HTML provides the basic structure of sites, which is enhanced and modified by other technologies like CSS and
-    JavaScript. CSS is used to control presentation, formatting, and layout. JavaScript is used to control the behavior
-    of different elements.</p>
-
-{% for member in staticMage %}
-{% if loop.index % 2 != 0 %}
-<div class="row ">
-    <div class="col-md-7">
-        <h3><a href="/tech/{{ member.url }}">{{ loop.index }}. {{ member.name }}</a></h3>
-        <p>{{ member.description }}</p>
-
-        <p>{{member.datafilter}}</p>
-    </div>
-    <div class="col-md-5">
-        <img class="featurette-image img-responsive" src="{{ member.image_source }}" alt="Picture of {{ member.name }}">
-    </div>
-</div>
-{% else %}
-<div class="row ">
-    <div class="col-md-5">
-        <img class="" src="{{ member.image_source }}" alt="Picture of {{ member.name }}">
-    </div>
-    <div class="col-md-7">
-        <h3><a href="/tech/{{ member.url }}">{{ loop.index }}. {{ member.name }}</a></h3>
-        <p>{{ member.description }}</p>
-    </div>
-</div>
-{% endif %}
-{% if loop.index != 13 %}
-{% endif %}
-{% endfor %}
