@@ -3,11 +3,12 @@
 
 import json
 import os
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
 app = Flask(__name__)
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 # Port and db name setin my local  env variables
 app.config["MONGO_DBNAME"] = 'crm'
 app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'mongodb://localhost')
@@ -33,9 +34,15 @@ def get_quotes(status='ALL'):
     return render_template("getquotes.html", status=status, statuses=mongo.db.status.find(), quotes=mongo.db.quote.find())  # noqa
 
 
+# this function views a quotes 
+@app.route('/view_quote')
+@app.route('/view_quotes/<quoteid>')
+def view_quote():
+    return render_template("viewquote.html",  statuses=mongo.db.status.find(), quotes=mongo.db.quote.find())  # noqa
+
 # This function displays the edit page with the input in quote.html
-@app.route('/edit_quote/', methods=['POST'])
-@app.route('/edit_quote/<quote_id>', methods=['POST'])
+@app.route('/edit_quote/')
+@app.route('/edit_quote/<quote_id>')
 def edit_quote(quote_id):
     # Find the quote based on the unique quote_id
     the_quote = mongo.db.quote.find_one({'_id': ObjectId(quote_id)})
@@ -66,7 +73,6 @@ def insert_quote():
         except:
             print("Error accessing the database")
 
-    # return redirect(url_for('get_quote'))
     # I want to make sure its always in upper case
     # I tried using |upper in jinja but it was not updating on the page
 
@@ -89,11 +95,20 @@ def insert_quote():
                  "quoteGdpr": request.form.get("quotegdpr"),
                  "quoteStatus": "NEW"
                  }
+
     mongo.db.quote.insert_one(quote_doc)
+    # Tried to use flash but its not what i want, will fix this post on reload error in version 2
+    # flash('You successfully added a project quote #')
+    # return redirect(url_for('quotesuccess', quote=newqid))
     return render_template('quotesuccess.html', quote=newqid)
 
 
-@app.route('/update_quote/<quote_id>', methods=['POST'])
+@app.route('/quotesuccess', methods=['GET'])
+def quotesuccess(quote):
+    return render_template('quotesuccess.html', quote)
+
+
+@app.route('/update_quote/<quote_id>', methods=["GET", "POST"])
 def update_quote(quote_id):
     mongo.db.quote.update(
         {'_id': ObjectId(quote_id)},
@@ -123,7 +138,7 @@ def update_quote(quote_id):
     return redirect(url_for('get_quotes'))
 
 
-@app.route('/delete_quote/<quote_id>', methods=['POST'])
+@app.route('/delete_quote/<quote_id>')
 def delete_quote(quote_id):
     # add in a are you sure break
     mongo.db.quote.remove({'_id': ObjectId(quote_id)})
@@ -205,11 +220,9 @@ def tech():
     data = []
     with open("./data/static.json", "r") as json_data:
         data = json.load(json_data)
-    return render_template("portfolio.html", page_title="We specalise in Full Stack Dev", page_heading="Find out about our Dev integration options", cta="Run the APi now", staticMage=data)  # noqa
+    return render_template("portfolio.html", page_title="We specalise in Full Stack Development", page_heading=" Our Technology Portfolio", cta="Run the APi now", staticMage=data)  # noqa
 
 # this decorator is for pages called under tech
-
-
 @app.route('/tech/<member_name>', methods=["GET", "POST"])
 def about_member(member_name):
     member = {}

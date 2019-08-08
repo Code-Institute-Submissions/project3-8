@@ -1,0 +1,52 @@
+[{
+        "name": "1 app",
+        "tech": "1 html",
+        "datafilter": "filter-app",
+        "description": "HTML 5 is at the core of every web page, regardless the complexity of a site or number of technologies involved. It's an essential skill for any web professional. It's the starting point for anyone learning how to create content for the web. ",
+        "image_source": "static/img/logo-html5.png",
+        "url": "html"
+
+    },
+    {
+        "name": "2 web",
+        "tech": "1 html",
+        "datafilter": "filter-web",
+        "description": "CSS stands for Cascading Style Sheets. This programming language dictates how the HTML elements of a website should actually appear on the frontend of the page.",
+        "image_source": "static/img/logo-CSS3.png",
+        "url": "css"
+    },
+    {
+        "name": "3 web",
+        "tech": "1 html",
+        "datafilter": "filter-web",
+        "description": "JavaScript is a more complicated language than HTML or CSS, and it wasn't released in beta form until 1995. Nowadays, JavaScript is supported by all modern web browsers and is used on almost every site on the web for more powerful and complex functionality.",
+        "image_source": "static/img/logo-javascript.png",
+        "url": "javascript"
+    },
+    {
+        "name": "4 2 card ",
+        "datafilter": "filter-card",
+        "description": "HTML 5 is at the core of every web page, regardless the complexity of a site or number of technologies involved. It's an essential skill for any web professional. It's the starting point for anyone learning how to create content for the web. ",
+        "image_source": "static/img/logo-html5.png",
+        "url": "html"
+
+    },
+    {
+        "name": "5 3 logo ",
+        "tech": "1 html",
+        "datafilter": "filter-logo",
+        "description": "HTML 5 is at the core of every web page, regardless the complexity of a site or number of technologies involved. It's an essential skill for any web professional. It's the starting point for anyone learning how to create content for the web. ",
+        "image_source": "static/img/logo-html5.png",
+        "url": "html"
+
+    },
+    {
+        "name": "6 4 web ",
+        "tech": "1 html",
+        "datafilter": "filter-web",
+        "description": "JavaScript is a more complicated language than HTML or CSS, and it wasn't released in beta form until 1995. Nowadays, JavaScript is supported by all modern web browsers and is used on almost every site on the web for more powerful and complex functionality.",
+        "image_source": "static/img/logo-javascript.png",
+        "url": "javascript"
+    }
+
+]

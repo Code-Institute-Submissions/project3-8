@@ -1,271 +1,49 @@
 {% extends 'base.html' %}
 {% block content %}
 <main id="main">
-    {% include "hero.html" %}
-
-
+    {% include "hero-backimage.html" %}
     <!--==========================
           Portfolio Section
         ============================-->
     <section id="portfolio">
         <div class="container wow fadeInUp">
             <div class="section-header">
+                <h2 class="section-title">{{page_heading}}</h2>
+                <h3 class="section-description">{{ page_title }}, This is the Tech we work with: </h3>
 
-                <h2>{{ page_title }}</h2>
-
-                <p>HTML provides the basic structure of sites, which is enhanced and modified by other technologies like
-                    CSS and
-                    JavaScript. CSS is used to control presentation, formatting, and layout. JavaScript is used to
-                    control the behavior
-                    of different elements.</p>
-                <h3 class="section-title">Portfolio</h3>
-                <p class="section-description">This is the Tech we work with</p>
             </div>
             <!-- Filter declarations -->
             <div class="row">
                 <div class="col-lg-12">
                     <ul id="portfolio-flters">
-                        <li data-filter=".filter-app, .filter-card, .filter-logo, .filter-web" class="filter-active">All
+                        <li data-filter=".filter-front, .filter-back, .filter-data, .filter-api, .filter-deploy "
+                            class="filter-active">All
                         </li>
-                        <li data-filter=".filter-app">Front End</li>
-                        <li data-filter=".filter-card">Back End</li>
-                        <li data-filter=".filter-logo">Ecommerce</li>
-                        <li data-filter=".filter-web">SEO & SEM</li>
+                        <li data-filter=".filter-front">Front End</li>
+                        <li data-filter=".filter-back">Back End</li>
+                        <li data-filter=".filter-data">Databases</li>
+                        <li data-filter=".filter-api">API & SERVICES</li>
+                        <li data-filter=".filter-deploy">DEPLOYMENT</li>
                     </ul>
                 </div>
             </div>
             <!-- Show json data in filter classes -->
-
             <div class="row" id="portfolio-wrapper">
                 {% for member in staticMage %}
-                {% if loop.index % 2 != 0 %}
-
+                <!-- start of  portfolio -->
                 <div class="col-lg-3 col-md-6 portfolio-item {{member.datafilter}}">
-                    <a href="">
-                        <img src="{{ url_for('static', filename='member.image_source')}}" alt="">
+                    <a href="/tech/{{ member.url }}">
+                        <img src="{{member.image}}" alt="">
                         <div class="details">
-                            <h3><a href="/tech/{{ member.url }}">{{ loop.index }}. {{ member.name }}</a></h3>
-                            <!-- <h4>Front End 1</h4> -->
-                            <span>another json value</span>
-                            <h3><a href="/tech/{{ member.url }}">{{ loop.index }}. {{ member.name }}</a></h3>
-                            <p>{{ member.description }}</p>
-                            <p>{{member.datafilter}}</p>
+                            <h4>{{member.name}}</h4>
+                            <span>{{member.tech}}</span>
                         </div>
-                        <div class="col-md-5">
-                            <img class="featurette-image img-responsive" src="{{ member.image_source }}"
-                                alt="Picture of {{ member.name }}">
-                        </div>
+                    </a>
                 </div>
-                {% else %}
-                <div class="row ">
-                    <div class="col-md-5">
-                        <img class="" src="{{ member.image_source }}" alt="Picture of {{ member.name }}">
-                    </div>
-                    <div class="col-md-7">
-                        <h3><a href="/tech/{{ member.url }}">{{ loop.index }}. {{ member.name }}</a></h3>
-                        <p>{{ member.description }}</p>
-                    </div>
-                </div>
-                {% endif %}
-                {% if loop.index != 13 %}
-                {% endif %}
                 {% endfor %}
-                <!-- Front End portfolio -->
-
-
-                <!-- <a href="">
-                    <img src="{{ url_for('static', filename='img/portfolio/app1.jpg')}}" alt="">
-                    <div class="details">
-                        <h4>Front End 1</h4>
-                        <span>Bootstrap</span>
-                    </div>
-                </a>
-            </div> -->
             </div>
-
-
-
-
-
-
-            <div class="row" id="portfolio-wrapper">
-                <!-- Front End portfolio -->
-                <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-                    <a href="">
-                        <img src="{{ url_for('static', filename='img/portfolio/app1.jpg')}}" alt="">
-                        <div class="details">
-                            <h4>Front End 1</h4>
-                            <span>Bootstrap</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-                    <a href="">
-                        <img src="{{ url_for('static', filename='img/portfolio/app1.jpg')}}" alt="">
-                        <div class="details">
-                            <h4>Front End 2</h4>
-                            <span>HTML 5</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-                    <a href="">
-                        <img src="{{ url_for('static', filename='img/portfolio/app1.jpg')}}" alt="">
-                        <div class="details">
-                            <h4>Front End 3</h4>
-                            <span>CSS</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-                    <a href="">
-                        <img src="{{ url_for('static', filename='img/portfolio/app2.jpg')}}" alt="">
-                        <div class="details">
-                            <h4>Front End 4</h4>
-                            <span>Flask</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-                    <a href="">
-                        <img src="{{ url_for('static', filename='img/portfolio/app3.jpg')}}" alt="">
-                        <div class="details">
-                            <h4>Front End</h4>
-                            <span>Django</span>
-                        </div>
-                    </a>
-                </div>
-                <!-- Back End portfolio -->
-                <div class="col-lg-3 col-md-6 portfolio-item filter-card">
-                    <a href="">
-                        <img src="{{ url_for('static', filename='img/portfolio/card1.jpg')}}" alt="">
-                        <div class="details">
-                            <h4>Card 1</h4>
-                            <span>Alored dono par</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-6 portfolio-item filter-card">
-                    <a href="">
-                        <img src="{{ url_for('static', filename='img/portfolio/card2.jpg')}}" alt="">
-                        <div class="details">
-                            <h4>Card 2</h4>
-                            <span>Alored dono par</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-6 portfolio-item filter-card">
-                    <a href="">
-                        <img src="{{ url_for('static', filename='img/portfolio/card3.jpg')}}" alt="">
-                        <div class="details">
-                            <h4>Card 3</h4>
-                            <span>Alored dono par</span>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- ecommerce portfolio -->
-                <div class="col-lg-3 col-md-6 portfolio-item filter-web">
-                    <a href="">
-                        <img src="{{ url_for('static', filename='img/portfolio/web1.jpg')}}" alt="">
-                        <div class="details">
-                            <h4>Web 1</h4>
-                            <span>Alored dono par</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-6 portfolio-item filter-web">
-                    <a href="">
-                        <img src="{{ url_for('static', filename='img/portfolio/web2.jpg')}}" alt="">
-                        <div class="details">
-                            <h4>Web 2</h4>
-                            <span>Alored dono par</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-6 portfolio-item filter-web">
-                    <a href="">
-                        <img src="{{ url_for('static', filename='img/portfolio/web3.jpg')}}" alt="">
-                        <div class="details">
-                            <h4>Web 3</h4>
-                            <span>Alored dono par</span>
-                        </div>
-                    </a>
-                </div>
-                <!-- SEO & SEM portfolio -->
-                <div class="col-lg-3 col-md-6 portfolio-item filter-logo">
-                    <a href="">
-                        <img src="{{ url_for('static', filename='img/portfolio/logo1.jpg')}}" alt="">
-                        <div class="details">
-                            <h4>Logo 1</h4>
-                            <span>Alored dono par</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-6 portfolio-item filter-logo">
-                    <a href="">
-                        <img src="{{ url_for('static', filename='img/portfolio/logo3.jpg')}}" alt="">
-                        <div class="details">
-                            <h4>Logo 3</h4>
-                            <span>Alored dono par</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-6 portfolio-item filter-logo">
-                    <a href="">
-                        <img src="{{ url_for('static', filename='img/portfolio/logo2.jpg')}}" alt="">
-                        <div class="details">
-                            <h4>Logo 2</h4>
-                            <span>Alored dono par</span>
-                        </div>
-                    </a>
-                </div>
-
-            </div>
-
         </div>
     </section><!-- #portfolio -->
-
-
 </main>
 {% include "footer.html" %}
-
-
-
-
 {% endblock %}
-
-
-<h2>{{ page_title }}</h2>
-
-<p>HTML provides the basic structure of sites, which is enhanced and modified by other technologies like CSS and
-    JavaScript. CSS is used to control presentation, formatting, and layout. JavaScript is used to control the behavior
-    of different elements.</p>
-
-{% for member in staticMage %}
-{% if loop.index % 2 != 0 %}
-<div class="row ">
-    <div class="col-md-7">
-        <h3><a href="/tech/{{ member.url }}">{{ loop.index }}. {{ member.name }}</a></h3>
-        <p>{{ member.description }}</p>
-
-        <p>{{member.datafilter}}</p>
-    </div>
-    <div class="col-md-5">
-        <img class="featurette-image img-responsive" src="{{ member.image_source }}" alt="Picture of {{ member.name }}">
-    </div>
-</div>
-{% else %}
-<div class="row ">
-    <div class="col-md-5">
-        <img class="" src="{{ member.image_source }}" alt="Picture of {{ member.name }}">
-    </div>
-    <div class="col-md-7">
-        <h3><a href="/tech/{{ member.url }}">{{ loop.index }}. {{ member.name }}</a></h3>
-        <p>{{ member.description }}</p>
-    </div>
-</div>
-{% endif %}
-{% if loop.index != 13 %}
-{% endif %}
-{% endfor %}

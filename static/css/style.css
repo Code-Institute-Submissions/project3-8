@@ -1,3 +1,25 @@
+/* Form icons css */
+/* This class is for the icons and text above the inputs */
+.formicon {
+  font-size: 16px;
+  color: #36A0FF;
+  padding: 2px 1px 2px 1px;
+}
+
+.forminfo {
+  font-size: 14px;
+  color: rgb(2, 2, 2);
+  padding: 2px 1px 2px 1px;
+}
+
+.formcontent {
+  font-size: 16px;
+  color: #36A0FF;
+  padding: 2px 1px 2px 1px;
+}
+
+
+
 /*
   css forn the Theme  Regna
 --------------------------------------------------------------*/

@@ -1,47 +1,185 @@
 [{
-        "name": "HTML5",
-        "datafilter": ".filter-app",
-        "description": "HTML 5 is at the core of every web page, regardless the complexity of a site or number of technologies involved. It's an essential skill for any web professional. It's the starting point for anyone learning how to create content for the web. ",
-        "image_source": "static/img/logo-html5.png",
-        "url": "html"
-
+        "name": "Front End",
+        "tech": "HTML_CSS",
+        "datafilter": "filter-front",
+        "description": "HTML (HyperText Markup Language) is the backbone of the Web. Every website you visit is built with HTML. It takes care of all the structure and content. HTML5 is the current iteration of HTML on the Web, although sites built with older versions still run fine in your browser. CSS (Cascading Style Sheets) is what controls the way the HTML looks on the page. CSS sets the colors, fonts, background images, and even the way the page is laid out (you can use CSS to arrange the HTML elements on a page however you want, even if it’s different than the order they’re arranged in the HTML file). CSS3 is the current iteration of CSS on the Web, and adds a ton of features for things like basic interactivity and animations.",
+        "image": "static/img/portfolio/html.png",
+        "url": "HTML_CSS"
     },
     {
-        "name": "CSS",
-        "datafilter": ".filter-web",
-        "description": "CSS stands for Cascading Style Sheets. This programming language dictates how the HTML elements of a website should actually appear on the frontend of the page.",
-        "image_source": "static/img/logo-CSS3.png",
-        "url": "css"
+        "name": "Front End",
+        "tech": "Javascript",
+        "datafilter": "filter-front",
+        "description": "JavaScript is what is called a Client-side Scripting Language. ... Inside a normal Web page you place some JavaScript code (See How Web Pages Work for details on Web pages). When the browser loads the page, the browser has a built-in interpreter that reads the JavaScript code it finds in the page and runs it.",
+        "image": "static/img/portfolio/js.jpeg",
+        "url": "Javascript"
     },
     {
-        "name": "JavaScript",
-        "datafilter": ".filter-web",
-        "description": "JavaScript is a more complicated language than HTML or CSS, and it wasn't released in beta form until 1995. Nowadays, JavaScript is supported by all modern web browsers and is used on almost every site on the web for more powerful and complex functionality.",
-        "image_source": "static/img/logo-javascript.png",
-        "url": "javascript"
+        "name": "Front End",
+        "tech": "Bootstrap",
+        "datafilter": "filter-front",
+        "description": "A Bootstrap theme is a package containing CSS, HTML, and JavaScript code used for styling. Bootstrap themes also feature various UI components and page layouts that can be employed to create websites. You can think of them as website templates created with Bootstrap in mind.",
+        "image": "static/img/portfolio/bootstrap.jpeg",
+        "url": "Bootstrap"
     },
     {
-        "name": "HTML5 2 ",
-        "datafilter": ".filter-card",
-        "description": "HTML 5 is at the core of every web page, regardless the complexity of a site or number of technologies involved. It's an essential skill for any web professional. It's the starting point for anyone learning how to create content for the web. ",
-        "image_source": "static/img/logo-html5.png",
-        "url": "html"
-
+        "name": "Front End",
+        "tech": "React",
+        "datafilter": "filter-front",
+        "description": "As you know React is based upon component design. Everything in React is a component which makes it easy to reuse components frequently. ... This is the beauty ofReact it uses your existing knowledge of HTML & Javascript with some of new and modern concepts like virtual dom & component based design.",
+        "image": "static/img/portfolio/react.png",
+        "url": "React"
     },
     {
-        "name": "HTML5 3 ",
-        "datafilter": ".filter-logo",
-        "description": "HTML 5 is at the core of every web page, regardless the complexity of a site or number of technologies involved. It's an essential skill for any web professional. It's the starting point for anyone learning how to create content for the web. ",
-        "image_source": "static/img/logo-html5.png",
-        "url": "html"
-
+        "name": "Front End",
+        "tech": "Angular",
+        "datafilter": "filter-front",
+        "description": "Angular is a platform and framework for building client applications in HTML and TypeScript. Angular is written in TypeScript. ... Components define views, which are sets of screen elements that Angular can choose among and modify according to your program logic and data.",
+        "image": "static/img/portfolio/angular.png",
+        "url": "Angular"
     },
     {
-        "name": "JavaScript 4 ",
-        "datafilter": ".filter-web",
-        "description": "JavaScript is a more complicated language than HTML or CSS, and it wasn't released in beta form until 1995. Nowadays, JavaScript is supported by all modern web browsers and is used on almost every site on the web for more powerful and complex functionality.",
-        "image_source": "static/img/logo-javascript.png",
-        "url": "javascript"
+        "name": "Back End",
+        "tech": "PHP",
+        "datafilter": "filter-back",
+        "description": "PHP: Hypertext Preprocessor (or simply PHP) is a general-purpose programming language originally designed for web development. It was originally created by Rasmus Lerdorf in 1994; the PHP reference implementation is now produced by The PHP Group. ... Since 2014, work has gone on to create a formal PHPspecification.",
+        "image": "static/img/portfolio/php.png",
+        "url": "PHP"
+    },
+    {
+        "name": "Back End",
+        "tech": "Python",
+        "datafilter": "filter-back",
+        "description": "Python is a general-purpose interpreted, interactive, object-oriented, and high-level programming language. It was created by Guido van Rossum during 1985- 1990. Like Perl, Python source code is also available under the GNU General Public License (GPL).",
+        "image": "static/img/portfolio/python.jpeg",
+        "url": "Python"
+    },
+    {
+        "name": "Back End",
+        "tech": "Django",
+        "datafilter": "filter-back",
+        "description": "Django is a high-level Python web framework that enables rapid development of secure and maintainable websites.Django helps developers avoid many common security mistakes by providing a framework that has been engineered to do the right things to protect the website automatically.",
+        "image": "static/img/portfolio/django.png",
+        "url": "Django"
+    },
+    {
+        "name": "Back End",
+        "tech": "Node.js",
+        "datafilter": "filter-back",
+        "description": "Node.js is a platform built on Chrome's JavaScript runtime for easily building fast and scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.",
+        "image": "static/img/portfolio/node.jpeg",
+        "url": "Node.js"
+    },
+    {
+        "name": "Databases",
+        "tech": "MySQL",
+        "datafilter": "filter-data",
+        "description": "MySQL is a freely available open source Relational Database Management System (RDBMS) that uses Structured Query Language (SQL). SQL is the most popular language for adding, accessing and managing content in a database. It is most noted for its quick processing, proven reliability, ease and flexibility of use.",
+        "image": "static/img/portfolio/mysql.jpeg",
+        "url": "MySQL"
+    },
+    {
+        "name": "Databases",
+        "tech": "Mongo",
+        "datafilter": "filter-data",
+        "description": "MongoDB is an open source database management system (DBMS) that uses a document-oriented database model which supports various forms of data. ... Instead of using tables and rows as in relational databases, the MongoDB architecture is made up of collections and documents.",
+        "image": "static/img/portfolio/mongo.jpeg",
+        "url": "Mongo"
+    },
+    {
+        "name": "Databases",
+        "tech": "NoSQL",
+        "datafilter": "filter-data",
+        "description": "NoSQL is an approach to databases that represents a shift away from traditional relational database management systems (RDBMS). ... Relational databases rely on tables, columns, rows, or schemas to organize and retrieve data. In contrast, NoSQLdatabases do not rely on these structures and use more flexible data models.",
+        "image": "static/img/portfolio/nosql.png",
+        "url": "NoSQL"
+    },
+    {
+        "name": "Databases",
+        "tech": "Postgres",
+        "datafilter": "filter-data",
+        "description": "PostgreSQL, also known as Postgres, is a free and open-source relational database management system (RDBMS) emphasizing extensibility and technical standards compliance. It is designed to handle a range of workloads, from single machines to data warehouses or Web services with many concurrent users. It is the default database for macOS Server,[11][12][13] and is also available for Linux, FreeBSD, OpenBSD, and Windows.",
+        "image": "static/img/portfolio/postgres.png",
+        "url": "Postgres"
+    },
+    {
+        "name": "Databases",
+        "tech": "Redis",
+        "datafilter": "filter-data",
+        "description": "Redis is an open source, in-memory Data Structure Store, used as a database, a caching layer or a message broker. ... Redis data structures resolve very complex programming problems with simple commands executed within the data store, reducing coding effort, increasing throughput, and reducing latency.",
+        "image": "static/img/portfolio/redis.png",
+        "url": "Redis"
+    },
+    {
+        "name": "API's & Services",
+        "tech": "REST_API",
+        "datafilter": "filter-api",
+        "description": "The Full Stack REST API allows you to interface with Optimizely programmatically to build customized integrations and workflows. For example, you can create feature flags from an automated script, build custom dashboards of feature test results, or connect your experiments to other project management tools.",
+        "image": "static/img/portfolio/rest.png",
+        "url": "REST_API"
+    },
+    {
+        "name": "API's & Services",
+        "tech": "Webhook",
+        "datafilter": "filter-api",
+        "description": "A webhook is a user-defined HTTP callback to a URL that executes when a system condition is met. The call alerts the second system via a POST or GET request and often passes data as well.",
+        "image": "static/img/portfolio/webhook.png",
+        "url": "Webhook"
+    },
+    {
+        "name": "API's & Services",
+        "tech": "JSON",
+        "datafilter": "filter-api",
+        "description": "JSON, or JavaScript Object Notation, is a minimal, readable format for structuring data. It is used primarily to transmit data between a server and web application, as an alternative to XML. Squarespace uses JSON to store and organize site content created with the CMS.",
+        "image": "static/img/portfolio/redis.png",
+        "url": "JSON"
+    },
+    {
+        "name": "Deployment & Control",
+        "tech": "GITHUB",
+        "datafilter": "filter-deploy",
+        "description": "GitHub is a website for hosting projects that use git.Git is a type of version control system (VCS) that makes it easier to track changes to files. For example, when you edit a file, git can help you determine exactly what changed, who changed it, and why.",
+        "image": "static/img/portfolio/github.png",
+        "url": "GITHUB"
+    },
+    {
+        "name": "Deployment & Control",
+        "tech": "Heroku",
+        "datafilter": "filter-deploy",
+        "description": "Heroku, on the other hand, is a Platform as a Service that sits on top of AWS to provide an experience that is specifically designed to make developers lives easier. For example, in order to keep an application running at scale on Heroku, it only takes knowledge of a few commands on the Heroku CLI and Dashboard.",
+        "image": "static/img/portfolio/heroku.png",
+        "url": "Heroku"
+    },
+    {
+        "name": "Deployment & Control",
+        "tech": "Bare_Metal",
+        "datafilter": "filter-deploy",
+        "description": "The term bare metal refers to purchasing the actual hardware and hooking it up to the Internet either through a business-class internet service provider (ISP) or co-locating the server with other servers. A business-class ISP is necessary because most residential Internet service agreements explicitly prohibit running web servers on their networks. You may be able to get away with low traffic volume but if your site serves a lot of traffic it will alert an ISP's filters.",
+        "image": "static/img/portfolio/bare.png",
+        "url": "Bare_Metal"
+    },
+    {
+        "name": "Deployment & Control",
+        "tech": "Infrastructure-as-a-service",
+        "datafilter": "filter-deploy",
+        "description": "Infrastructure-as-a-service (IaaS) overlaps with virtualized servers because the resources are often presented in the same way. The difference between virtualized servers and IaaS is the granularity of the billing cycle. IaaS generally encourages a finer granularity based on minutes or hours of server usage instead of on monthly billing cycles.",
+        "image": "static/img/portfolio/iaas.jpeg",
+        "url": "Infrastructure-as-a-service"
+    },
+    {
+        "name": "Deployment & Control",
+        "tech": "Platform-as-a-service",
+        "datafilter": "filter-deploy",
+        "description": "A platform-as-a-service (PaaS) provides infrastructure and a software layer on which a web application is deployed. Running your web application from a PaaS removes the need to know as much about the underlying servers, operating system, web server, and often the WSGI server.",
+        "image": "static/img/portfolio/paas.png",
+        "url": "Platform-as-a-service"
+    },
+    {
+        "name": "Deployment & Control",
+        "tech": "Virtualized_servers",
+        "datafilter": "filter-deploy",
+        "description": "Virtual private servers (VPSs) are slices of hardware on top of a larger bare metal server. Virtualization software such as Xen and VMWare allow providers such as Linode andprgmr (as well as a many others) to provide fractions of a full server that appear as their own instances. For example, a server with an 8-core Xeon processor and 16 gigabytes of memory can be sliced into 8 pieces with the equivalent of 1-core and 2 gigabytes of memory.",
+        "image": "static/img/portfolio/vps.png",
+        "url": "Virtualized_servers"
     }
-
 ]

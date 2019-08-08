@@ -29,6 +29,7 @@
         <!-- this is where I can later add a sort by status -->
         {% if (quote.quoteStatus ==status) or (status =="ALL") %}
         <div class="col-sm-12">
+            <br>
             Quote#: {{quote.quoteId}} for <strong>{{quote.name}}</strong> is <strong>{{quote.quoteStatus}}</strong>
             <br>
             <strong>Project Brief: </strong> {{quote.brief}}
@@ -41,12 +42,13 @@
             </div>
             <div class="row">
                 <div class="col-6 col-sm-6">
-                    <a href="{{url_for('delete_quote', quote_id=quote._id)}}" class="btn btn-danger btn-sm"
-                        role="button">
-                        Delete Quote </a>
-                    <a href="{{url_for('edit_quote', quote_id=quote._id)}}" method="POST" class="btn btn-primary btn-sm"
-                        role="button">
-                        Edit Quote </a>
+                    <a href="{{url_for('delete_quote', quote_id=quote._id)}}" class="icon-block">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                        <span>Delete</span> </a>
+                    <a href="{{url_for('edit_quote', quote_id=quote._id)}}" class="icon-block">
+                        <i class="fa fa-pencil-square-o"></i>
+                        <span>Edit</span>
+                    </a>
                 </div>
                 <div class="col-6 col-sm-6">
                     Expected Date: {{quote.expectedDate}}

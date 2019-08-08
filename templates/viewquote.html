@@ -1,18 +1,92 @@
 {% extends 'base.html'%}
 {% include "hero-backimage.html" %}
-
 {% block content %}
-<!-- this is required for the radio buttons -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<!--==========================
+          Get Quotes Section
+ ============================-->
 
+
+
+<div class="container wow fadeIn">
+    <div class="row">
+        <div class="section-header">
+            <h3 class="section-title">Please enter a Quote #</h3>
+            <form method="POST" name="sentMessage" id="contactForm"
+                action="{{url_for('view_quote', quote_id=quote._id))}}">
+                <!-- This is the quote ID -->
+                <div class=" form-group">
+                    <span><i class="fa fa-hashtag formicon" alt="quoteid">
+                            Please enter your Quote number so we can help you.</i>
+                    </span>
+                    <input id="quoteid" name="quoteid" type="number" class="form-control" placeholder="Your Quote ID">
+                </div>
+                <button type=" submit" name="action" class="btn btn-info">Find My Quote
+                </button>
+
+                <form action="{{ url_for('update_quote', quote_id=quote._id) }}" method="POST">
+
+
+                    <form action=""></form>
+                    <!-- this is the menu of the available Statuses -->
+                    {% if status %}
+                    {% if statuses %}
+                    <ul class="nav nav-pills nav-fill">
+                        {% for status in statuses %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/get_quotes/{{status.quote_status}}"> {{status.quote_status}}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    {% endif %}
+        </div>
+    </div>
+
+    <div class="row">
+        {% for quote in quotes %}
+        <!-- this is where I can later add a sort by status -->
+        {% if (quote.quoteStatus ==status) or (status =="ALL") %}
+        <div class="col-sm-12">
+            <br>
+            Quote#: {{quote.quoteId}} for <strong>{{quote.name}}</strong> is <strong>{{quote.quoteStatus}}</strong>
+            <br>
+            <strong>Project Brief: </strong> {{quote.brief}}
+            <div class="row">
+                <div class="col-6 col-sm-6">
+                </div>
+                <div class="col-6 col-sm-6">
+                    Live Date: {{quote.liveDate}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 col-sm-6">
+                    <a href="{{url_for('delete_quote', quote_id=quote._id)}}" class="icon-block">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                        <span>Delete</span> </a>
+                    <a href="{{url_for('edit_quote', quote_id=quote._id)}}" class="icon-block">
+                        <i class="fa fa-pencil-square-o"></i>
+                        <span>Edit</span>
+                    </a>
+                </div>
+                <div class="col-6 col-sm-6">
+                    Expected Date: {{quote.expectedDate}}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <br>
+        {% endfor %}
+    </div>
+</div>
 <!--==========================
                   Add Quote Section
   ============================-->
 <section id="contact">
     <div class="container wow ">
         <div class="section-header">
-            <h3 class="section-title">Create a New Quote</h3>
-            <p class="section-description"> Ready to discuss your next project, complete our form to get a quote for
+            <h3 class="section-title">Search for a Quote</h3>
+            <p class="section-description"> Eneter in your Quote number to check its status to discuss your next
+                project, complete our form to get a quote for
                 your project. </p>
         </div>
         <div class="row justify-content-center formcontent">
@@ -250,27 +324,6 @@
     </div>
 
 
-    {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-    <ul class=flashes>
-        {% for category, message in messages %}
-        <li class="{{ category }}">{{ message }}{{newqid}} </li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-    {% endwith %}
 
 
-</section><!-- #Edit Quote -->
-
-<!-- this is required for the radio buttons -->
-<script>
-    $(function () {
-        $(" input[name=radgroup]:checked").click(function () {
-            var state = $(this).val();
-            // do action depending on state
-        });
-    });
-</script>
-
-{% endblock %}
+    {% endblock %}

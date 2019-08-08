@@ -1,20 +1,31 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+{% block content %}
+<main id="main">
+    {% include "hero-backimage.html" %}
+    <!--==========================
+          Portfolio member Section
+        ============================-->
+    <section id="portfolio">
+        <div class="container wow fadeInUp">
+            <div class="section-header">
+                <h3 class="section-title">{{member.tech}}</h3>
+                <p class="section-description">We are the best {{ member.name }} developers, so get in contact.</p>
+            </div>
+            <!-- Filter declarations -->
+            <div class="row">
+                <div class="col-md-5">
+                    <img src="../{{member.image}}" alt="Profile image for {{member.name}}" />
+                </div>
+            </div>
+            <div class="col-md-12">
+                <p>
+                    {{ member.description }}
+                </p>
+            </div>
+        </div>
+    </section><!-- #portfolio -->
+</main>
 
-
-<!-- have to use {{ url_for('static', filename='style.css') }} to get right path-->
-
-<div class="row">
-    <div class="col-md-5">
-        <img src="../{{member.image_source}}" alt="Profile image for {{member.name}}" />
-        <h2 class="col-md-7">{{ member.name }}</h2>
-    </div>
-</div>
-
-<div class="col-md-12">
-    <p>{{ member.description }}
-        {{member.image_source}}
-
-    </p>
-</div>
-
+{% include "cta.html" %}
+{% include "footer.html" %}
 {% endblock %}

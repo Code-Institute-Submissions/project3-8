@@ -8,6 +8,18 @@
     <div class="container wow fadeInUp">
         <div class="section-header">
             <h3 class="section-title">Congrats you Created a New Quote </h3>
+
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <ul class=flashes>
+                {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}{{quote}} </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+
             <h4 class="section-description"><br>
                 Your <strong> Quote # {{quote}} </strong> request has been received. <br>
                 The Quote is on its way to one of our awesome project managers. <br><br>

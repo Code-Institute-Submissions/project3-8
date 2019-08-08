@@ -27,6 +27,8 @@ I wanted to use different input types to collect the information on the forms.
 
 ### Responsive Design
 I have used bootsrap throughout the project. The page elements look well on screens as small as 360 pixels wide and as big as 3840 pixels wide (4K).	Bootstrap grid sizes and CSS3 media queries  are used to ensure the layout changes appropriately and reflows when the screen is resized.
+http://ami.responsivedesign.is/#
+
 
 
 ## Features
