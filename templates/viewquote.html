@@ -5,323 +5,339 @@
           Get Quotes Section
  ============================-->
 
-
-
 <div class="container wow fadeIn">
     <div class="row">
         <div class="section-header">
             <h3 class="section-title">Please enter a Quote #</h3>
-            <form method="POST" name="sentMessage" id="contactForm"
-                action="{{url_for('view_quote', quote_id=quote._id))}}">
+            <form action="{{url_for('view_quote')}}" method="POST">
                 <!-- This is the quote ID -->
                 <div class=" form-group">
                     <span><i class="fa fa-hashtag formicon" alt="quoteid">
                             Please enter your Quote number so we can help you.</i>
                     </span>
-                    <input id="quoteid" name="quoteid" type="number" class="form-control" placeholder="Your Quote ID">
+                    <label for="quote_id">Enter Quote id</label>
+                    <input id="quote_id" name="quote_id" type="number" class="form-control" placeholder="Your Quote ID">
                 </div>
                 <button type=" submit" name="action" class="btn btn-info">Find My Quote
                 </button>
-
-                <form action="{{ url_for('update_quote', quote_id=quote._id) }}" method="POST">
-
-
-                    <form action=""></form>
-                    <!-- this is the menu of the available Statuses -->
-                    {% if status %}
-                    {% if statuses %}
-                    <ul class="nav nav-pills nav-fill">
-                        {% for status in statuses %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="/get_quotes/{{status.quote_status}}"> {{status.quote_status}}</a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
-                    {% endif %}
         </div>
     </div>
 
-    <div class="row">
-        {% for quote in quotes %}
-        <!-- this is where I can later add a sort by status -->
-        {% if (quote.quoteStatus ==status) or (status =="ALL") %}
-        <div class="col-sm-12">
-            <br>
-            Quote#: {{quote.quoteId}} for <strong>{{quote.name}}</strong> is <strong>{{quote.quoteStatus}}</strong>
-            <br>
-            <strong>Project Brief: </strong> {{quote.brief}}
-            <div class="row">
-                <div class="col-6 col-sm-6">
-                </div>
-                <div class="col-6 col-sm-6">
-                    Live Date: {{quote.liveDate}}
-                </div>
+
+
+    !--==========================
+    Edit Quote Section
+    ============================-->
+    <section id="contact">
+        <div class="container wow ">
+            <div class="section-header">
+                <h3 class="section-title">View Quote</h3>
+                <p class="section-description"> Here is what you sent us on your project. </p>
             </div>
-            <div class="row">
-                <div class="col-6 col-sm-6">
-                    <a href="{{url_for('delete_quote', quote_id=quote._id)}}" class="icon-block">
-                        <i class="fa fa-trash" aria-hidden="true"></i>
-                        <span>Delete</span> </a>
-                    <a href="{{url_for('edit_quote', quote_id=quote._id)}}" class="icon-block">
-                        <i class="fa fa-pencil-square-o"></i>
-                        <span>Edit</span>
-                    </a>
-                </div>
-                <div class="col-6 col-sm-6">
-                    Expected Date: {{quote.expectedDate}}
-                </div>
-            </div>
-        </div>
-        {% endif %}
-        <br>
-        {% endfor %}
-    </div>
-</div>
-<!--==========================
-                  Add Quote Section
-  ============================-->
-<section id="contact">
-    <div class="container wow ">
-        <div class="section-header">
-            <h3 class="section-title">Search for a Quote</h3>
-            <p class="section-description"> Eneter in your Quote number to check its status to discuss your next
-                project, complete our form to get a quote for
-                your project. </p>
-        </div>
-        <div class="row justify-content-center formcontent">
-            <!-- start of  contact form input -->
-            <div class="col-lg-8 col-md-8">
-                <!-- using onsubmit to call emailjs to send quote by email and action to call the flask to add quote to db-->
-                <form method="POST" name="sentMessage" id="contactForm" action="{{url_for('insert_quote')}}"
-                    onsubmit="return sendquote(this);">
-                    <!-- This is the name -->
-                    <div class=" form-group">
-                        <span><i class="fa fa-user formicon" alt="name">
-                                Your Name, We need to know who you are, so we can help you.</i>
-                        </span>
-                        <input id="quote_name" name="quote_name" type="text" class="form-control"
-                            placeholder="Your Full Name">
-                    </div>
-                    <!-- this is the email     -->
-                    <div class=" form-group">
-                        <div class="box">
-                            <span><i class="fa fa-envelope-o formicon">
-                                    Please enter your email so we can reply to you.</i></span>
-                            <input id="quote_email" name="quote_email" type="text" class="form-control"
-                                placeholder="Your email address">
-                            <!-- <label for="quote_name">Your email</label> -->
+            <div class="row justify-content-center formcontent">
+                <!-- start of  contact form input -->
+                <div class="col-lg-8 col-md-8">
+                    <form action="{{ url_for('update_quote', quote_id=quote._id) }}" method="POST">
+
+                        <div class="form-group">
+                            <span><i class="fa fa-hashtag formicon" title="name">
+                                    Unique Quote #: </i>
+                            </span>
+                            <label for="quote_id" id="quote_quoteid" value="{{quote.quoteId}}"> {{quote.quoteId}}
+                            </label>
                         </div>
-                    </div>
-                    <!-- this is the phone -->
-                    <div class="form-group">
-                        <span><i class="fa fa-phone-square formicon">
-                                Please enter your phone so we can contact you.
-                            </i></span>
-                        <input id="quote_phone" name="quote_phone" type="text" class="form-control"
-                            placeholder="Your Phone Number">
-                    </div>
-                    <!-- Quality,  cost and Time values -->
-                    <div class="form-group">
-                        <span><i class="fa fa-check-circle formicon" title="name">
-                                We want to deliver quality software on time with a fixed budget. Please Rank the
-                                factors. </i>
-                            <div class="forminfo">
-                                We need to knowwhat your constraints are on your time, quality, money priorities.
-                                High priority of QUALITY means PRECISION. High Priority of TIME means FAST. Low
-                                priority of MONEY means CHEAP. <br>
+
+                        <!-- this is quote ID -->
+                        <div class="form-group">
+                            <label>Quote status: </label>
+                            <select id="quote_status" name="quote_status">
+                                <!-- List all the status passed through in the statuses variable -->
+                                {% for status in statuses %}
+                                <option value="{{status.quote_status}}"
+                                    {% if status.quote_status == quote.quoteStatus %} selected{% endif %}>
+                                    {{status.quote_status}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <!-- This is the name -->
+                        <div class="form-group">
+                            <span><i class="fa fa-user formicon" alt="name">
+                                    Your Name, We need to know who you are, so we can help you.</i>
+                            </span>
+                            <input id="quote_name" name="quote_name" type="text" class="form-control"
+                                placeholder="Your Full Name" value="{{quote.name}}">
+                        </div>
+                        <!-- this is the email     -->
+                        <div class=" form-group">
+                            <div class="box">
+                                <span><i class="fa fa-envelope-o formicon">
+                                        Please enter your email so we can reply to you.</i></span>
+                                <input id="quote_email" name="quote_email" type="text" class="form-control"
+                                    placeholder="Your email address" value="{{quote.email}}">
+                                <!-- <label for="quote_name">Your email</label> -->
                             </div>
+                        </div>
+                        <!-- this is the phone -->
+                        <div class="form-group">
+                            <span><i class="fa fa-phone-square formicon">
+                                    Please enter your phone so we can contact you.
+                                </i></span>
+                            <input id="quote_phone" name="quote_phone" type="text" class="form-control"
+                                placeholder="Your Phone Number" value="{{quote.phone}}">
+                        </div>
+                        <!-- Quality,  cost and Time values -->
+                        <div class="form-group">
+                            <span><i class="fa fa-check-circle formicon" title="name">
+                                    We want to deliver quality software on time with a fixed budget. Please Rank the
+                                    factors. </i>
+                                <div class="forminfo">
+                                    We need to knowwhat your constraints are on your time, quality, money priorities.
+                                    High priority of QUALITY means PRECISION. High Priority of TIME means FAST. Low
+                                    priority of MONEY means CHEAP. <br>
+                                </div>
 
-                        </span>
-                        <table style="width: 100%; height: 100%; margin-left: auto; margin-right: auto;">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div><em title="name"> Rank your level of Quality.</em></div>
-                                        <div><em title="name">Are you ok with shure it will be fine!</em></div>
-                                    </td>
-                                    <td><input name="quote_rankquality" type="radio" value="LOW" />
-                                        <label for="quote_rankquality">Low</label></td>
-                                    <td><input name="quote_rankquality" type="radio" value="MEDIUM" />
-                                        <label for="id=quote_rankquality">Medium</label></td>
-                                    <td><input name="quote_rankquality" type="radio" value="HIGH" />
-                                        <label for="quote_rankquality">High</label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div><em title="name"> Rank your expected time level.</em></div>
-                                        <div><em title="name"> How Fast do you want this done.</em></div>
-                                    </td>
-                                    <td><input name="quote_ranktime" type="radio" value="THIS YEAR" />
-                                        <label for="quote_ranktime"> Whenever!
-                                        </label></td>
-                                    <td><input name="quote_ranktime" type="radio" value="THIS MONTH" /> <label
-                                            for="id=quote_ranktime"> This
-                                            month</label></td>
-                                    <td><input name="quote_ranktime" type="radio" value="THIS WEEK" />
-                                        <label for="quote_ranktime">How about
-                                            today?</label></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div><em title="name"> How Cost Sensitive are you.</em></div>
-                                        <div><em title="name">Do you save or splurge?</em></div>
-                                    </td>
-                                    <td><input name="quote_rankcost" type="radio" value="MISER" />
-                                        <label for="quote_rankcost"> MISER! </label>
-                                    </td>
-                                    <td><input name="quote_rankcost" type="radio" value="CAN SPEND" />
-                                        <label for="id=quote_rankcost"> THRIFTY
-                                        </label></td>
-                                    <td><input name="quote_rankcost" type="radio" value="CASH NO PROBLEMO" /> <label
-                                            for="quote_rankcost">SPENDER</label></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                            </span>
+                            <table style="width: 100%; height: 100%; margin-left: auto; margin-right: auto;">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div><em title="name"> Rank your level of Quality.</em></div>
+                                            <div><em title="name">Are you ok with shure it will be fine!</em></div>
+                                        </td>
+                                        <td><input {% if quote.rankQuality == "LOW" %}checked="checked" {% endif %}
+                                                name="quote_rankquality" type="radio" value="LOW" />
+                                            <label for="quote_rankquality">Low</label></td>
 
-                    <!-- Level of Quality required -->
-                    <div class="form-group">
-                        <span><i class="fa fa-compass formicon" title="name">
-                                What is your required level of quality?</i>
-                            <div class="forminfo">
-                                We are using some everyday items as a way of indicating criticality of quality.
-                                All the solutions we develop is measured to a quality model agreed prior to
-                                commencement.
-                            </div>
-                        </span>
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td><input name="quote_expectedquality" type="radio" value="BIKE" /></td>
-                                    <td><label for="quote_expectedquality"> Bicycle / I'm ok with repairing a
-                                            puncture
-                                            once in a while.! </label></td>
-                                </tr>
-                                <tr>
-                                    <td><input name="quote_expectedquality" type="radio" value="CAR" /></td>
-                                    <td><label for="id=quote_expectedquality"> Car / I need it to work, day in and
-                                            day
-                                            out. </label></td>
-                                </tr>
-                                <tr>
-                                    <td><input name="quote_expectedquality" type="radio" value="JUMBO" /></td>
-                                    <td><label for="quote_expectedquality">Jumbo Jet / I'm not at the controls but
-                                            my
-                                            life depends on it. </label></td>
-                                </tr>
-                                <tr>
-                                    <td><input name="quote_expectedquality" type="radio" value="SPACECRAFT" /></td>
-                                    <td><label for="quote_expectedquality">Space Craft / Never done before, "To
-                                            infinity
-                                            and beyond!" </label></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                        <td><input {% if quote.rankQuality == "MEDIUM" %}checked="checked" {% endif %}
+                                                name="quote_rankquality" type="radio" value="MEDIUM" />
+                                            <label for="id=quote_rankquality">Medium</label></td>
+                                        <td><input {% if quote.rankQuality == "HIGH" %}checked="checked" {% endif %}
+                                                name="quote_rankquality" type="radio" value="HIGH" />
+                                            <label for="quote_rankquality">High</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div><em title="name"> Rank your expected time level.</em></div>
+                                            <div><em title="name"> How Fast do you want this done.</em></div>
+                                        </td>
+                                        <td><input {% if quote.rankTime == "THIS YEAR" %}checked="checked" {% endif %}
+                                                name="quote_ranktime" type="radio" value="THIS YEAR" />
+                                            <label for="quote_ranktime"> Whenever!
+                                            </label></td>
+                                        <td><input {% if quote.rankTime == "THIS MONTH" %}checked="checked" {% endif %}
+                                                name="quote_ranktime" type="radio" value="THIS MONTH" /> <label
+                                                for="id=quote_ranktime"> This
+                                                month</label></td>
+                                        <td><input {% if quote.rankTime == "THIS WEEK" %}checked="checked" {% endif %}
+                                                name="quote_ranktime" type="radio" value="THIS WEEK" />
+                                            <label for="quote_ranktime">How about
+                                                today?</label></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div><em title="name"> How Cost Sensitive are you.</em></div>
+                                            <div><em title="name">Do you save or splurge?</em></div>
+                                        </td>
+                                        <td><input {% if quote.rankCost == "MISER" %}checked="checked" {% endif %}
+                                                name="quote_rankcost" type="radio" value="MISER" />
+                                            <label for="quote_rankcost"> MISER! </label>
+                                        </td>
+                                        <td><input {% if quote.rankCost == "THRIFTY" %}checked="checked" {% endif %}
+                                                name="quote_rankcost" type="radio" value="THRIFTY" />
+                                            <label for="id=quote_rankcost"> THRIFTY
+                                            </label></td>
+                                        <td><input {% if quote.rankCost == "CASH NO PROBLEMO" %}checked="checked"
+                                                {% endif %} name="quote_rankcost" type="radio"
+                                                value="CASH NO PROBLEMO" />
+                                            <label for="quote_rankcost">SPENDER</label></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
-                    </div>
+                        <!-- Level of Quality required -->
+                        <div class="form-group">
+                            <span><i class="fa fa-compass formicon" title="name">
+                                    What is your required level of quality?</i>
+                                <div class="forminfo">
+                                    We are using some everyday items as a way of indicating criticality of quality.
+                                    All the solutions we develop is measured to a quality model agreed prior to
+                                    commencement.
+                                </div>
+                            </span>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td><input {% if quote.levelQuality == "BIKE" %}checked="checked" {% endif %}
+                                                name="quote_expectedquality" type="radio" value="BIKE" />;</td>
+                                        <td><label for="quote_expectedquality"> Bicycle / I'm ok with repairing a
+                                                puncture
+                                                once in a while.! </label></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input {% if quote.levelQuality == "CAR" %}checked="checked" {% endif %}
+                                                name="quote_expectedquality" type="radio" value="CAR" /></td>
+                                        <td><label for="id=quote_expectedquality"> Car / I need it to work, day in and
+                                                day
+                                                out. </label></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input {% if quote.levelQuality == "JUMBO" %}checked="checked" {% endif %}
+                                                name="quote_expectedquality" type="radio" value="JUMBO" /></td>
+                                        <td><label for="quote_expectedquality">Jumbo Jet / I'm not at the controls but
+                                                my
+                                                life depends on it. </label></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input {% if quote.levelQuality == "SPACECRAFT" %}checked="checked"
+                                                {% endif %} name="quote_expectedquality" type="radio"
+                                                value="SPACECRAFT" /></td>
+                                        <td><label for="quote_expectedquality">Space Craft / Never done before, "To
+                                                infinity
+                                                and beyond!" </label></td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
-
-                    <!-- This is the project brief in a text area-->
-                    <div class="form-group">
-                        <span><i class="fa fa-folder-open formicon" title="name">
-                                Scope of Work Quality software requires precise specification and agreement. </i>
-                            <div class="forminfo">
-                                We will probably follow up with some questions along with our CE. This section gives
-                                you
-                                an opportunity to 'cut and paste' a brief, or at the very least give us a functional
-                                list of what you need from your software, and the form it should take. The Brief
-                                Here we
-                                go... let it all out. Give us much detail as possible. The more detail, the more
-                                accurate the CE. If there is not sufficient information for us to quote on with
-                                this, we
-                                may need to drop you an email to follow up with you.
-                            </div>
-                        </span>
-                        <textarea name="quote_brief" id="quote_brief" class="form-control"
-                            placeholder="Enter the details of your project here. We will get back to you within 2 business days."
-                            rows="7"></textarea>
-                    </div>
-                    <!-- Expected and Go Live date -->
-                    <div class="form-group">
-                        <span><i class="fa fa-calendar  formicon" title="name">
-                                Your Expected Date for delivery. When do you need to be DONE by?</i>
-                            <div class="forminfo">
-                                As in, when do you need the software and/or solution in your hands?</div>
-                        </span>
-                        <input id="quote_expecteddate" name="quote_expecteddate" type="date" class="form-control"
-                            placeholder="Your Expected Date for delivery"></div>
-                    <div class="form-group">
-                        <span><i class="fa fa-calendar-check-o formicon" title="name">
-                                When do you need to be LIVE by?</i>
-                            <div class="forminfo">As in, when do you need the software and/or solution in the hands
-                                of your staff orconsumers? Your 'GO LIVE' Date.</div>
-                        </span>
-                        <input id="quote_livedate" name="quote_livedate" type="date" class="form-control"
-                            placeholder="Your 'GO LIVE' Date"></div>
-
-                    <!-- Budget for the project -->
-                    <div class="form-group">
-                        <span><i class="fa fa-money formicon" alt="name">
-                                How much money do you have budgeted for this? </i>
-                            <div class="forminfo">
-                                Err... this is awkward. We love building software. We also need to get paid to keep
-                                us in coffee beans and electricity. So now is the time to tell us how much or little
-                                you
-                                have. Don't be afraid - we are happy to tailor your scope of work to your budget.
-                            </div>
-                        </span>
-                        <input id="quote_budget " name="quote_budget " type="text" class="form-control"
-                            placeholder="Your Budget">
-                    </div>
+                        </div>
 
 
-                    <!-- choices here for tech types -->
-                    <div class="form-group">
-                        <span><i class="fa fa-desktop  formicon" title="name"> What type of development is
-                                required?.</i></span>
-                        <label for="exampleFormControlSelect2">Select all that apply multiple</label>
-                        <select multiple class="form-control" id="exampleFormControlSelect2">
-                            <option>Responsive Web Development (HTML5/JSON/REST)</option>
-                            <option>Native Mobile Application (iOS)</option>
-                            <option>Hybrid Mobile (Xamarin)</option>
-                            <option>Hybrid Desktop Mobile (Unity3D)</option>
-                            <option>Database Architecture and Design</option>
-                        </select>
-                    </div>
 
-                    <!-- Tech wanted -->
-                    <div class="form-group">
-                        <span><i class="fa fa-database   formicon" title="name">
 
-                                Any technology you specifically need this developed in?
-                            </i></span>
-                        <label for="exampleFormControlSelect2">Select all that apply multiple</label>
-                        <select multiple class="form-control" id="exampleFormControlSelect2">
-                            <option>JavaScript </option>
-                            <option>HTML5 </option>
-                            <option>Node.JS </option>
-                            <option>NoSQL </option>
-                            <option>SQL </option>
-                        </select>
 
-                    </div>
+                        <!-- This is the project brief in a text area-->
+                        <div class="form-group">
+                            <span><i class="fa fa-folder-open formicon" title="name">
+                                    Scope of Work Quality software requires precise specification and agreement. </i>
+                                <div class="forminfo">
+                                    We will probably follow up with some questions along with our CE. This section gives
+                                    you
+                                    an opportunity to 'cut and paste' a brief, or at the very least give us a functional
+                                    list of what you need from your software, and the form it should take. The Brief
+                                    Here we
+                                    go... let it all out. Give us much detail as possible. The more detail, the more
+                                    accurate the CE. If there is not sufficient information for us to quote on with
+                                    this, we
+                                    may need to drop you an email to follow up with you.
+                                </div>
+                            </span>
+                            <textarea name="quote_brief" id="quote_brief" class="form-control"
+                                placeholder="Enter the details of your project here. We will get back to you within 2 business days."
+                                rows="7">{{quote.brief}}</textarea>
+                        </div>
+                        <!-- Expected and Go Live date -->
+                        <div class="form-group">
+                            <span><i class="fa fa-calendar  formicon" title="name">
+                                    Your Expected Date for delivery. When do you need to be DONE by?</i>
+                                <div class="forminfo">
+                                    As in, when do you need the software and/or solution in your hands?</div>
+                            </span>
+                            <input id="quote_expecteddate" name="quote_expecteddate" type="date" class="form-control"
+                                placeholder="Your Expected Date for delivery" value="{{quote.expectedDate}}"></div>
+                        <div class="form-group">
+                            <span><i class="fa fa-calendar-check-o formicon" title="name">
+                                    When do you need to be LIVE by?</i>
+                                <div class="forminfo">As in, when do you need the software and/or solution in the hands
+                                    of your staff orconsumers? Your 'GO LIVE' Date.</div>
+                            </span>
+                            <input id="quote_livedate" name="quote_livedate" type="date" class="form-control"
+                                placeholder="Your 'GO LIVE' Date" value="{{quote.liveDate}}"></div>
 
-                    <!-- what the check for -->
-                    <div class="checkbox">
-                        <label>
-                            <input input id="quote_gdpr" name="quote_gdpr" type="checkbox" class="form-control">
-                            Accept
-                            GDPR
-                        </label>
-                    </div>
-                    <button type=" submit" name="action" class="btn btn-info">Submit Information
-                    </button>
-                </form>
+                        <!-- Budget for the project -->
+                        <div class="form-group">
+                            <span><i class="fa fa-money formicon" alt="name">
+                                    How much money do you have budgeted for this? </i>
+                                <div class="forminfo">
+                                    Err... this is awkward. We love building software. We also need to get paid to keep
+                                    us in coffee beans and electricity. So now is the time to tell us how much or little
+                                    you
+                                    have. Don't be afraid - we are happy to tailor your scope of work to your budget.
+                                </div>
+                            </span>
+                            <input id="quote_budget " name="quote_budget " type="text" class="form-control"
+                                placeholder="Your Budget" value="{{quote.budget}}">
+                        </div>
+
+
+                        <!-- choices here for tech types -->
+                        <div class="form-group">
+                            <span><i class="fa fa-desktop  formicon" title="name"> What type of development is
+                                    required?.</i></span>
+                            <label for="exampleFormControlSelect2">Select all that apply multiple</label>
+                            <select multiple class="form-control" id="exampleFormControlSelect2">
+                                <option>Responsive Web Development (HTML5/JSON/REST)</option>
+                                <option>Native Mobile Application (iOS)</option>
+                                <option>Hybrid Mobile (Xamarin)</option>
+                                <option>Hybrid Desktop Mobile (Unity3D)</option>
+                                <option>Database Architecture and Design</option>
+                            </select>
+                        </div>
+
+                        <!-- Tech wanted -->
+                        <div class="form-group">
+                            <span><i class="fa fa-database formicon" title="name">
+                                    Any technology you specifically need this developed in?
+                                </i></span>
+                            <label>Select all that apply multiple</label>
+                            <select multiple class="form-control" name="quote_tech">
+                                <option value="JavaScript"> JavaScript </option>
+                                <option value="HTML5">HTML5 </option>
+                                <!-- <option id="quote_tech2" name="quote_tech2" value="Node">Node.JS </option>
+                            <option id="quote_tech3" name="quote_tech3" value="NoSQL">NoSQL </option>
+                            <option id="quote_tech4" name="quote_tech4" value="SQL">SQL </option> -->
+                            </select>
+                        </div>
+                        <!-- Admin features -->
+                        <div class="form-group">
+                            <span><i class="fa fa-user formicon" alt="name">
+                                    Enter a detailed Response to the project Brief.</i> <input id="quote_details"
+                                    name="quote_details" type="text" class="form-control"
+                                    placeholder="Our Detailed Response to the Customers Brief"
+                                    value="{{quote.quoteDetails}}"></div>
+                        <!-- Our Detailed response -->
+                        <div class="form-group">
+                            <span><i class="fa fa-desktop  formicon" title="name">
+                                    Enter our Customer Response to the project Brief.</i></span>
+                            <input id="quote_response" name="quote_response" type="text" class="form-control"
+                                placeholder="Our Detailed Response to the Customers " value="{{quote.quoteResponse}}">
+                        </div>
+                        <!-- the name of the internal person and email for this project -->
+                        <div class="form-group">
+                            <span><i class="fa fa-user-secret formicon" title="name">
+                                    Who is responsible for this project.</i>
+                                </i> <input id="quote_person" name="quote_person" type="text" class="form-control"
+                                    placeholder="Our Person assigned to this project" value="{{quote.assignedTo}}">
+                        </div>
+                        <div class="form-group">
+                            <!-- We can enter the estimated cost of the project here -->
+                            <span><i class="fa f fa-mobile   formicon" title="name">
+                                    Enter in the Estimated Project Costs.</i></span>
+                            <input id="quote_cost" name="quote_cost" type="text" class="form-control"
+                                placeholder="Our Detailed costings to the Customers Brief" value="{{quote.quoteCost}}">
+                        </div>
+                        <!-- We list the resources for the project here -->
+                        <div class="form-group">
+                            <span><i class="fa fa-laptop  formicon" title="name">
+                                    What Resources are needed for this project?</i></span>
+                            <input id="quote_needs" name="quote_needs" type="text" class="form-control"
+                                placeholder="Our List of  resources needed" value="{{quote.quoteNeeds}}"></div>
+                        <!-- what the check for -->
+                        <div class="checkbox">
+                            <label>
+                                <input input id="quote_gdpr" name="quote_gdpr" type="checkbox" class="form-control"
+                                    value="{{quote.quoteGdpr}}"> Accept GDPR
+                            </label>
+                        </div>
+
+                        <button type=" submit" name="action" class="btn btn-info">Submit Information
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
 
 

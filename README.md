@@ -34,7 +34,7 @@ http://ami.responsivedesign.is/#
 ## Features
 ### Home page /
   - about us , facts, call to action to request quote, contact page.
-  - Portfolio page
+  - Portfolio page 
   - Request New quote page
   - Quote Admin menu
 - 
@@ -44,8 +44,12 @@ http://ami.responsivedesign.is/#
 - New Quote stored in database and given unique wuote Id
 - Quote Admin menu  - View and Edit Quotes in the database, (full CRUD fetures)
                     - Manage Quote Status (full CRUD features)
-                  - 
 
+### Static JSON file driven Features
+I am using a static JSON file in my data directory to drive my portfolio pages.
+I will put this in a mongodb later , it was just quicker to import everyting from a json file 
+  - Portfolio page list all the front stack portfolio we work on and these are taken from the JSON file.
+.
 ### Future Features.
 - More detils on the portfolio pages
 - Quote search facility by Id, Live Date etc
