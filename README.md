@@ -40,12 +40,14 @@ http://ami.responsivedesign.is/#
 - 
 ### Database connected  Features
 - Contact page that replies with email and stores the contact in the database.
-- Portfolio page, connected to static json file
-- New Quote stored in database and given unique wuote Id
+- All contact request are stored with status of NEW
+- New Quote link calls form and contents are stored in database and given unique quote Id
+- 
 - Quote Admin menu  - View and Edit Quotes in the database, (full CRUD fetures)
                     - Manage Quote Status (full CRUD features)
 
 ### Static JSON file driven Features
+- Portfolio page, connected to static json fil
 I am using a static JSON file in my data directory to drive my portfolio pages.
 I will put this in a mongodb later , it was just quicker to import everyting from a json file 
   - Portfolio page list all the Full stack portfolio we work on and these are taken from the JSON file.
@@ -57,6 +59,7 @@ I will put this in a mongodb later , it was just quicker to import everyting fro
 ### Future Features.
 - DB driven portfolio pages
 - Quote search facility by Id, Live Date etc
+- 
 
 ## Technologies Used
 The quote application is built with Python, Flask, Html and Jinja.

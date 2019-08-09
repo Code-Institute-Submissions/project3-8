@@ -20,7 +20,7 @@ mongo = PyMongo(app)
 
 @app.route('/')
 def index():
-    return render_template("index.html", page_title="Heh Welcome Y'all", page_heading="We are team of awesome designers making websites with Full Stack stuff", cta="Get Started", list_stuff_wedo=["Bootstrap", "Django", "Flask", "Python", "Javascript"])  # noqa
+    return render_template("index.html", page_title="Hey Welcome Y'all", page_heading="We are team of awesome designers making websites with Full Stack stuff", cta="Get Started", list_stuff_wedo=["Bootstrap", "Django", "Flask", "Python", "Javascript"])  # noqa
 
 
 # this function get the quotes and list them on the screeen
@@ -34,7 +34,7 @@ def get_quotes(status='ALL'):
     return render_template("getquotes.html", status=status, statuses=mongo.db.status.find(), quotes=mongo.db.quote.find())  # noqa
 
 
-# this function views a quotes
+# this function views a quotes - working but not styled
 @app.route('/view_quote', methods=["GET", "POST"])
 def view_quote():
     thequote = request.form.get('quote_id')
@@ -101,9 +101,6 @@ def insert_quote():
                  "liveDate": request.form.get("quote_livedate"),
                  "budget": request.form.get("quote_budget "),
                  "brief": request.form.get("quote_brief"),
-                 "typeDev": request.form.get("quote_typedev"),
-                 "tech": request.form.get("quote_tech"),
-                 "quoteGdpr": request.form.get("quotegdpr"),
                  "quoteStatus": "NEW"
                  }
 
@@ -121,10 +118,11 @@ def quotesuccess(quote):
 
 @app.route('/update_quote/<quote_id>', methods=["GET", "POST"])
 def update_quote(quote_id):
+    q = mongo.db.quote.find_one({"_id": ObjectId(quote_id)})
     mongo.db.quote.update(
         {'_id': ObjectId(quote_id)},
         {
-            "quoteId": request.form.get("quote_quoteid"),
+            "quoteId": q['quoteId'],
             "name": request.form.get("quote_name"),
             "email": request.form.get("quote_email"),
             "phone": request.form.get("quote_phone"),
@@ -136,15 +134,13 @@ def update_quote(quote_id):
             "liveDate": request.form.get("quote_livedate"),
             "budget": request.form.get("quote_budget "),
             "brief": request.form.get("quote_brief"),
-            "typeDev": request.form.get("quote_typedev"),
-            "tech": request.form.get("quote_tech"),
             "quoteStatus": request.form.get("quote_status"),
             "quoteDetails": request.form.get("quote_details"),
             "quoteResponse": request.form.get("quote_response"),
             "assignedTo": request.form.get("quote_person"),
             "quoteCost": request.form.get("quote_cost"),
             "quoteNeeds": request.form.get("quote_needs"),
-            "quoteGdpr": request.form.get("quotegdpr"),
+
         })
     return redirect(url_for('get_quotes'))
 

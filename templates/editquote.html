@@ -44,7 +44,8 @@
                         <span><i class="fa fa-hashtag formicon" title="name">
                                 Unique Quote #: </i>
                         </span>
-                        <label for="quote_id" id="quote_quoteid" value="{{quote.quoteId}}"> {{quote.quoteId}}
+                        <label for="quote_id" name="quote_name" id="quote_quoteid" value="{{quote.quoteId}}">
+                            {{quote.quoteId}}
                         </label>
                     </div>
 
@@ -206,14 +207,6 @@
                     <div class="form-group">
                         <span><i class="fa fa-folder-open formicon" title="name">
                                 Scope of Work Quality software requires precise specification and agreement. </i>
-                            <div class="forminfo">
-                                We will probably follow up with some questions along with our CE. This section gives you
-                                an opportunity to 'cut and paste' a brief, or at the very least give us a functional
-                                list of what you need from your software, and the form it should take. The Brief Here we
-                                go... let it all out. Give us much detail as possible. The more detail, the more
-                                accurate the CE. If there is not sufficient information for us to quote on with this, we
-                                may need to drop you an email to follow up with you.
-                            </div>
                         </span>
                         <textarea name="quote_brief" id="quote_brief" class="form-control"
                             placeholder="Enter the details of your project here. We will get back to you within 2 business days."
@@ -223,16 +216,12 @@
                     <div class="form-group">
                         <span><i class="fa fa-calendar  formicon" title="name">
                                 Your Expected Date for delivery. When do you need to be DONE by?</i>
-                            <div class="forminfo">
-                                As in, when do you need the software and/or solution in your hands?</div>
                         </span>
                         <input id="quote_expecteddate" name="quote_expecteddate" type="date" class="form-control"
                             placeholder="Your Expected Date for delivery" value="{{quote.expectedDate}}"></div>
                     <div class="form-group">
                         <span><i class="fa fa-calendar-check-o formicon" title="name">
                                 When do you need to be LIVE by?</i>
-                            <div class="forminfo">As in, when do you need the software and/or solution in the hands
-                                of your staff orconsumers? Your 'GO LIVE' Date.</div>
                         </span>
                         <input id="quote_livedate" name="quote_livedate" type="date" class="form-control"
                             placeholder="Your 'GO LIVE' Date" value="{{quote.liveDate}}"></div>
@@ -241,44 +230,9 @@
                     <div class="form-group">
                         <span><i class="fa fa-money formicon" alt="name">
                                 How much money do you have budgeted for this? </i>
-                            <div class="forminfo">
-                                Err... this is awkward. We love building software. We also need to get paid to keep
-                                us in coffee beans and electricity. So now is the time to tell us how much or little you
-                                have. Don't be afraid - we are happy to tailor your scope of work to your budget.
-                            </div>
                         </span>
                         <input id="quote_budget " name="quote_budget " type="text" class="form-control"
                             placeholder="Your Budget" value="{{quote.budget}}">
-                    </div>
-
-
-                    <!-- choices here for tech types -->
-                    <div class="form-group">
-                        <span><i class="fa fa-desktop  formicon" title="name"> What type of development is
-                                required?.</i></span>
-                        <label for="exampleFormControlSelect2">Select all that apply multiple</label>
-                        <select multiple class="form-control" id="exampleFormControlSelect2">
-                            <option>Responsive Web Development (HTML5/JSON/REST)</option>
-                            <option>Native Mobile Application (iOS)</option>
-                            <option>Hybrid Mobile (Xamarin)</option>
-                            <option>Hybrid Desktop Mobile (Unity3D)</option>
-                            <option>Database Architecture and Design</option>
-                        </select>
-                    </div>
-
-                    <!-- Tech wanted -->
-                    <div class="form-group">
-                        <span><i class="fa fa-database formicon" title="name">
-                                Any technology you specifically need this developed in?
-                            </i></span>
-                        <label>Select all that apply multiple</label>
-                        <select multiple class="form-control" name="quote_tech">
-                            <option value="JavaScript"> JavaScript </option>
-                            <option value="HTML5">HTML5 </option>
-                            <!-- <option id="quote_tech2" name="quote_tech2" value="Node">Node.JS </option>
-                            <option id="quote_tech3" name="quote_tech3" value="NoSQL">NoSQL </option>
-                            <option id="quote_tech4" name="quote_tech4" value="SQL">SQL </option> -->
-                        </select>
                     </div>
                     <!-- Admin features -->
                     <div class="form-group">
@@ -314,13 +268,7 @@
                                 What Resources are needed for this project?</i></span>
                         <input id="quote_needs" name="quote_needs" type="text" class="form-control"
                             placeholder="Our List of  resources needed" value="{{quote.quoteNeeds}}"></div>
-                    <!-- what the check for -->
-                    <div class="checkbox">
-                        <label>
-                            <input input id="quote_gdpr" name="quote_gdpr" type="checkbox" class="form-control"
-                                value="{{quote.quoteGdpr}}"> Accept GDPR
-                        </label>
-                    </div>
+
 
                     <button type=" submit" name="action" class="btn btn-info">Submit Information
                     </button>

@@ -2,91 +2,48 @@
 {% include "hero-backimage.html" %}
 {% block content %}
 <!--==========================
-          Get Quotes Section
+          View Quotes Section
  ============================-->
-<section id="contact">
-    <div class="container wow fadeIn">
-        <div class="section-header">
-            <h3 class="section-title">View your Quote #</h3>
-            <form action="{{url_for('view_quote')}}" method="POST">
-                <div class=" form-group">
-                    <span><i class="fa fa-hashtag formicon" alt="quoteid">
-                            Please enter your Quote number so we can help you.</i>
-                    </span>
-                    <input id="quote_id" name="quote_id" type="number" class="form-control" placeholder="Your Quote ID">
-                </div>
-                <button type=" submit" name="action" class="btn btn-info">Find My Quote </button>
-            </form>
-        </div>
-        <h3 class="section-title">View Quote</h3>
-        <p class="section-description"> Here is what you sent us on your project. </p>
-        <div class="row justify-content-center formcontent">
+<section id="about">
+    <div class="container">
+        <div class="row justify-content-center">
             <div class="col-lg-8 col-md-8">
-                <div class="form-group">
-                    <span><i class="fa fa-hashtag formicon" title="name">
-                            Unique Quote #: {{quote.quoteId}} </i>
-                    </span>
-                </div>
-                <!-- this is quote ID -->
-                <div class="form-group">
-                    Quote status: {{quote.quoteStatus}}
-                </div>
-                <!-- This is the name -->
-                <div class="form-group">
-                    {{quote.name}}
-                </div>
-                <!-- this is the email     -->
-                <div class=" form-group">
-                    <div class="box">
-                        {{quote.email}}
+                <h2 class="title">View your Quote #</h2>
+                <form action="{{url_for('view_quote')}}" method="POST">
+                    <div class=" form-group">
+                        <span><i class="fa fa-hashtag formicon" alt="quoteid">
+                                Please enter your Quote number so we can help you.</i>
+                        </span>
+                        <input id="quote_id" name="quote_id" type="number" class="form-control"
+                            placeholder="Your Quote ID">
                     </div>
-                </div>
-                <!-- this is the phone -->
-                <div class="form-group">
-                    {{quote.phone}}
-                </div>
-                <!-- Quality,  cost and Time values -->
-                <div class="form-group">
-                    <i class="fa fa-check-circle formicon" title="name">
-                        <div><em title="name"> Level of Quality: {{quote.rankQuality}}</em></div>
-                        <div><em title="name"> Expected time level: {{quote.rankTime}}</em></div>
-                        <div><em title="name">Cost Sensitivity: {{quote.rankCost}}</em></div>
-                </div>
-                <!-- Level of Quality required -->
-                <div class="form-group">
-                    <span><i class="fa fa-compass formicon" title="name">
-                            Required level of quality: {{quote.levelQuality}} </i>
-                    </span>
-                </div>
-                <!-- This is the project brief in a text area-->
-                <div class="form-group">
-                    <span><i class="fa fa-folder-open formicon" title="name">
-                            Scope of Work: </i>
-                        {{quote.brief}}
-                </div>
-                <!-- Expected and Go Live date -->
-                <div class="form-group">
-                    <i class="fa fa-calendar  formicon" title="name">
-                        Expected Date for delivery: {{quote.expectedDate}} </i>
-                    <i class="fa fa-calendar-check-o formicon" title="name">
-                        LIVE date: {{quote.liveDate}}</i>
-                </div>
-                <!-- Budget for the project -->
-                <div class="form-group">
-                    <span><i class="fa fa-money formicon" alt="name">
-                            Budget {{quote.budget}}
-                </div>
-                <!-- choices here for tech types -->
-                <div class="form-group">
-                    <span><i class="fa fa-desktop  formicon" title="name"> Type of development:
-                            Responsive Web Development (HTML5/JSON/REST)
-                            Native Mobile Application (iOS)
-                </div>
-                <!-- Tech wanted -->
-                <div class="form-group">
-                    <span><i class="fa fa-database formicon" title="name">
-                            Technology:
-                </div>
+                    <button type=" submit" name="action" class="btn btn-info">Find My Quote </button>
+                </form>
+                <p class="section-description"> Here is what you sent us on your project. </p>
+                <h5 class="title">Unique Quote #: </a></h5>
+                <p class="description">{{quote.quoteId}}</p>
+                <h5 class="title"> Quote status: </a></h5>
+                <p class="description">{{quote.quoteStatus}}</p>
+                <p class="description">{{quote.name}}</p>
+                <p class="description">{{quote.email}}</p>
+                <p class="description">{{quote.phone}}</p>
+                <h5 class="title"> Level of Quality: </a></h5>
+                <p class="description">{{quote.rankQuality}}</p>
+                <h5 class="title">Expected time level: </a></h5>
+                <p class="description">{{quote.rankTime}}</p>
+                <h5 class="title"> Cost Sensitivity:</a></h5>
+                <p class="description">{{quote.rankCost}}</p>
+                <h5 class="title">Required level of quality: </a></h5>
+                <p class="description">{{quote.quoteId}}</p>
+                <h5 class="title">Scope of Work: </a></h5>
+                <p class="description">{{quote.levelQuality}}</p>
+                <h5 class="title">Expected Date for delivery:</a></h5>
+                <p class="description">{{quote.expectedDate}}</p>
+                <h5 class="title">LIVE date: </a></h5>
+                <p class="description">{{quote.liveDate}}</p>
+                <h5 class="title">Budget: </a></h5>
+                <p class="description">{{quote.budget}}</p>
+
             </div>
         </div>
     </div>

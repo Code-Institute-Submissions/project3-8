@@ -1,20 +1,22 @@
 /* Form icons css */
 /* This class is for the icons and text above the inputs */
+
 .formicon {
-  font-size: 16px;
-  color: #36A0FF;
+  font-size: 18px;
+  /* color: #2dc997; */
+  color: rgb(7, 78, 7);
   padding: 2px 1px 2px 1px;
 }
 
 .forminfo {
-  font-size: 14px;
+  font-size: 16px;
   color: rgb(2, 2, 2);
   padding: 2px 1px 2px 1px;
 }
 
 .formcontent {
   font-size: 16px;
-  color: #36A0FF;
+  color: rgb(2, 2, 2);
   padding: 2px 1px 2px 1px;
 }
 
@@ -1012,25 +1014,4 @@ body.mobile-nav-active #mobile-nav-toggle {
   text-align: center;
   font-size: 13px;
   color: #ccc;
-}
-
-
-/* form pages */
-/* This class is for the icons and text above the inputs */
-.formicon {
-  font-size: 16px;
-  color: #36A0FF;
-  padding: 2px 1px 2px 1px;
-}
-
-.forminfo {
-  font-size: 14px;
-  color: rgb(2, 2, 2);
-  padding: 2px 1px 2px 1px;
-}
-
-.formcontent {
-  font-size: 16px;
-  color: #36A0FF;
-  padding: 2px 1px 2px 1px;
 }

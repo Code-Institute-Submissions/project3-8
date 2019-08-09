@@ -4,7 +4,6 @@
 {% block content %}
 <!-- this is required for the radio buttons -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
 <!--==========================
                   Add Quote Section
   ============================-->
@@ -15,7 +14,7 @@
             <p class="section-description"> Ready to discuss your next project, complete our form to get a quote for
                 your project. </p>
         </div>
-        <div class="row justify-content-center formcontent">
+        <div class="row justify-content-center">
             <!-- start of  contact form input -->
             <div class="col-lg-8 col-md-8">
                 <!-- using onsubmit to call emailjs to send quote by email and action to call the flask to add quote to db-->
@@ -24,7 +23,8 @@
                     <!-- This is the name -->
                     <div class=" form-group">
                         <span><i class="fa fa-user formicon" alt="name">
-                                Your Name, We need to know who you are, so we can help you.</i>
+                                Your Name, We need to know who you are, so we can help you.
+                            </i>
                         </span>
                         <input id="quote_name" name="quote_name" type="text" class="form-control"
                             placeholder="Your Full Name">
@@ -50,102 +50,99 @@
                     <!-- Quality,  cost and Time values -->
                     <div class="form-group">
                         <span><i class="fa fa-check-circle formicon" title="name">
-                                We want to deliver quality software on time with a fixed budget. Please Rank the
+                                We want to deliver quality software on time with a fixed budget. Please Rank these
                                 factors. </i>
                             <div class="forminfo">
-                                We need to knowwhat your constraints are on your time, quality, money priorities.
+                                We need to know what your constraints are on your time, quality, money priorities.
                                 High priority of QUALITY means PRECISION. High Priority of TIME means FAST. Low
                                 priority of MONEY means CHEAP. <br>
                             </div>
 
                         </span>
-                        <table style="width: 100%; height: 100%; margin-left: auto; margin-right: auto;">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div><em title="name"> Rank your level of Quality.</em></div>
-                                        <div><em title="name">Are you ok with shure it will be fine!</em></div>
-                                    </td>
-                                    <td><input name="quote_rankquality" type="radio" value="LOW" />
-                                        <label for="quote_rankquality">Low</label></td>
-                                    <td><input name="quote_rankquality" type="radio" value="MEDIUM" />
-                                        <label for="id=quote_rankquality">Medium</label></td>
-                                    <td><input name="quote_rankquality" type="radio" value="HIGH" />
-                                        <label for="quote_rankquality">High</label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div><em title="name"> Rank your expected time level.</em></div>
-                                        <div><em title="name"> How Fast do you want this done.</em></div>
-                                    </td>
-                                    <td><input name="quote_ranktime" type="radio" value="THIS YEAR" />
-                                        <label for="quote_ranktime"> Whenever!
-                                        </label></td>
-                                    <td><input name="quote_ranktime" type="radio" value="THIS MONTH" /> <label
-                                            for="id=quote_ranktime"> This
-                                            month</label></td>
-                                    <td><input name="quote_ranktime" type="radio" value="THIS WEEK" />
-                                        <label for="quote_ranktime">How about
-                                            today?</label></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div><em title="name"> How Cost Sensitive are you.</em></div>
-                                        <div><em title="name">Do you save or splurge?</em></div>
-                                    </td>
-                                    <td><input name="quote_rankcost" type="radio" value="MISER" />
-                                        <label for="quote_rankcost"> MISER! </label>
-                                    </td>
-                                    <td><input name="quote_rankcost" type="radio" value="CAN SPEND" />
-                                        <label for="id=quote_rankcost"> THRIFTY
-                                        </label></td>
-                                    <td><input name="quote_rankcost" type="radio" value="CASH NO PROBLEMO" /> <label
-                                            for="quote_rankcost">SPENDER</label></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                        <div class="forminfo">
+                            <table style="width: 100%; height: 100%; margin-left: auto; margin-right: auto;">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div>Your level of Quality.</div>
+                                            <div>Are you ok with shure it will be fine!</div>
+                                        </td>
+                                        <td><input name="quote_rankquality" type="radio" value="LOW" />
+                                            <label for="quote_rankquality">Low</label></td>
+                                        <td><input name="quote_rankquality" type="radio" value="MEDIUM" />
+                                            <label for="id=quote_rankquality">Medium</label></td>
+                                        <td><input name="quote_rankquality" type="radio" value="HIGH" />
+                                            <label for="quote_rankquality">High</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div> Rank your expected time level.</div>
+                                            <div> How Fast do you want this done.</div>
+                                        </td>
+                                        <td><input name="quote_ranktime" type="radio" value="THIS YEAR" />
+                                            <label for="quote_ranktime"> Whenever!
+                                            </label></td>
+                                        <td><input name="quote_ranktime" type="radio" value="THIS MONTH" /> <label
+                                                for="id=quote_ranktime"> This
+                                                month</label></td>
+                                        <td><input name="quote_ranktime" type="radio" value="THIS WEEK" />
+                                            <label for="quote_ranktime">How about
+                                                today?</label></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div> How Cost Sensitive are you.</div>
+                                            <div>Do you save or splurge?</div>
+                                        </td>
+                                        <td><input name="quote_rankcost" type="radio" value="MISER" />
+                                            <label for="quote_rankcost"> MISER! </label>
+                                        </td>
+                                        <td><input name="quote_rankcost" type="radio" value="CAN SPEND" />
+                                            <label for="id=quote_rankcost"> THRIFTY
+                                            </label></td>
+                                        <td><input name="quote_rankcost" type="radio" value="CASH NO PROBLEMO" /> <label
+                                                for="quote_rankcost">SPENDER</label></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
-                    <!-- Level of Quality required -->
-                    <div class="form-group">
-                        <span><i class="fa fa-compass formicon" title="name">
-                                What is your required level of quality?</i>
-                            <div class="forminfo">
-                                We are using some everyday items as a way of indicating criticality of quality.
-                                All the solutions we develop is measured to a quality model agreed prior to
-                                commencement.
-                            </div>
-                        </span>
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td><input name="quote_expectedquality" type="radio" value="BIKE" /></td>
-                                    <td><label for="quote_expectedquality"> Bicycle / I'm ok with repairing a
-                                            puncture
-                                            once in a while.! </label></td>
-                                </tr>
-                                <tr>
-                                    <td><input name="quote_expectedquality" type="radio" value="CAR" /></td>
-                                    <td><label for="id=quote_expectedquality"> Car / I need it to work, day in and
-                                            day
-                                            out. </label></td>
-                                </tr>
-                                <tr>
-                                    <td><input name="quote_expectedquality" type="radio" value="JUMBO" /></td>
-                                    <td><label for="quote_expectedquality">Jumbo Jet / I'm not at the controls but
-                                            my
-                                            life depends on it. </label></td>
-                                </tr>
-                                <tr>
-                                    <td><input name="quote_expectedquality" type="radio" value="SPACECRAFT" /></td>
-                                    <td><label for="quote_expectedquality">Space Craft / Never done before, "To
-                                            infinity
-                                            and beyond!" </label></td>
-                                </tr>
-                            </tbody>
-                        </table>
-
+                        <!-- Level of Quality required -->
+                        <div class="form-group">
+                            <span><i class="fa fa-compass formicon" title="name">
+                                    What is your required level of quality?</i>
+                                <div class="forminfo">
+                                    We are using some everyday items as a way of indicating criticality of quality.
+                                    All the solutions we develop is measured to a quality model agreed prior to
+                                    commencement.
+                                </div>
+                            </span>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td><input name="quote_expectedquality" type="radio" value="BIKE" /></td>
+                                        <td><label for="quote_expectedquality"> Bicycle / I'm ok with repairing a
+                                                puncture once in a while.! </label></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input name="quote_expectedquality" type="radio" value="CAR" /></td>
+                                        <td><label for="id=quote_expectedquality"> Car / I need it to work, day in and
+                                                day out. </label></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input name="quote_expectedquality" type="radio" value="JUMBO" /></td>
+                                        <td><label for="quote_expectedquality">Jumbo Jet / I'm not at the controls but
+                                                my life depends on it. </label></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input name="quote_expectedquality" type="radio" value="SPACECRAFT" /></td>
+                                        <td><label for="quote_expectedquality">Space Craft / Never done before, "To
+                                                infinity and beyond!" </label></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
 
@@ -200,47 +197,6 @@
                         </span>
                         <input id="quote_budget " name="quote_budget " type="text" class="form-control"
                             placeholder="Your Budget">
-                    </div>
-
-
-                    <!-- choices here for tech types -->
-                    <div class="form-group">
-                        <span><i class="fa fa-desktop  formicon" title="name"> What type of development is
-                                required?.</i></span>
-                        <label for="exampleFormControlSelect2">Select all that apply multiple</label>
-                        <select multiple class="form-control" id="exampleFormControlSelect2">
-                            <option>Responsive Web Development (HTML5/JSON/REST)</option>
-                            <option>Native Mobile Application (iOS)</option>
-                            <option>Hybrid Mobile (Xamarin)</option>
-                            <option>Hybrid Desktop Mobile (Unity3D)</option>
-                            <option>Database Architecture and Design</option>
-                        </select>
-                    </div>
-
-                    <!-- Tech wanted -->
-                    <div class="form-group">
-                        <span><i class="fa fa-database   formicon" title="name">
-
-                                Any technology you specifically need this developed in?
-                            </i></span>
-                        <label for="exampleFormControlSelect2">Select all that apply multiple</label>
-                        <select multiple class="form-control" id="exampleFormControlSelect2">
-                            <option>JavaScript </option>
-                            <option>HTML5 </option>
-                            <option>Node.JS </option>
-                            <option>NoSQL </option>
-                            <option>SQL </option>
-                        </select>
-
-                    </div>
-
-                    <!-- what the check for -->
-                    <div class="checkbox">
-                        <label>
-                            <input input id="quote_gdpr" name="quote_gdpr" type="checkbox" class="form-control">
-                            Accept
-                            GDPR
-                        </label>
                     </div>
                     <button type=" submit" name="action" class="btn btn-info">Submit Information
                     </button>
