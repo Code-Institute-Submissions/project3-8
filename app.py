@@ -38,18 +38,18 @@ def get_quotes(status='ALL'):
 @app.route('/view_quote', methods=["GET", "POST"])
 def view_quote():
     thequote = request.form.get('quote_id')
-    thequote = int(thequote)
-    print(thequote)
-    quotedetails = mongo.db.quote.find_one({"quoteId": thequote})
-    if quotedetails:
-        print(quotedetails)
-        return render_template("viewquote.html",  quote=quotedetails)  # noqa
-    else:
-        print("WTF")
-    return render_template("viewquote.html")  # noqa
-    # return render_template("viewquote.html",  thequote=mongo.db.status.find(), quotes=mongo.db.quote.find())  # noqa
 
-    
+    if type(thequote) == type(None):
+        quotedetails = "EMPTY"
+        return render_template("viewquote.html",  quote=quotedetails)
+    else:
+        print("else")
+        quote = int(thequote)
+        print(quote)
+        print(thequote)
+        quotedetails = mongo.db.quote.find_one({"quoteId": quote})
+        return render_template("viewquote.html",  quote=quotedetails)  # noqa
+
 
 # This function displays the edit page with the input in quote.html
 @app.route('/edit_quote/')

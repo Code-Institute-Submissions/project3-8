@@ -48,10 +48,14 @@ http://ami.responsivedesign.is/#
 ### Static JSON file driven Features
 I am using a static JSON file in my data directory to drive my portfolio pages.
 I will put this in a mongodb later , it was just quicker to import everyting from a json file 
-  - Portfolio page list all the front stack portfolio we work on and these are taken from the JSON file.
+  - Portfolio page list all the Full stack portfolio we work on and these are taken from the JSON file.
+  - The filter tabs are driven form the JSON file and are  used to call css classes for display.
+  - Each card then calls a member route and loads the description etc. form the JSOM.
+  - This can be easily converted to a DB as all the json work has been done
+- 
 .
 ### Future Features.
-- More detils on the portfolio pages
+- DB driven portfolio pages
 - Quote search facility by Id, Live Date etc
 
 ## Technologies Used

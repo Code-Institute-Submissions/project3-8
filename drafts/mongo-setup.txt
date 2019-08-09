@@ -8,6 +8,8 @@ export MONGO_URI="mongodb+srv://ciaran:xxx@quote-vj3wf.mongodb.net/crm?retryWrit
 
 Mongo CLI 
 mongo "mongodb+srv://quote-vj3wf.mongodb.net/crm" --username ciaran
+pass = Code2019
+
 show collections
 coll=db.quote
 coll.insert({
