@@ -1,11 +1,14 @@
 # FULLSTACK CRM
 
 ## Project Purpose
-The purpose of this project is to deliver a website that showcases the technology we have been learning and to incorporate a form that allows customers specify a brief for a full stack development and an admin back end to reply and edit the quotes.
+The purpose of this project is to deliver a website that showcases the technology we have been learning and to incorporate a form that allows customers specify a brief for a full stack development.
+The site has an admin back end to reply and edit the quotes.
 The 'CRM' system will be a number of forms that the customer can enter a brief for a full stack development project.
-The system back end allows the comany FULLSTACK to view ,edit and respond to the project briefs recieved.
-The peoject quotes  are kept in a mongo DB and can be upadted and emails sent to the customer with further information on the project.
+The system back end allows the company FULLSTACK to view ,edit and respond to the project briefs recieved.
+The peoject quotes are kept in a mongo DB and can be upadted and emails sent to the customer with further information on the project.
 The website is aimed at companies requiring full stack development services.
+The portfolio feature lists a number of full stack tech and further information is available by selecting a card.
+
 
 ##  UX - User Experience
 
@@ -27,8 +30,12 @@ I wanted to use different input types to collect the information on the forms.
 
 ### Responsive Design
 I have used bootsrap throughout the project. The page elements look well on screens as small as 360 pixels wide and as big as 3840 pixels wide (4K).	Bootstrap grid sizes and CSS3 media queries  are used to ensure the layout changes appropriately and reflows when the screen is resized.
-http://ami.responsivedesign.is/#
+[Responsive test](http://ami.responsivedesign.is/?url=https%3A%2F%2Fciproject3-cquinlan.herokuapp.com)
 
+
+## Database Schema
+The database schema is available in the drafts folder as a pdf file.
+[Schema](https://github.com/ciaranq/project3/blob/master/drafts/CRM-schema.pdf)
 
 
 ## Features
@@ -42,7 +49,23 @@ http://ami.responsivedesign.is/#
 - Contact page that replies with email and stores the contact in the database.
 - All contact request are stored with status of NEW
 - New Quote link calls form and contents are stored in database and given unique quote Id
-- 
+* Customer Functions in app.py
+  - New Quote: add a new quote for a customer and assigns it a status of NEW
+    - Generates a unique Quote Id by adding 1 to the Quote id stored in the  quotenumber document.
+    - Displays a page showing success and the quote number that has been generated
+    - Email the new quote  to customer in place but not connected
+  - View Quote: This allows the customer to view his quote based on their unique Quote ID
+  - Customer contact page: the data entered on the contact page on the home page is stored in the Database.
+    - The customer page send an email to the customer with the email.js api.
+
+* Admin Functions in app.py
+  - GET Quotes: list all quotes and sorts them in decending order
+    - admin user can select to view quotes by status
+    - links to edit and delete quotes.
+  - Edit Quote: allows admin user to edit the quote and add the information to reply to the quote
+    - allows admin to change the status os the quote
+  - Delete quote: deletes the quotes
+
 - Quote Admin menu  - View and Edit Quotes in the database, (full CRUD fetures)
                     - Manage Quote Status (full CRUD features)
 
@@ -58,7 +81,7 @@ I will put this in a mongodb later , it was just quicker to import everyting fro
 .
 ### Future Features.
 - DB driven portfolio pages
-- Quote search facility by Id, Live Date etc
+- Quote search facility by tech type, Live Date etc
 - 
 
 ## Technologies Used
@@ -75,6 +98,9 @@ Libraries:
     Flask - os, render template, import os, redirect, request, url_for, PyMongo, ObjectId
     Tools that you have used to construct this project. For each, provide its name, a link to its official site and a short sentence of why it was used.
 
+    For a full list of what i used selet this built with link
+[Built with](https://builtwith.com/?https%3a%2f%2fciproject3-cquinlan.herokuapp.com%2f)
+
 
 ### Testing
 I tested the app as I was developing. 
@@ -82,32 +108,13 @@ I use the debugger in vscode to follow my code to look for errors.
 I found that devloping some funtion first in python only and integrating with the HTML/Jinja when they were working 
 helped me identify issues quicker.
 
-- Testing implementation
-- Testing write-up
-- 
-In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your user stories from the UX section and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
-
-Whenever it is feasible, prefer to automate your tests, and if you've done so, provide a brief explanation of your approach, link to the test file(s) and explain how to run them.
-
-For any scenarios that have not been automated, test the user stories manually and provide as much detail as is relevant. A particularly useful form for describing your testing process is via scenarios, such as:
-Contact form:
-Go to the "Contact Us" page
-Try to submit the empty form and verify that an error message about the required fields appears
-Try to submit the form with an invalid email address and verify that a relevant error message appears
-Try to submit the form with all inputs valid and verify that a success message appears.
-In addition, you should mention in this section how your project looks and works on different browsers and screen sizes.
-
-You should also mention in this section any interesting bugs or problems you discovered during your testing, even if you haven't addressed them yet.
-
-If this section grows too long, you may want to split it off into a separate file and link to it from here.
-
 
 ### Information Architecture
-I have used a number of way to pass information into my website and application.
+I have used a number of ways to pass information into my website and application.
 - Setting python variables
 I have created a number of variable and pass them in the render template call to make it easy to customise my website.
 see the nav.html where i customise the hero image and text with variables called in jinja.
-- Static text
+- Static json text
 I created a static json text file and this drives the tech portfolio pages
 - Mongo Database
 The Quote and contact page information is stored in a Mongo database
@@ -122,98 +129,26 @@ The data schema is located at https://github.com/ciaranq/project3/blob/master/st
   - lib : Contains downloaded libraries for the temmplate and bootstrap
 
 #### PEP8
-I installed the pep8 linter in vsode and also used an online pep8 checker.
-The lines  that pass content into the pages are too long ie >80 chars for the pep8 standard.
+I installed the pep8 linter in vscode and also used an online pep8 checker.
+The lines that pass content into the pages are too long ie >80 chars for the pep8 standard.
 I placed '# noqa' after these lines to tell the checker to ignore these lines.
 
 
-UX wireframes
-
-
-Suitability for purpose
-
-
 ## Deployment
-This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub Pages or Heroku).
 
-In particular, you should provide all details of the differences between the deployed version and the development version, if any, including:
-
-Different values for environment variables (Heroku Config Vars)?
-Different configuration files?
-Separate git branch?
-In addition, if it is not obvious, you should also describe how to run your code locally.
+## Heroku
+The project and my app has been uploaded to Heroku for deployment. I initially setup Heroku as a git remote and uploaded directly.
+Auto deploy from GITHUB to heroku is now enabled.
+[Heroku}](https://ciproject3-cquinlan.herokuapp.com/)
 
 ## GIT  & Version Control
 [GitHub repo is here](https://github.com/ciaranq/project3)
 I am using GITHB for version control and do a commit in the morning and afternoon or after major features are added.
 
-## GIT  & Version Control
-[GitHub repo is here](https://github.com/ciaranq/project3)
-
-## Database Schema
-The database schema is available in the drafts folder as a pdf file.
-[Schema](https://github.com/ciaranq/project3/blob/master/drafts/CRM-schema.pdf)
-
-## Heroku
-My app has been uploaded to Heroku for deployment. I initially setup Heroku as a git remote and uploaded directly.
-Auto deploy from GITHUB to heroku is now enabled.
-[Heroku}](https://ciproject3-cquinlan.herokuapp.com/)
-
-
-- Readme file
-- Comments
-- Deployment implementation
-- Deployment write-up
 
 
 
-Data handling: 
-Build a mangoDB-backed Flask project for a web application that allows users to store and manipulate data records about a particular domain. If you are considering using a different database, please discuss that with your mentor first and inform Student Care.
-Database structure: Put some effort into designing a database structure well-suited for your domain. Make sure to put some thought into the nesting relationships between records of different entities.
-User functionality: Create functionality for users to create, locate, display, edit and delete records (CRUD functionality).
-Use of technologies: Use HTML and custom CSS for the website's front-end.
-Structure: Incorporate a main navigation menu and structured layout (you might want to use Materialize or Bootstrap to accomplish this).
-Documentation: Write a README.md file for your project that explains what the project does and the value that it provides to its users.
-Version control: Use Git & GitHub for version control.
-Attribution: Maintain clear separation between code written by you and code from external sources (e.g. libraries or tutorials). Attribute any code from external sources to its source via comments above the code and (for larger dependencies) in the README.
-Deployment: Deploy the final version of your code to a hosting platform such as Heroku.
-Make sure to not include any passwords or secret keys in the project repository.
-
-Assessment Criteria
-Your User Centric Front End Development project will be assessed based on the following criteria:
-
-Usability and Visual Impact:
-Project Purpose
-UX design
-Suitability for purpose
-Navigation
-Ease of use
-Information Architecture
-Defensive Design
-Layout and Visual Impact:
-Responsive Design
-Image Presentation
-Colour scheme and typography
-Code Quality:
-Appropriate use of HTML
-Appropriate use of CSS
-Appropriate use of Python
-Appropriate use of the template language
-Software Development practices:
-Directory Structure and File Naming
-Version control
-Testing implementation
-Testing write-up
-Readme file
-Comments
-Data store integration
-Deployment implementation
-Deployment write-up
-Explanation of Assessment Marks
-Once you submit your milestone project, it will be reviewed by an external assessor and graded based on a particular set of criteria, specific to each module. On each criterion, the assessor will review how your project meets this criterion and award you a mark between 0 to 5:
-
-
-Links for the project
+## Links for the project
 
 ## GIT  & Version Control
 [GitHub repo is here](https://github.com/ciaranq/project3)
@@ -225,37 +160,52 @@ The database schema is available in the drafts folder as a pdf file.
 ## Heroku
 My app has been uploaded to Heroku for deployment. I initially setup Heroku as a git remote and uploaded directly.
 Auto deploy from GITHUB to heroku is now enabled.
-[Heroku}](https://ciproject3-cquinlan.herokuapp.com/)
-
+[Heroku](https://ciproject3-cquinlan.herokuapp.com/)
 
 ## Mongo
 I created a database called CRM to contain my quote collection
 
-## jobs to do
-- change logo image
-- connect the tech portfolio
-- better validation in the form like the budget value
-- add acordian to get quote
-- re submit project 2
-- make add status a modal
-- add logo carosel https://www.solodev.com/blog/web-design/adding-an-infinite-client-logo-carousel-to-your-website.stml
-- change back to false
-- 
-
-
--------------------
 
 
 
 
 
-Credits
+
+
+### Credits
 
 Regna bootstrap template.
+Portfolio Content: The text for section was copied from the Wikipedia articles
+Portfolio Images: The photos used in this site were obtained from the relevant pages for the technology
 
-Content
-The text for section Y was copied from the Wikipedia article Z
-Media
-The photos used in this site were obtained from ...
-Acknowledgements
-I received inspiration for this project from X
+Fonts: 
+Google Font API
+Font Awesome
+Iconic font and CSS toolkit.
+
+
+Frameworks:
+Python: Python 3.6
+Heroku 
+Flask
+
+
+Content Delivery Network
+View Global Trends
+AJAX Libraries APIAJAX Libraries API
+AJAX Libraries API Usage Statistics · Download List of All Websites using AJAX Libraries API
+
+The AJAX Libraries API is a content distribution network and loading architecture for the most popular, open source JavaScript libraries.
+
+jQuery: JQuery is a fast, concise, JavaScript Library that simplifies how you traverse HTML documents, handle events, perform animations, and add Ajax interactions to your web pages. jQuery is designed to change the way that you write JavaScript.
+
+JavaScript Library
+WOW: Reveal CSS animation as you scroll down a page.
+jQuery Waypoints : Waypoints is a small jQuery plugin that makes it easy to execute a function whenever you scroll to an element.
+Hover Intent: hoverIntent is a plug-in that attempts to determine the user's intent. 
+
+
+UTF-8 (8-bit UCS/Unicode Transformation Format) is a variable-length character encoding for Unicode. It is the preferred encoding for web pages.
+
+CSS
+Twitter Bootstrap: Bootstrap is a toolkit from Twitter designed to kickstart development of webapps and sites.

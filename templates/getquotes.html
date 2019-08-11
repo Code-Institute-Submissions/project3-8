@@ -25,10 +25,14 @@
     </div>
 
     <div class="row">
+
         {% for quote in quotes %}
         <!-- this is where I can later add a sort by status -->
         {% if (quote.quoteStatus ==status) or (status =="ALL") %}
         <div class="col-sm-12">
+            <div class="col-xs-12">
+                <hr>
+            </div>
             <br>
             Quote#: {{quote.quoteId}} for <strong>{{quote.name}}</strong> is <strong>{{quote.quoteStatus}}</strong>
             <br>

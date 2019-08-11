@@ -31,7 +31,7 @@ def get_quotes(status='ALL'):
     # the status variable is passed in and I create the list based on status
     # This finds all documents in qoutes collections and put them in quotes
     # variable and passed back to quote.html file and it lists all quotes
-    return render_template("getquotes.html", status=status, statuses=mongo.db.status.find(), quotes=mongo.db.quote.find())  # noqa
+    return render_template("getquotes.html", status=status, statuses=mongo.db.status.find(), quotes=mongo.db.quote.find().sort("quoteId", -1))  # noqa
 
 
 # this function views a quotes - working but not styled
